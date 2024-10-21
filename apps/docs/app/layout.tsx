@@ -30,6 +30,29 @@ export const metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  creator: "pyr33x",
+  openGraph: {
+    siteName: NAME,
+    url: "https://rehooks.pyr33x.ir",
+    locale: "en_US",
+  },
+  twitter: {
+    title: "Rehooks",
+    card: "summary_large_image",
+    creator: "@pyr33x",
+    site: "https://rehooks.pyr33x.ir",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   manifest: "/site.webmanifest",
 } satisfies Metadata;
 
