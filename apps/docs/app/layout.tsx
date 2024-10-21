@@ -1,6 +1,6 @@
 import { RootProvider } from "fumadocs-ui/provider";
+import { NAME, DESCRIPTION, KEYWORDS } from "utils";
 import { JetBrains_Mono } from "next/font/google";
-import { NAME, DESCRIPTION } from "utils";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
@@ -19,6 +19,7 @@ export const metadata = {
   },
 
   metadataBase: new URL("https://rehooks.pyr33x.ir"),
+  keywords: KEYWORDS,
   title: {
     default: NAME,
     template: `%s - ${NAME}`,
@@ -28,6 +29,29 @@ export const metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
+  },
+  creator: "pyr33x",
+  openGraph: {
+    siteName: NAME,
+    url: "https://rehooks.pyr33x.ir",
+    locale: "en_US",
+  },
+  twitter: {
+    title: "Rehooks",
+    card: "summary_large_image",
+    creator: "@pyr33x",
+    site: "https://rehooks.pyr33x.ir",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   manifest: "/site.webmanifest",
 } satisfies Metadata;
