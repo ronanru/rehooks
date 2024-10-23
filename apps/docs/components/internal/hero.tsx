@@ -25,7 +25,7 @@ export function Hero() {
           onClick={() => copy("npm install rehooks-ts")}
           className="font-mono"
         >
-          {isCopied ? "Copied to Clipboard!" : "$ npm install rehooks-ts"}
+          {isCopied ? "Copied to Clipboard!" : "$ npm i rehooks-ts"}
         </Button>
         <Link href="/docs" className="outline-none ring-0">
           <Button size="circular" variant="secondary" className="font-mono">
