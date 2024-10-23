@@ -29,11 +29,11 @@ const cards: Card[] = [
     id: 2,
     name: "Performance",
     description:
-      "Rehooks bundle size is just only 32kb, optimized and fully tested for incredible performance.",
+      "Rehooks bundle size is just only 32kb, optimized and compressed, and it's fast and lightweight.",
     content: (
       <Files className="select-none">
         <Folder name="dist" defaultOpen>
-          <File name="index.mts" />
+          <File name="index.d.mts" />
           <File name="index.d.ts" />
           <File name="index.js" />
           <File name="index.mjs" />
@@ -41,10 +41,17 @@ const cards: Card[] = [
         <File name="package.json" />
       </Files>
     ),
-    class: "max-w-md row-span-2",
+    class: "max-w-md row-span-3",
   },
   {
     id: 3,
+    name: "Type-Safety",
+    description:
+      "Rehooks is totally type-safe, to make a great developer experience while using hooks.",
+    class: "max-w-md",
+  },
+  {
+    id: 4,
     name: "Open-Source",
     description:
       "The decision of open-sourcing the library was helping community to grow, repo is licensed under MIT license and PRs are welcomed.",
