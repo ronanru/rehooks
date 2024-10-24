@@ -1,0 +1,59 @@
+{
+  "name": "rehooks-cli",
+  "version": "1.0.1",
+  "description": "A CLI to copy the import state of hooks.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
+  "main": "./dist/index.js",
+  "bin": {
+    "rehooks": "dist/index.js"
+  },
+  "preferGlobal": true,
+  "author": "Mehdi",
+  "homepage": "https://rehooks.pyr33x.ir",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pyr33x/rehooks-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pyr33x/rehooks-ts/issues"
+  },
+  "keywords": [
+    "rehooks",
+    "typescript",
+    "hooks",
+    "cli"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "start": "node dist/index.js "
+  },
+  "devDependencies": {
+    "@types/node": "22.5.4",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.0",
+    "type-fest": "^4.26.1",
+    "typescript": "^5.6.3",
+    "zod": "^3.23.8"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "clipboardy": "^4.0.0",
+    "commander": "^12.1.0",
+    "inquirer": "^12.0.0",
+    "node-fetch": "^3.3.2",
+    "ora": "^8.1.0",
+    "package-json": "^10.0.1"
+  }
+}
