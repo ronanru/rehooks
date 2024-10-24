@@ -37,7 +37,10 @@ function Component() {
 }
 ```
 
-<h1 align="center">Documentation 📚</h1>
+<h1 align="center">📦 Packages</h1>
+<p align="center"><a href="https://www.npmjs.com/package/rehooks-ts"><code>rehooks-ts</code></a> - <a href="https://www.npmjs.com/package/rehooks-cli"><code>rehooks-cli</code></a></p>
+
+<h1 align="center">📚 Documentation</h1>
 <p align="center">
 Check out the <a href="https://rehooks.pyr33x.ir">documentation</a> for more information.
 </p>
