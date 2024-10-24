@@ -1,0 +1,60 @@
+---
+title: CLI
+description: The CLI to copy the import state of hooks.
+---
+
+# Installation
+
+You must install the CLI globally.
+
+```bash title="Terminal"
+npm install -g rehooks-cli
+```
+
+# Usage
+
+```bash title="Terminal"
+rehooks
+```
+
+## Options
+
+CLI options are as follows:
+
+| Option            | Description                 |
+| ----------------- | --------------------------- |
+| `-v`, `--version` | Display the version number. |
+| `-h`, `--help`    | Display help for command.   |
+
+## Commands
+
+CLI commands are as follows:
+
+| Command | Description                     |
+| ------- | ------------------------------- |
+| `hooks` | Copy the import state of hooks. |
+
+## Command Usage
+
+```bash title="Terminal"
+rehooks hooks
+```
+
+this command will copy the import state of hooks by your own selection.
+
+> Keep in mind that this command will copy the import state of hooks by your own selection.
+> Navigate through hooks by using the arrow keys and press enter to select the hook you want to copy.
+
+### Result
+
+```bash title="Terminal"
+✔ Select hooks to copy their import statements: useCounter
+ ● useCounter
+ ○ useCountDown
+ ○ useCounter
+ ○ useDebounceCallback
+ ○ useDebounceValue
+ ○ useEventCallback
+ ○ useEventListener
+ ○ useFocus
+```
