@@ -1,4 +1,7 @@
-export interface HookOptions {
-  search?: string;
-  limit?: number;
-}
+export type Hook = {
+  id: number;
+  title: string;
+  description: string;
+  import: string;
+  url: string;
+};
