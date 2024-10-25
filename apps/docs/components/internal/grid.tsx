@@ -41,7 +41,7 @@ const cards: Card[] = [
         <File name="package.json" />
       </Files>
     ),
-    class: "max-w-md row-span-3",
+    class: "max-w-md row-span-2",
   },
   {
     id: 3,
@@ -55,6 +55,13 @@ const cards: Card[] = [
     name: "Open-Source",
     description:
       "The decision of open-sourcing the library was helping community to grow, repo is licensed under MIT license and PRs are welcomed.",
+    class: "max-w-md",
+  },
+  {
+    id: 6,
+    name: "CLI",
+    description:
+      "Rehooks comes with CLI to insert hooks to your component which makes it easier to import.",
     class: "max-w-md",
   },
 ];
