@@ -12,7 +12,6 @@ const explorer = cosmiconfig("rehooks", {
 
 export const rehooksSchema = z.object({
   directory: z.string(),
-  ts: z.boolean(),
 });
 
 export type RehooksConfig = z.infer<typeof rehooksSchema>;

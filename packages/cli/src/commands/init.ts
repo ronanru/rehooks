@@ -12,8 +12,19 @@ export const init = new Command()
     const configPath = path.resolve(process.cwd(), "rehooks.json");
 
     if (fs.existsSync(configPath)) {
-      logger.warn("rehooks.json already exists.");
-      return;
+      const { overwrite } = await inquirer.prompt([
+        {
+          type: "confirm",
+          name: "overwrite",
+          message: "rehooks.json already exists. Do you want to overwrite it?",
+          default: false,
+        },
+      ]);
+
+      if (!overwrite) {
+        logger.warn("Initialization aborted.");
+        return;
+      }
     }
 
     const { srcFolderChoice } = await inquirer.prompt([
@@ -28,24 +39,10 @@ export const init = new Command()
       },
     ]);
 
-    const { languageChoice } = await inquirer.prompt([
-      {
-        type: "list",
-        name: "languageChoice",
-        message: "Is your project created using TypeScript or JavaScript?",
-        choices: [
-          { name: "TypeScript", value: "ts" },
-          { name: "JavaScript", value: "js" },
-        ],
-      },
-    ]);
-
     const directory = srcFolderChoice ? "./src/hooks" : "./hooks";
-    const isTypeScript = languageChoice === "ts";
 
     const defaultConfig = {
       directory,
-      ts: isTypeScript,
     };
 
     try {
