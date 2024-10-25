@@ -30,25 +30,23 @@ CLI options are as follows:
 
 CLI commands are as follows:
 
-| Command | Description                     |
-| ------- | ------------------------------- |
-| `hooks` | Copy the import state of hooks. |
+| Command          | Description                          |
+| ---------------- | ------------------------------------ |
+| `hooks <file>`   | Import hooks to your component file. |
+| `help [command]` | Display help for command.            |
 
 ## Command Usage
 
 ```bash title="Terminal"
-rehooks hooks
+rehooks hooks ./path/to/component
 ```
 
-this command will copy the import state of hooks by your own selection.
-
-> Keep in mind that this command will copy the import state of hooks by your own selection.
-> Navigate through hooks by using the arrow keys and press enter to select the hook you want to copy.
+this command will import hooks to your component by giving the path to the component file.
 
 ### Result
 
 ```bash title="Terminal"
-✔ Select hooks to copy their import statements: useCounter
+✔ Select hooks to import: useCounter
  ● useCounter
  ○ useCountDown
  ○ useCounter

@@ -1,9 +1,9 @@
 import { handleError } from "~/utils/error";
 import { Command } from "commander";
-import clipboardy from "clipboardy";
 import type { Hook } from "~/types";
 import inquirer from "inquirer";
 import ora from "ora";
+import fs from "fs";
 
 const fetchHooks = async (): Promise<any> => {
   const BASE_URL = `https://rehooks.pyr33x.ir/api/hooks`;
@@ -22,8 +22,9 @@ const fetchHooks = async (): Promise<any> => {
 
 export const hooks = new Command()
   .name("hooks")
-  .description("Get hooks from Rehooks API")
-  .action(async () => {
+  .description("Import hooks to your component file.")
+  .argument("<file>", "Path to the component file to insert imports")
+  .action(async (filePath) => {
     const spinner = ora("Fetching hooks...").start();
 
     try {
@@ -40,24 +41,24 @@ export const hooks = new Command()
           {
             type: "checkbox",
             name: "selectedImports",
-            message: "Select hooks to copy their import statements:",
+            message: "Select hooks to import:",
             choices,
           },
         ]);
 
         if (selectedImports.length > 0) {
           const importNames = selectedImports.map((importStatement: string) => {
-            return importStatement.match(/{(.+?) }/)?.[1];
+            return importStatement.match(/{\s*(.+?)\s*}/)?.[1]?.trim();
           });
 
           const uniqueImportNames = Array.from(new Set(importNames)).join(", ");
-          const finalImportStatement = `import { ${uniqueImportNames} } from 'rehooks-ts'`;
+          const finalImportStatement = `import { ${uniqueImportNames} } from 'rehooks-ts';\n`;
 
-          clipboardy.writeSync(finalImportStatement);
-          console.log(
-            "Copied the following import to clipboard:\n",
-            finalImportStatement,
-          );
+          const fileContent = fs.readFileSync(filePath, "utf-8");
+          const updatedContent = `${finalImportStatement}${fileContent}`;
+          fs.writeFileSync(filePath, updatedContent);
+
+          console.log(`Imported hooks added to the file: ${filePath}`);
         } else {
           console.log("No hooks selected.");
         }
