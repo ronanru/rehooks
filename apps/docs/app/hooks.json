@@ -8,10 +8,10 @@
   },
   {
     "id": 1,
-    "title": "useCountDown",
+    "title": "useCountdown",
     "description": "A hook that offers countdown functionality with adjustable start, stop, and interval parameters.",
-    "import": "import { useCountDown } from 'rehooks-ts'",
-    "url": "https://rehooks.pyr33x.ir/docs/hooks/useCountDown"
+    "import": "import { useCountdown } from 'rehooks-ts'",
+    "url": "https://rehooks.pyr33x.ir/docs/hooks/useCountdown"
   },
   {
     "id": 2,

@@ -1,19 +1,19 @@
 ---
-title: useCountDown
+title: useCountdown
 description: A hook that offers countdown functionality with adjustable start, stop, and interval parameters.
 ---
 
-# useCountDown
+# useCountdown
 
 A handy hook that gives you countdown capabilities, letting you start, stop, and reset the countdown with customizable options.
 
 ## Usage
 
 ```tsx
-import { useCountDown } from "rehooks-ts";
+import { useCountdown } from "rehooks-ts";
 
 const [counter, { startCountdown, stopCountdown, resetCountdown }] =
-  useCountDown({
+  useCountdown({
     countStart: 10,
     intervalMs: 1000,
     countStop: 0,
@@ -22,10 +22,10 @@ const [counter, { startCountdown, stopCountdown, resetCountdown }] =
 
 ## API
 
-### useCountDown
+### useCountdown
 
 ```ts
-function useCountDown({
+function useCountdown({
   countStart,
   countStop = 0,
   intervalMs = 1000,
