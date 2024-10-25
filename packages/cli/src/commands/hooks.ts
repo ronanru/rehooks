@@ -22,7 +22,7 @@ const fetchHooks = async (): Promise<any> => {
 
 export const hooks = new Command()
   .name("hooks")
-  .description("Get hooks from Rehooks API")
+  .description("Import hooks to your component file.")
   .argument("<file>", "Path to the component file to insert imports")
   .action(async (filePath) => {
     const spinner = ora("Fetching hooks...").start();
