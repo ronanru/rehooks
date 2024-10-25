@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 import { getPackageInfo } from "~/utils/package";
-import { hooks } from "~/commands/hooks";
+import { init } from "~/commands/init";
+import { add } from "~/commands/add";
 import { Command } from "commander";
 
 async function main() {
@@ -14,7 +15,8 @@ async function main() {
       "-v, --version",
       "display the version number",
     );
-  program.addCommand(hooks);
+  program.addCommand(init);
+  program.addCommand(add);
   program.parse();
 }
 
