@@ -42,6 +42,12 @@
     "content": "import { useEffect, useRef, type RefObject } from \"react\";\n\nexport function useEventListener<K extends keyof WindowEventMap>(\n  eventName: K,\n  handler: (event: WindowEventMap[K]) => void,\n  element?: RefObject<HTMLElement> | Window,\n): void {\n  const savedHandler = useRef<(event: WindowEventMap[K]) => void>(handler);\n\n  useEffect(() => {\n    savedHandler.current = handler;\n  }, [handler]);\n\n  useEffect(() => {\n    const targetElement: HTMLElement | Window =\n      element && \"current\" in element ? element.current! : window;\n\n    if (!targetElement) return;\n\n    const eventListener: EventListener = (event) =>\n      savedHandler.current(event as WindowEventMap[K]);\n\n    targetElement.addEventListener(eventName, eventListener);\n\n    return () => {\n      targetElement.removeEventListener(eventName, eventListener);\n    };\n  }, [eventName, element]);\n}\n"
   },
   {
+    "id": 7,
+    "title": "useFocus",
+    "description": "A custom hook to track whether an element is focused.",
+    "content": "import { useEffect, useRef, useState, type RefObject } from \"react\";\n\ntype UseFocusCallback = (isFocused: boolean) => void;\n\nexport function useFocus<T extends HTMLElement>(\n  callback?: UseFocusCallback,\n): [RefObject<T>, boolean] {\n  const [isFocused, setIsFocused] = useState(false);\n  const ref = useRef<T>(null);\n\n  useEffect(() => {\n    const handleFocus = () => {\n      setIsFocused(true);\n      callback?.(true);\n    };\n    const handleBlur = () => {\n      setIsFocused(false);\n      callback?.(false);\n    };\n\n    const node = ref.current;\n    if (node) {\n      node.addEventListener(\"focus\", handleFocus);\n      node.addEventListener(\"blur\", handleBlur);\n    }\n\n    return () => {\n      if (node) {\n        node.removeEventListener(\"focus\", handleFocus);\n        node.removeEventListener(\"blur\", handleBlur);\n      }\n    };\n  }, [callback]);\n\n  return [ref, isFocused];\n}\n"
+  },
+  {
     "id": 8,
     "title": "useHover",
     "description": "A custom hook to track whether an element is hovered.",
