@@ -1,6 +1,6 @@
 {
   "name": "rehooks-cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A CLI to copy the import state of hooks.",
   "publishConfig": {
     "access": "public"
