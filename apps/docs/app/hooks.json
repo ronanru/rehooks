@@ -51,7 +51,7 @@
     "id": 8,
     "title": "useHover",
     "description": "A custom hook to track whether an element is hovered.",
-    "content": "import { useState, useRef } from 'react';\nimport { useEventListener } from './../useEventListener';\nexport function useHover<T extends HTMLElement>(): [\n  React.RefObject<T>,\n  boolean,\n] {\n  const [isHovered, setIsHovered] = useState(false);\n  const ref = useRef<T>(null);\n  const handleMouseEnter = () => setIsHovered(true);\n  const handleMouseLeave = () => setIsHovered(false);\n  useEventListener('mouseenter', handleMouseEnter, ref);\n  useEventListener('mouseleave', handleMouseLeave, ref);\n  return [ref, isHovered];\n}"
+    "content": "import { useState, useRef } from 'react';\nimport { useEventListener } from './useEventListener';\nexport function useHover<T extends HTMLElement>(): [\n  React.RefObject<T>,\n  boolean,\n] {\n  const [isHovered, setIsHovered] = useState(false);\n  const ref = useRef<T>(null);\n  const handleMouseEnter = () => setIsHovered(true);\n  const handleMouseLeave = () => setIsHovered(false);\n  useEventListener('mouseenter', handleMouseEnter, ref);\n  useEventListener('mouseleave', handleMouseLeave, ref);\n  return [ref, isHovered];\n}"
   },
   {
     "id": 9,
