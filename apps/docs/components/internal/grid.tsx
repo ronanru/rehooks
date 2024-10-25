@@ -22,46 +22,38 @@ const cards: Card[] = [
     id: 1,
     name: "Why Rehooks?",
     description:
-      "Rehooks is a collection of reusable hooks that can be used to simplify your codebase and improve performance. It provides a wide range of hooks...",
+      "It provides a set of hooks that can be used to build performant and type-safe React applications.",
     class: "max-w-md",
   },
   {
     id: 2,
     name: "Performance",
     description:
-      "Rehooks bundle size is just only 32kb, optimized and compressed, and it's fast and lightweight.",
+      "All hooks are written in SOLID principles and are optimized for performance.",
     content: (
       <Files className="select-none">
         <Folder name="dist" defaultOpen>
-          <File name="index.d.mts" />
           <File name="index.d.ts" />
           <File name="index.js" />
-          <File name="index.mjs" />
+          <File name="index.js.map" />
         </Folder>
         <File name="package.json" />
       </Files>
     ),
-    class: "max-w-md row-span-2",
+    class: "max-w-md row-span-3",
   },
   {
     id: 3,
-    name: "Type-Safety",
-    description:
-      "Rehooks is totally type-safe, to make a great developer experience while using hooks.",
-    class: "max-w-md",
-  },
-  {
-    id: 4,
     name: "Open-Source",
     description:
       "The decision of open-sourcing the library was helping community to grow, repo is licensed under MIT license and PRs are welcomed.",
     class: "max-w-md",
   },
   {
-    id: 6,
-    name: "CLI",
+    id: 4,
+    name: "Package",
     description:
-      "Rehooks comes with CLI to insert hooks to your component which makes it easier to import.",
+      "Rehooks also comes with a an internal package that can be used to import production-ready hooks.",
     class: "max-w-md",
   },
 ];
