@@ -8,7 +8,7 @@ import fs from "fs";
 
 export const add = new Command()
   .name("add")
-  .description("Add hooks to your project")
+  .description("Add hooks to your codebase")
   .action(async () => {
     const config = await getConfig(process.cwd());
 
@@ -50,7 +50,7 @@ export const add = new Command()
         }
 
         const selectedHookResponse = await axios.get(
-          `http://localhost:2044/api/hooks/${hook}`,
+          `https://rehooks.pyr33x.ir/api/hooks/${hook}`,
         );
         let { content } = selectedHookResponse.data;
 

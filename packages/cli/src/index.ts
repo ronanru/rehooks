@@ -9,9 +9,9 @@ async function main() {
   const packageInfo = await getPackageInfo();
   const program = new Command()
     .name("rehooks")
-    .description("A CLI to copy the import state of hooks.")
+    .description("The CLI to import hooks directly to your codebase.")
     .version(
-      packageInfo.version || "1.0.1",
+      packageInfo.version || "3.2.1",
       "-v, --version",
       "display the version number",
     );

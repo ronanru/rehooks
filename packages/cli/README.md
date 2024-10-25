@@ -1,3 +1,3 @@
 # Rehooks CLI
 
-The CLI for Rehooks.
+The CLI to import hooks directly to your codebase.
