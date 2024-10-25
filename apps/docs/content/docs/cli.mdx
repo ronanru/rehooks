@@ -1,6 +1,6 @@
 ---
 title: CLI
-description: The CLI to copy the import state of hooks.
+description: The CLI to insert hooks to your component.
 ---
 
 # Installation
@@ -11,6 +11,12 @@ You must install the CLI globally.
 npm install -g rehooks-cli
 ```
 
+or you can execute the command with npx.
+
+```bash title="Terminal"
+npx rehooks-cli
+```
+
 # Usage
 
 ```bash title="Terminal"
@@ -19,40 +25,39 @@ rehooks
 
 ## Options
 
-CLI options are as follows:
+These are the options available in the CLI.
 
-| Option            | Description                 |
-| ----------------- | --------------------------- |
-| `-v`, `--version` | Display the version number. |
-| `-h`, `--help`    | Display help for command.   |
+| Option          | Description                 |
+| --------------- | --------------------------- |
+| `-v, --version` | Displays the version number |
+| `-h, --help`    | Displays help for command   |
 
 ## Commands
 
-CLI commands are as follows:
+| Command          | Description                     |
+| ---------------- | ------------------------------- |
+| `hooks <file>`   | Import hooks to your component. |
+| `help <command>` | Displays help for command       |
 
-| Command          | Description                          |
-| ---------------- | ------------------------------------ |
-| `hooks <file>`   | Import hooks to your component file. |
-| `help [command]` | Display help for command.            |
+## Example
 
-## Command Usage
+This is how you execute a command to import hooks to your component.
 
 ```bash title="Terminal"
-rehooks hooks ./path/to/component
+npx rehooks-cli hooks ./src/components/component.tsx
 ```
 
-this command will import hooks to your component by giving the path to the component file.
-
-### Result
+> The result will be something like this.
 
 ```bash title="Terminal"
-✔ Select hooks to import: useCounter
- ● useCounter
- ○ useCountDown
- ○ useCounter
- ○ useDebounceCallback
- ○ useDebounceValue
- ○ useEventCallback
- ○ useEventListener
- ○ useFocus
+✔ Select hooks to import: useCounter, useFocus, useScroll
+  ● useCounter
+  ○ useCountDown
+  ○ useCounter
+  ○ useDebounceCallback
+  ○ useDebounceValue
+  ○ useEventCallback
+  ○ useEventListener
+  ● useFocus
+  ● useScroll
 ```
