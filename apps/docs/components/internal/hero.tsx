@@ -15,17 +15,16 @@ export function Hero() {
         </span>
       </h1>
       <p className="dark:text-fd-muted-foreground/50 text-fd-muted-foreground mt-2 text-balance text-center text-base lg:text-xl">
-        An optimized, lightweight, and reusable react production-ready hooks
-        library written in TypeScript.
+        A CLI to import hooks directly to your codebase.
       </p>
       <div className="mt-5 flex flex-row flex-wrap justify-center gap-2">
         <Button
           variant="hero"
           size="circular"
-          onClick={() => copy("npm install rehooks-ts")}
+          onClick={() => copy("npx rehooks-cli@latest")}
           className="font-mono"
         >
-          {isCopied ? "Copied to Clipboard!" : "$ npm i rehooks-ts"}
+          {isCopied ? "Copied to Clipboard!" : "$ npx rehooks-cli@latest"}
         </Button>
         <Link href="/docs" className="outline-none ring-0">
           <Button size="circular" variant="secondary" className="font-mono">

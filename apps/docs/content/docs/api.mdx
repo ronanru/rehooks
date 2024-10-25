@@ -28,8 +28,7 @@ type Hook = {
   id: number;
   title: string;
   description: string;
-  import: string;
-  url: string;
+  content: string;
 };
 ```
 
@@ -55,28 +54,26 @@ GET /api/hooks
 ```json
 [
   {
-    "id": 1,
-    "title": "useCountDown",
-    "description": "A hook that offers countdown functionality with adjustable start, stop, and interval parameters.",
-    "import": "import { useCountDown } from 'rehooks-ts'",
-    "url": "https://rehooks.pyr33x.ir/docs/hooks/useCountDown"
-  },
+    "id": 0,
+    "title": "useClipboard",
+    "description": "A hook that provides a function to copy text to the clipboard.",
+    "content": "..."
+  }
 ]
-...
 ```
 
-### GET /hooks/:id
+### GET /hooks/:title
 
 This endpoint returns the details of a specific hook.
 
 ### Parameters
 
-- `id`: The ID of the hook to get.
+- `title`: The ID of the hook to get.
 
 ### Usage
 
 ```bash
-GET /api/hooks/9
+GET /api/hooks/useKeyPress
 ```
 
 ### Response
@@ -87,8 +84,7 @@ GET /api/hooks/9
     "id": 9,
     "title": "useKeyPress",
     "description": "Custom hook to detect if a specified key is pressed.",
-    "import": "import { useKeyPress } from 'rehooks-ts'",
-    "url": "https://rehooks.pyr33x.ir/docs/hooks/useKeyPress"
+    "content": "..."
   }
 ]
 ```

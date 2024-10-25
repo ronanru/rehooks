@@ -11,9 +11,9 @@ async function main() {
     .name("rehooks")
     .description("The CLI to import hooks directly to your codebase.")
     .version(
-      packageInfo.version || "3.2.1",
+      packageInfo.version || "3.1.3",
       "-v, --version",
-      "display the version number",
+      "Displays the version number",
     );
   program.addCommand(init);
   program.addCommand(add);
