@@ -8,8 +8,7 @@ type HookData = Readonly<{
   id: number;
   title: string;
   description: string;
-  import: string;
-  url: string;
+  content: string;
 }>;
 
 const filePath = path.join(process.cwd(), "app", "hooks.json");

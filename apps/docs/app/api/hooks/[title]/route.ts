@@ -6,6 +6,7 @@ type HookData = Readonly<{
   id: number;
   title: string;
   description: string;
+  content: string; // Added to include the content of the hook
 }>;
 
 const filePath = path.join(process.cwd(), "app", "hooks.json");
@@ -25,20 +26,13 @@ async function loadData(): Promise<HookData[]> {
 
 export async function GET(
   request: Request,
-  { params }: { params: { index: string } },
+  { params }: { params: { title: string } },
 ) {
-  const { index } = params;
-
-  if (isNaN(Number(index))) {
-    return NextResponse.json(
-      { error: "Index must be a number." },
-      { status: 400 },
-    );
-  }
+  const { title } = params;
 
   try {
     const data: HookData[] = await loadData();
-    const hook = data[Number(index)];
+    const hook = data.find((hook) => hook.title === title);
 
     if (!hook) {
       return NextResponse.json(
