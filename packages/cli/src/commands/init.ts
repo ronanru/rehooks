@@ -7,7 +7,7 @@ import fs from "fs";
 
 export const init = new Command()
   .name("init")
-  .description("Generate the rehooks configuration file")
+  .description("Initialize the Rehooks configuration")
   .action(async () => {
     const configPath = path.resolve(process.cwd(), "rehooks.json");
 

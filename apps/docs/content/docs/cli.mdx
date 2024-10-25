@@ -1,26 +1,20 @@
 ---
 title: CLI
-description: The CLI to insert hooks to your component.
+description: The CLI to import hooks directly to your codebase.
 ---
 
 # Installation
 
-You must install the CLI globally.
+To use the CLI, you can execute it directly with the latest version:
 
 ```bash title="Terminal"
-npm install -g rehooks-cli
-```
-
-or you can execute the command with npx.
-
-```bash title="Terminal"
-npx rehooks-cli
+npx rehooks-cli@latest
 ```
 
 # Usage
 
 ```bash title="Terminal"
-rehooks
+npx rehooks-cli@latest [options] [command]
 ```
 
 ## Options
@@ -34,30 +28,8 @@ These are the options available in the CLI.
 
 ## Commands
 
-| Command          | Description                     |
-| ---------------- | ------------------------------- |
-| `hooks <file>`   | Import hooks to your component. |
-| `help <command>` | Displays help for command       |
-
-## Example
-
-This is how you execute a command to import hooks to your component.
-
-```bash title="Terminal"
-npx rehooks-cli hooks ./src/components/component.tsx
-```
-
-> The result will be something like this.
-
-```bash title="Terminal"
-✔ Select hooks to import: useCounter, useFocus, useScroll
-  ● useCounter
-  ○ useCountDown
-  ○ useCounter
-  ○ useDebounceCallback
-  ○ useDebounceValue
-  ○ useEventCallback
-  ○ useEventListener
-  ● useFocus
-  ● useScroll
-```
+| Command          | Description                          |
+| ---------------- | ------------------------------------ |
+| `init`           | Initialize the Rehooks configuration |
+| `add`            | Add custom hooks to your codebase.   |
+| `help [command]` | Displays help for a specific command |

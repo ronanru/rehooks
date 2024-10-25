@@ -8,7 +8,7 @@ import fs from "fs";
 
 export const add = new Command()
   .name("add")
-  .description("Add hooks to your codebase")
+  .description("Add custom hooks to your codebase")
   .action(async () => {
     const config = await getConfig(process.cwd());
 
