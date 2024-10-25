@@ -2,6 +2,7 @@
 
 import { getPackageInfo } from "~/utils/package";
 import { hooks } from "~/commands/hooks";
+import { init } from "~/commands/init";
 import { Command } from "commander";
 
 async function main() {
@@ -14,6 +15,7 @@ async function main() {
       "-v, --version",
       "display the version number",
     );
+  program.addCommand(init);
   program.addCommand(hooks);
   program.parse();
 }
