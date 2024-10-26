@@ -1,6 +1,6 @@
 {
   "name": "rehooks-cli",
-  "version": "3.1.4",
+  "version": "3.2.0",
   "description": "The CLI to import hooks directly to your codebase.",
   "publishConfig": {
     "access": "public"
