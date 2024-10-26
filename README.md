@@ -5,37 +5,30 @@
 <br />
 
 <div align="center">
-  <h1>Rehooks</h1>
-  <p>An optimized, and flexible react production-ready hooks library written in TypeScript</p>
+  <h1>Rehooks CLI</h1>
+  <p>A CLI to import hooks directly to your codebase.</p>
 </div>
 
 <div align="center">
-<img alt="NPM Downloads" src="https://img.shields.io/npm/d18m/rehooks-ts?style=flat&color=blue">
-<img alt="NPM License" src="https://img.shields.io/npm/l/rehooks-ts?style=flat&color=blue">
-<img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/rehooks-ts?style=flat&color=blue">
-<img alt="NPM Version" src="https://img.shields.io/npm/v/rehooks-ts?style=flat&color=blue">
+<img alt="NPM Downloads" src="https://img.shields.io/npm/d18m/rehooks-cli?style=flat&color=blue">
+<img alt="NPM License" src="https://img.shields.io/npm/l/rehooks-cli?style=flat&color=blue">
+<img alt="NPM Version" src="https://img.shields.io/npm/v/rehooks-cli?style=flat&color=blue">
 
 </div>
 
 <br />
 
 <div align="center">
-  <pre>npm i --save-dev <a href="https://www.npmjs.com/package/rehooks-ts">rehooks-ts</a></pre>
+  <pre>npx <a href="https://www.npmjs.com/package/rehooks-cli">rehooks-cli@latest</a></pre>
 </div>
 
 <h1 align="center">🪄 Usage</h1>
 <p align="center">
-You can easily import hooks from <b>rehooks-ts</b> and boom!
+Initialize the Rehooks configuration easily.
 </p>
-
-```tsx
-import { useCounter } from 'rehooks-ts';
-
-function Component() {
-  const { count, increment, decrement } = useCounter(0);
-  ...
-}
-```
+<div align="center">
+  <pre>npx <a href="https://www.npmjs.com/package/rehooks-cli">rehooks-cli@latest init</a></pre>
+</div>
 
 <h1 align="center">📦 Packages</h1>
 <p align="center"><a href="https://www.npmjs.com/package/rehooks-ts"><code>rehooks-ts</code></a> - <a href="https://www.npmjs.com/package/rehooks-cli"><code>rehooks-cli</code></a></p>
