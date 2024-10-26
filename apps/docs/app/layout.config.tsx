@@ -8,7 +8,7 @@ import { type HomeLayoutProps } from "fumadocs-ui/home-layout";
  * Docs Layout: app/docs/layout.tsx
  */
 export const baseOptions: HomeLayoutProps = {
-  githubUrl: "https://github.com/pyr33x/rehooks-ts",
+  githubUrl: "https://github.com/Pyr33x/rehooks",
   nav: {
     title: "Rehooks",
   },
