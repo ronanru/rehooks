@@ -35,8 +35,8 @@ export const add = new Command()
       const spinner = ora("Checking configuration...").start();
       spinner.succeed("Checked configuration.");
 
-      logger.info(
-        `✔️ Created ${selectedHooks.length} ${selectedHooks.length > 1 ? "files" : "file"}.`,
+      spinner.succeed(
+        `Created ${selectedHooks.length} ${selectedHooks.length > 1 ? "files" : "file"}.`,
       );
       for (const hook of selectedHooks) {
         const hookFilePath = path.join(config.directory, `${hook}.ts`);
