@@ -22,6 +22,11 @@ npx rehooks-cli init
 If your project includes a `src` directory, you must select yes whenever you use `init`.
 It will create a `rehooks.json` in the root of your project. This file contains the directory where the hooks will be imported.
 
+<Callout type="info">
+  If you want to use a custom path for the hooks directory, you can pass it as
+  an argument to the `init` command.
+</Callout>
+
 Now It's time to add hooks into your codebase. To achieve this you must use the `add` command.
 
 ```bash title="Terminal"
@@ -49,6 +54,6 @@ These are the options available in the CLI.
 
 | Command          | Description                          |
 | ---------------- | ------------------------------------ |
-| `init`           | Initialize the Rehooks configuration |
-| `add`            | Add custom hooks to your codebase.   |
+| `init [path]`    | Initialize the Rehooks configuration |
+| `add`            | Add custom hooks to your codebase    |
 | `help [command]` | Displays help for a specific command |

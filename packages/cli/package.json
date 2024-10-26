@@ -1,6 +1,6 @@
 {
   "name": "rehooks-cli",
-  "version": "3.1.4",
+  "version": "3.2.1",
   "description": "The CLI to import hooks directly to your codebase.",
   "publishConfig": {
     "access": "public"
@@ -17,10 +17,10 @@
   "homepage": "https://rehooks.pyr33x.ir",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pyr33x/rehooks-ts.git"
+    "url": "git+https://github.com/Pyr33x/rehooks.git"
   },
   "bugs": {
-    "url": "https://github.com/pyr33x/rehooks-ts/issues"
+    "url": "https://github.com/Pyr33x/rehooks/issues"
   },
   "keywords": [
     "rehooks",
