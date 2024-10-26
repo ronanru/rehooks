@@ -4,6 +4,7 @@ import { Command } from "commander";
 import inquirer from "inquirer";
 import axios from "axios";
 import path from "path";
+import ora from "ora";
 import fs from "fs";
 
 export const add = new Command()
@@ -18,8 +19,10 @@ export const add = new Command()
     }
 
     try {
+      const fetchSpinner = ora("Fetching hooks...").start();
       const response = await axios.get("https://rehooks.pyr33x.ir/api/hooks");
       const hooks = response.data;
+      fetchSpinner.succeed("Fetched hooks.");
 
       const { selectedHooks } = await inquirer.prompt([
         {
@@ -29,7 +32,12 @@ export const add = new Command()
           choices: hooks.map((h: { title: string }) => h.title),
         },
       ]);
+      const spinner = ora("Checking configuration...").start();
+      spinner.succeed("Checked configuration.");
 
+      logger.info(
+        `✔️ Created ${selectedHooks.length} ${selectedHooks.length > 1 ? "files" : "file"}.`,
+      );
       for (const hook of selectedHooks) {
         const hookFilePath = path.join(config.directory, `${hook}.ts`);
 
@@ -53,9 +61,8 @@ export const add = new Command()
           `https://rehooks.pyr33x.ir/api/hooks/${hook}`,
         );
         let { content } = selectedHookResponse.data;
-
         fs.writeFileSync(hookFilePath, content);
-        logger.info(`${hook}.ts has been added to ${config.directory}.`);
+        logger.info(` - ${hookFilePath}.`);
       }
     } catch (error) {
       logger.error(`Error adding hooks: ${error}`);
