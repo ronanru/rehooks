@@ -9,9 +9,9 @@ import fs from "fs";
 export const init = new Command()
   .name("init")
   .description("Initialize the Rehooks configuration")
-  .action(async () => {
+  .argument("[path]", "Specify a custom path for the hooks directory")
+  .action(async (customPath) => {
     const configPath = path.resolve(process.cwd(), "rehooks.json");
-
     const spinner = ora("Initializing Rehooks configuration...").start();
     let hooksDirExists = false;
     let currentDirectory: string | undefined;
@@ -50,20 +50,23 @@ export const init = new Command()
     }
 
     spinner.stop();
-    const { srcFolderChoice } = await inquirer.prompt([
-      {
-        type: "list",
-        name: "srcFolderChoice",
-        message: "Does your project have a 'src' folder?",
-        choices: [
-          { name: "Yes", value: true },
-          { name: "No", value: false },
-        ],
-      },
-    ]);
+    let directory = customPath || "./hooks";
+    if (!customPath) {
+      const { srcFolderChoice } = await inquirer.prompt([
+        {
+          type: "list",
+          name: "srcFolderChoice",
+          message: "Does your project have a 'src' folder?",
+          choices: [
+            { name: "Yes", value: true },
+            { name: "No", value: false },
+          ],
+        },
+      ]);
+      directory = srcFolderChoice ? "./src/hooks" : "./hooks";
+    }
 
     spinner.start("Creating rehooks.json configuration file...");
-    const directory = srcFolderChoice ? "./src/hooks" : "./hooks";
     const defaultConfig = { directory };
 
     try {
@@ -73,8 +76,8 @@ export const init = new Command()
       if (
         !hooksDirExists ||
         (hooksDirExists &&
-          srcFolderChoice !==
-            (currentDirectory && currentDirectory.includes("src")))
+          customPath !== currentDirectory &&
+          directory !== currentDirectory)
       ) {
         spinner.start("Creating hooks directory...");
         fs.mkdirSync(directory, { recursive: true });
