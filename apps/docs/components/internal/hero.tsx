@@ -28,7 +28,7 @@ export function Hero() {
         </Button>
         <Link href="/docs" className="outline-none ring-0">
           <Button size="circular" variant="secondary" className="font-mono">
-            Explore Docs
+            Docs
           </Button>
         </Link>
       </div>
