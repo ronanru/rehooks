@@ -27,17 +27,18 @@ const cards: Card[] = [
   },
   {
     id: 2,
-    name: "Performance",
+    name: "Reusability & Performance",
     description:
       "All hooks are written in SOLID principles and are optimized for performance.",
     content: (
       <Files className="select-none">
-        <Folder name="dist" defaultOpen>
-          <File name="index.d.ts" />
-          <File name="index.js" />
-          <File name="index.js.map" />
+        <Folder name="hooks" defaultOpen>
+          <File name="useSessionStorage.ts" />
+          <File name="useLocalStorage.ts" />
+          <File name="useClipboard.ts" />
+          <File name="useKeyPress.ts" />
         </Folder>
-        <File name="package.json" />
+        <File name="rehooks.json" />
       </Files>
     ),
     class: "max-w-md row-span-3",
