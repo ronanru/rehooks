@@ -9,10 +9,11 @@ export function Hero() {
   return (
     <>
       <h1 className="text-balance text-4xl font-black lg:text-5xl">
-        Welcome to{" "}
+        Streamline{" "}
         <span className="animate-background-shine inline-flex transform bg-[linear-gradient(110deg,#0062D1,45%,#9d9ffc,55%,#0062D1)] bg-[length:250%_100%] bg-clip-text text-transparent">
-          Rehooks
-        </span>
+          React
+        </span>{" "}
+        Hooks
       </h1>
       <p className="dark:text-fd-muted-foreground/50 text-fd-muted-foreground mt-2 text-balance text-center text-base lg:text-xl">
         A CLI to import hooks directly to your codebase.
