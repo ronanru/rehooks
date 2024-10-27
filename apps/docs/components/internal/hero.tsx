@@ -21,7 +21,7 @@ export function Hero() {
           </div>
         </a>
       </div>
-      <h1 className="text-balance text-4xl font-black lg:text-5xl">
+      <h1 className="text-balance text-center text-4xl font-black lg:text-5xl">
         Streamline{" "}
         <span className="animate-background-shine inline-flex transform bg-[linear-gradient(110deg,#0062D1,45%,#9d9ffc,55%,#0062D1)] bg-[length:250%_100%] bg-clip-text text-transparent">
           React
