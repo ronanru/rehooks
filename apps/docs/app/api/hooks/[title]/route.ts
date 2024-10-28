@@ -6,7 +6,7 @@ type HookData = Readonly<{
   id: number;
   title: string;
   description: string;
-  content: string; // Added to include the content of the hook
+  content: string;
 }>;
 
 const filePath = path.join(process.cwd(), "app", "hooks.json");
@@ -24,10 +24,7 @@ async function loadData(): Promise<HookData[]> {
   });
 }
 
-export async function GET(
-  request: Request,
-  { params }: { params: { title: string } },
-) {
+export async function GET({ params }: { params: { title: string } }) {
   const { title } = params;
 
   try {
