@@ -24,7 +24,10 @@ async function loadData(): Promise<HookData[]> {
   });
 }
 
-export async function GET({ params }: { params: { title: string } }) {
+export async function GET(
+  request: Request,
+  { params }: { params: { title: string } },
+) {
   const { title } = params;
 
   try {
