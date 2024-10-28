@@ -15,7 +15,7 @@ export function Hero() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div className="group inline-flex h-9 transform items-center justify-center space-x-0.5 rounded-full border border-neutral-400 bg-neutral-200 px-4 text-center transition duration-75 hover:border-neutral-600/70 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-neutral-700/70 dark:hover:bg-neutral-800/50">
+          <div className="group inline-flex h-9 transform items-center justify-center space-x-0.5 rounded-full border border-neutral-400 bg-neutral-200 px-4 text-center shadow-md transition duration-75 hover:border-neutral-600/70 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-neutral-700/70 dark:hover:bg-neutral-800/50">
             <span className="text-fd-muted-foreground">Rehooks v3 is out</span>
             <ArrowUpRight className="text-fd-muted-foreground size-5 transform transition group-hover:-translate-y-[2px] group-hover:translate-x-0.5" />
           </div>
