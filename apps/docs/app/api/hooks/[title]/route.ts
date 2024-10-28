@@ -6,7 +6,7 @@ type HookData = Readonly<{
   id: number;
   title: string;
   description: string;
-  content: string; // Added to include the content of the hook
+  content: string;
 }>;
 
 const filePath = path.join(process.cwd(), "app", "hooks.json");
