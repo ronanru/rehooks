@@ -1,6 +1,6 @@
 const NAME: string = "Rehooks";
 const DESCRIPTION: string =
-  "An optimized, lightweight, and reusable react production-ready hooks library written in TypeScript.";
+  "A CLI to import hooks directly to your codebase."
 const KEYWORDS: string[] = [
   "react",
   "hooks",
@@ -26,6 +26,8 @@ const KEYWORDS: string[] = [
   "redis",
   "api",
   "ratelimit",
+  "cli",
+  "npx"
 ];
 
 export { NAME, DESCRIPTION, KEYWORDS };
