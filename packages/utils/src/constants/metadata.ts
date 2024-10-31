@@ -1,6 +1,5 @@
 const NAME: string = "Rehooks";
-const DESCRIPTION: string =
-  "A CLI to import hooks directly to your codebase."
+const DESCRIPTION: string = "A CLI to import hooks directly to your codebase.";
 const KEYWORDS: string[] = [
   "react",
   "hooks",
@@ -27,7 +26,7 @@ const KEYWORDS: string[] = [
   "api",
   "ratelimit",
   "cli",
-  "npx"
+  "npx",
 ];
 
 export { NAME, DESCRIPTION, KEYWORDS };
