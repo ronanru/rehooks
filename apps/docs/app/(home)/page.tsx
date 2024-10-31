@@ -1,5 +1,5 @@
 import { GithubIcon, NpmIcon } from "@/components/icons";
-import { Hero, Grid } from "@/components/internal";
+import { Hero, Cards } from "@/components/internal";
 
 const links = [
   {
@@ -19,7 +19,7 @@ export default function HomePage() {
     <div className="h-full w-full">
       <main className="flex min-h-screen flex-col items-center justify-center px-8 py-14">
         <Hero />
-        <Grid />
+        <Cards />
         <div className="mt-12 flex flex-row items-center justify-center gap-x-2">
           {links.map(({ title, link, icon }, index) => (
             <a

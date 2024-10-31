@@ -1,2 +1,2 @@
 export { Hero } from "./hero";
-export { Grid } from "./grid";
+export { Cards } from "./card";

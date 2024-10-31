@@ -59,7 +59,7 @@ const cards: Card[] = [
   },
 ];
 
-export function Grid() {
+export function Cards() {
   return (
     <div className="mt-6 grid grid-cols-1 gap-x-2 gap-y-3 text-center md:grid-cols-2">
       {cards.map((card) => (
