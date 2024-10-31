@@ -24,13 +24,39 @@ export function Hero() {
           <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 opacity-30 dark:from-orange-400 dark:to-orange-500 dark:opacity-40" />
         </a>
       </div>
-      <h1 className="text-balance text-center text-4xl font-black lg:text-5xl">
-        Streamline{" "}
-        <span className="animate-background-shine inline-flex transform bg-[linear-gradient(110deg,#ea580c,45%,#fb923c,55%,#ea580c)] bg-[length:250%_100%] bg-clip-text text-transparent">
-          React
-        </span>{" "}
-        Hooks
-      </h1>
+      <div className="inline-flex">
+        <picture className="mr-2">
+          <source
+            srcSet="https://fonts.gstatic.com/s/e/notoemoji/latest/1f383/512.webp"
+            type="image/webp"
+          />
+          <img
+            src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f383/512.gif"
+            alt="🎃"
+            width="50"
+            height="200"
+          />
+        </picture>
+        <h1 className="text-balance text-center text-4xl font-black lg:text-5xl">
+          Streamline{" "}
+          <span className="animate-background-shine inline-flex transform bg-[linear-gradient(110deg,#ea580c,45%,#fb923c,55%,#ea580c)] bg-[length:250%_100%] bg-clip-text text-transparent">
+            React
+          </span>{" "}
+          Hooks
+        </h1>
+        <picture className="ml-2">
+          <source
+            srcSet="https://fonts.gstatic.com/s/e/notoemoji/latest/1f383/512.webp"
+            type="image/webp"
+          />
+          <img
+            src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f383/512.gif"
+            alt="🎃"
+            width="50"
+            height="200"
+          />
+        </picture>
+      </div>
       <p className="dark:text-fd-muted-foreground/50 text-fd-muted-foreground mt-2 text-balance text-center text-base lg:text-xl">
         A CLI to import hooks directly to your codebase.
       </p>
