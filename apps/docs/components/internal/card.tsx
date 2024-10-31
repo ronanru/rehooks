@@ -22,7 +22,7 @@ const cards: Card[] = [
     id: 1,
     name: "Why Rehooks?",
     description:
-      "It provides a set of hooks that can be used to build performant and type-safe React applications.",
+      "It provides a set of hooks that can be used to craft performant and type-safe React components.",
     class: "max-w-md",
   },
   {
@@ -47,7 +47,7 @@ const cards: Card[] = [
     id: 3,
     name: "Open-Source",
     description:
-      "The decision of open-sourcing the library was helping community to grow, repo is licensed under MIT license and PRs are welcomed.",
+      "The decision of open-sourcing the library was helping community to grow, repo is licensed under the MIT license and PRs are welcomed.",
     class: "max-w-md",
   },
   {
