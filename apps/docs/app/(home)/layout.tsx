@@ -13,8 +13,8 @@ export default function Layout({
     <HomeLayout {...baseOptions}>
       {children}
       <DotPattern
-        width={20}
-        height={20}
+        width={15}
+        height={15}
         cx={1}
         cy={1}
         cr={1}
