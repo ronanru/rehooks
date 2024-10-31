@@ -38,7 +38,7 @@ export function Hero() {
         <Button
           variant="halloween"
           size="circular"
-          onClick={() => copy("npx rehooks-cli@latest")}
+          onClick={() => copy("npx rehooks-cli@latest init")}
           className="font-mono"
         >
           {isCopied ? "Copied to Clipboard!" : "$ npx rehooks-cli@latest"}
