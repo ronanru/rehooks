@@ -18,6 +18,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-fd-accent hover:text-fd-accent-foreground",
         link: "text-fd-primary underline-offset-4 hover:underline",
         hero: "bg-blue-600 text-white dark:text-fd-foreground hover:bg-blue-500",
+        halloween: "bg-orange-600 text-white hover:bg-orange-500",
       },
       size: {
         default: "h-10 px-4 py-2",
