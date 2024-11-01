@@ -15,6 +15,9 @@ dist
 # turbo
 .turbo
 
+# rust
+target
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
