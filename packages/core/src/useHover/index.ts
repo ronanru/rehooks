@@ -1,8 +1,7 @@
 import { useState, useRef } from "react";
 import { useEventListener } from "./../useEventListener";
 
-export const description =
-  "A custom hook to track whether an element is hovered.";
+const description = "A custom hook to track whether an element is hovered.";
 
 /**
  * A custom hook to track whether an element is hovered.

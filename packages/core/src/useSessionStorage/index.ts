@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const description =
+const description =
   "Custom hook that manages a state variable with session storage.";
 
 /**

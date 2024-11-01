@@ -1,6 +1,6 @@
 import { useRef, useEffect, useCallback } from "react";
 
-export const description =
+const description =
   "A hook that returns a memoized version of a callback that is stable between renders.";
 
 /**

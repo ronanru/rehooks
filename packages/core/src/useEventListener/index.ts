@@ -1,6 +1,6 @@
 import { useEffect, useRef, type RefObject } from "react";
 
-export const description =
+const description =
   "A custom hook to add and clean up an event listener on any target element.";
 
 /**

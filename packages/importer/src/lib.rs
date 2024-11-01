@@ -51,8 +51,7 @@ pub fn import_hooks_from_src(src_dir: &str) -> Result<Vec<Hook>, String> {
 }
 
 fn extract_description(content: &str) -> Result<String, String> {
-    let re =
-        Regex::new(r#"export const description\s*=\s*"([^"]+)";"#).map_err(|e| e.to_string())?;
+    let re = Regex::new(r#"const description\s*=\s*"([^"]+)";"#).map_err(|e| e.to_string())?;
     if let Some(captures) = re.captures(content) {
         Ok(captures[1].to_string())
     } else {

@@ -5,8 +5,7 @@ import {
   type SetStateAction,
 } from "react";
 
-export const description =
-  "Returns a stateful value and two functions to update it.";
+const description = "Returns a stateful value and two functions to update it.";
 
 /**
  * Returns a stateful value and two functions to update it.

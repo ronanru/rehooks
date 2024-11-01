@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const description =
+const description =
   "Custom hook that debounces a value, returning the value after the specified delay.";
 
 /**

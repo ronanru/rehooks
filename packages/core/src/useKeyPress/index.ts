@@ -7,8 +7,7 @@ interface KeyConfig {
   shift?: boolean;
 }
 
-export const description =
-  "Custom hook to detect if a specified key is pressed.";
+const description = "Custom hook to detect if a specified key is pressed.";
 
 /**
  * Key configuration object for the useKeyPress hook.

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-export const description =
+const description =
   "A custom hook that tracks whether the horizontal scroll position exceeds a given threshold.";
 
 /**
