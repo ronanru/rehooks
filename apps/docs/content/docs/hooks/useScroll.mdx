@@ -9,10 +9,13 @@ A hook that returns a boolean value indicating whether the user has scrolled hor
 
 ## Usage
 
-```ts
-import { useScroll } from "rehooks-ts";
+```tsx title="Component.tsx"
+import { useScroll } from "~/hooks/useScroll";
 
-const scrolled = useScroll(100);
+function Component() {
+  const scrolled = useScroll(100);
+  return <div>{scrolled ? "Scrolled" : "Not scrolled"}</div>;
+}
 ```
 
 ## Parameters

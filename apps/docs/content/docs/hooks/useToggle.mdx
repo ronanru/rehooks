@@ -12,8 +12,8 @@ The `useToggle` hook is a simple hook that provides a boolean state and a functi
 
 ## Usage
 
-```tsx
-import { useToggle } from "rehooks-ts";
+```tsx title="Component.tsx"
+import { useToggle } from "~/hooks/useToggle";
 
 function Component() {
   const [isOn, toggle, setToggle] = useToggle(false);

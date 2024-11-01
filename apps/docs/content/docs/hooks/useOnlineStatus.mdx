@@ -9,12 +9,11 @@ A hook that returns the current online/offline status of the client.
 
 ## Usage
 
-```tsx
-import { useOnlineStatus } from "rehooks-ts";
+```tsx title="Component.tsx"
+import { useOnlineStatus } from "~/hooks/useOnlineStatus";
 
 function Component() {
   const isOnline = useOnlineStatus();
-
   return <p>Is online: {isOnline ? "Yes" : "No"}</p>;
 }
 ```

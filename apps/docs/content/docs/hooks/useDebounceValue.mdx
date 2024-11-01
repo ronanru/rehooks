@@ -9,10 +9,33 @@ A custom hook that debounces a value, returning the value after the specified de
 
 ## Usage
 
-```ts
-import { useDebounceValue } from "rehooks-ts";
+```tsx title="Component.tsx"
+import { useDebounceValue } from "~/hooks/useDebounceValue";
+import { useState, useEffect } from "react";
 
-const debouncedSearchTerm = useDebounceValue(searchTerm, 500);
+function Component() {
+  const [searchInput, setSearchInput] = useState("");
+  const debouncedSearchInput = useDebounceValue(searchInput, 500);
+
+  useEffect(() => {
+    if (debouncedSearchInput)
+      console.log("Debounced Search Input:", debouncedSearchInput);
+  }, [debouncedSearchInput]);
+
+  return (
+    <div>
+      <h2>Debounced Search</h2>
+      <input
+        type="text"
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
+        placeholder="Type something to search..."
+      />
+      <p>Search Input: {searchInput}</p>
+      <p>Debounced Input: {debouncedSearchInput}</p>
+    </div>
+  );
+}
 ```
 
 ## API

@@ -9,8 +9,8 @@ A hook that returns a counter value and a function to increment or decrement the
 
 ## Usage
 
-```tsx
-import { useCounter } from "rehooks-ts";
+```tsx title="Component.tsx"
+import { useCounter } from "~/hooks/useCounter";
 
 function Component() {
   const { count, increment, decrement, reset, setCount } = useCounter(0);

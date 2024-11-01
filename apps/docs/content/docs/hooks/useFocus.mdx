@@ -9,8 +9,8 @@ A hook that returns a ref and a boolean indicating whether the element is curren
 
 ## Usage
 
-```tsx
-import { useFocus } from "rehooks-ts";
+```tsx title="Component.tsx"
+import { useFocus } from "~/hooks/useFocus";
 
 function Component() {
   const [ref, isFocused] = useFocus<HTMLInputElement>((focusState) => {

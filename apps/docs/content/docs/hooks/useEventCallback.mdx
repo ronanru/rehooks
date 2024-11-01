@@ -9,8 +9,8 @@ A hook that returns a memoized version of a callback that is stable between rend
 
 ## Usage
 
-```tsx
-import { useEventCallback } from "rehooks-ts";
+```tsx title="Component.tsx"
+import { useEventCallback } from "~/hooks/useEventCallback";
 
 function Component() {
   const handleClick = useEventCallback(() => {
