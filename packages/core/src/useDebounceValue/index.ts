@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+export const description =
+  "Custom hook that debounces a value, returning the value after the specified delay.";
+
 /**
  * Custom hook that debounces a value, returning the value after the specified delay.
  * Useful for cases where you want to prevent frequent updates (e.g., input fields).

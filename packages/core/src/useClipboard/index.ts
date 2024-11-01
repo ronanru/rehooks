@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+export const description =
+  "A hook that provides a function to copy text to the clipboard.";
+
 /**
  * React hook to copy a given text to the user's clipboard.
  *
