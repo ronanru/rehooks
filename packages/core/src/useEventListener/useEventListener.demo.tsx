@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useEventListener } from "./index";
 
-export default function Component() {
+function Component() {
   const [clicks, setClicks] = useState(0);
   const divRef = useRef<HTMLDivElement>(null);
 

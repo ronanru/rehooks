@@ -1,6 +1,6 @@
 import { useCounter } from "./index";
 
-export default function Component() {
+function Component() {
   const { increment, decrement, reset, count, setCount } = useCounter(5);
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocalStorage } from "./index";
 
-export default function LocalStorageDemo() {
+function Component() {
   const [name, setName] = useLocalStorage("name", "John Doe");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

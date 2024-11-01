@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEventCallback } from "./index";
 
-export default function Component() {
+function Component() {
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0,
