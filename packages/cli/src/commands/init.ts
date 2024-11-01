@@ -1,3 +1,4 @@
+import { green, red, cyan, bold, yellow } from "colorette";
 import { getConfig } from "~/utils/config";
 import { logger } from "~/utils/logger";
 import { Command } from "commander";
@@ -12,19 +13,21 @@ export const init = new Command()
   .argument("[path]", "Specify a custom path for the hooks directory")
   .action(async (customPath) => {
     const configPath = path.resolve(process.cwd(), "rehooks.json");
-    const spinner = ora("Initializing Rehooks configuration...").start();
+    const spinner = ora(cyan("Initializing Rehooks configuration...")).start();
     let hooksDirExists = false;
     let currentDirectory: string | undefined;
 
     if (fs.existsSync(configPath)) {
-      spinner.info("rehooks.json already exists.");
+      spinner.info(yellow("rehooks.json already exists."));
       spinner.stop();
 
       const { overwrite } = await inquirer.prompt([
         {
           type: "confirm",
           name: "overwrite",
-          message: "rehooks.json already exists. Do you want to overwrite it?",
+          message: bold(
+            red("rehooks.json already exists. Do you want to overwrite it?"),
+          ),
           default: false,
         },
       ]);
@@ -32,8 +35,8 @@ export const init = new Command()
       spinner.start();
 
       if (!overwrite) {
-        spinner.fail("Initialization aborted.");
-        logger.warn("Initialization aborted.");
+        spinner.fail(red("Initialization aborted."));
+        logger.warn(yellow("Initialization aborted."));
         return;
       }
 
@@ -44,7 +47,9 @@ export const init = new Command()
         hooksDirExists = true;
         fs.rmSync(currentDirectory, { recursive: true, force: true });
         spinner.succeed(
-          `Previous hooks directory at ${currentDirectory} has been removed.`,
+          green(
+            `Previous hooks directory at ${bold(currentDirectory)} has been removed.`,
+          ),
         );
       }
     }
@@ -56,7 +61,7 @@ export const init = new Command()
         {
           type: "list",
           name: "srcFolderChoice",
-          message: "Does your project have a 'src' folder?",
+          message: bold("Does your project have a 'src' folder?"),
           choices: [
             { name: "Yes", value: true },
             { name: "No", value: false },
@@ -66,12 +71,14 @@ export const init = new Command()
       directory = srcFolderChoice ? "./src/hooks" : "./hooks";
     }
 
-    spinner.start("Creating rehooks.json configuration file...");
+    spinner.start(cyan("Creating rehooks.json configuration file..."));
     const defaultConfig = { directory };
 
     try {
       fs.writeFileSync(configPath, JSON.stringify(defaultConfig, null, 2));
-      spinner.succeed(`Rehooks configuration file created at ${configPath}.`);
+      spinner.succeed(
+        green(`Rehooks configuration file created at ${bold(configPath)}.`),
+      );
 
       if (
         !hooksDirExists ||
@@ -79,28 +86,30 @@ export const init = new Command()
           customPath !== currentDirectory &&
           directory !== currentDirectory)
       ) {
-        spinner.start("Creating hooks directory...");
+        spinner.start(cyan("Creating hooks directory..."));
         fs.mkdirSync(directory, { recursive: true });
-        spinner.succeed(`Hooks directory created at ${directory}.`);
+        spinner.succeed(
+          green(`Hooks directory created at ${bold(directory)}.`),
+        );
       }
     } catch (error) {
-      spinner.fail("Error creating rehooks.json or hooks directory.");
-      logger.error(`Error creating rehooks.json or hooks directory: ${error}`);
+      spinner.fail(red("Error creating rehooks.json or hooks directory."));
+      logger.error(
+        red(`Error creating rehooks.json or hooks directory: ${error}`),
+      );
       return;
     }
 
     try {
-      spinner.start("Loading configuration...");
+      spinner.start(cyan("Loading configuration..."));
       const config = await getConfig(process.cwd());
-      spinner.succeed("Configuration loaded successfully.");
+      spinner.succeed(green("Configuration loaded successfully."));
 
-      if (config) {
-        return;
-      } else {
-        logger.warn("Configuration loaded, but may be incomplete.");
+      if (!config) {
+        logger.warn(yellow("Configuration loaded, but may be incomplete."));
       }
     } catch (error) {
-      spinner.fail("Failed to load configuration.");
-      logger.error("Failed to load configuration.");
+      spinner.fail(red("Failed to load configuration."));
+      logger.error(red("Failed to load configuration."));
     }
   });

@@ -1,7 +1,7 @@
 {
   "name": "rehooks-cli",
-  "version": "3.2.2",
-  "description": "A CLI to insert hooks directly to your codebase.",
+  "version": "3.2.3",
+  "description": "A CLI to insert hooks directly to your project.",
   "publishConfig": {
     "access": "public"
   },
@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@types/node": "22.5.4",
+    "colorette": "^2.0.20",
     "rimraf": "^6.0.1",
     "tsup": "^8.3.0",
     "type-fest": "^4.26.1",
