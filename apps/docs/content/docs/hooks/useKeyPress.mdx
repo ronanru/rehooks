@@ -5,15 +5,15 @@ description: Custom hook to detect if a specified key is pressed.
 
 # useKeyPress
 
-Custom hook to detect if a specified key is pressed.
-
 ## Usage
 
-```tsx
-import { useKeyPress } from "rehooks-ts";
+```tsx title="Component.tsx"
+import { useKeyPress } from "./index";
 
-const isEnterPressed = useKeyPress({ key: "Enter" });
-const isCtrlSPressed = useKeyPress({ key: "s", ctrl: true });
+function Component() {
+  const altS = useKeyPress({ key: "s", alt: true });
+  return <div>{altS ? "Saving document..." : "Type your text here..."}</div>;
+}
 ```
 
 ## API

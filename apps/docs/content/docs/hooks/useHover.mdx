@@ -5,17 +5,30 @@ description: A hook that returns a boolean value indicating whether the user is 
 
 # useHover
 
-A hook that returns a boolean value indicating whether the user is hovering over an element.
-
 ## Usage
 
-```tsx
-import { useHover } from "rehooks-ts";
+```tsx title="Component.tsx"
+import { useHover } from "./index";
 
-function Component() {
-  const isHovering = useHover();
+export default function Component() {
+  const [ref, isHovered] = useHover<HTMLDivElement>();
 
-  return <div>Is hovering: {isHovering ? "Yes" : "No"}</div>;
+  return (
+    <div
+      ref={ref}
+      style={{
+        width: "200px",
+        height: "200px",
+        backgroundColor: isHovered ? "lightblue" : "lightcoral",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        transition: "background-color 0.3s",
+      }}
+    >
+      <p>{isHovered ? "Hovered!" : "Hover over me!"}</p>
+    </div>
+  );
 }
 ```
 

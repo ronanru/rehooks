@@ -1,0 +1,24 @@
+---
+title: Configuration
+description: How to configure Rehooks
+---
+
+# Configuration
+
+By using `init` command, which initializes the configuration file and generates the `rehooks.json` file, you can customize the configuration of Rehooks.
+
+## Usage
+
+```bash
+npx rehooks-cli@latest init
+```
+
+## Configuration
+
+The `rehooks.json` file, includes a `directory` property, which specifies the directory where the hooks will be inserted.
+
+```json title="rehooks.json"
+{
+  "directory": "src/hooks"
+}
+```

@@ -1,6 +1,6 @@
 import { useClipboard } from "./index";
 
-export default function Component() {
+function Component() {
   const { copy, isCopied } = useClipboard();
 
   return (

@@ -1,6 +1,6 @@
 import { useToggle } from "./index";
 
-export default function Component() {
+function Component() {
   const [isOn, toggle, setToggle] = useToggle(false);
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSessionStorage } from "./index";
 
-export default function SessionStorageDemo() {
+function Component() {
   const [name, setName] = useSessionStorage("name", "John Doe");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -24,7 +24,7 @@
 
 <h1 align="center">🪄 Usage</h1>
 <p align="center">
-You can easily import hooks from <b>rehooks-ts</b> and boom!
+You can easily insert hooks from <b>rehooks-ts</b> and boom!
 </p>
 
 ```tsx

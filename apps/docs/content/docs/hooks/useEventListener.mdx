@@ -5,12 +5,10 @@ description: A custom hook to add and clean up an event listener on any target e
 
 # useEventListener
 
-A custom hook to add and clean up an event listener on any target element.
-
 ## Usage
 
-```tsx
-import { useEventListener } from "rehooks-ts";
+```tsx title="Component.tsx"
+import { useEventListener } from "~/hooks/useEventListener";
 
 function Component() {
   const divRef = useRef<HTMLDivElement>(null);

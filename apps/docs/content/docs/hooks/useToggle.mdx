@@ -8,12 +8,10 @@ import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 
 # useToggle
 
-The `useToggle` hook is a simple hook that provides a boolean state and a function to toggle it. It is useful when you need to control a boolean state in your component.
-
 ## Usage
 
-```tsx
-import { useToggle } from "rehooks-ts";
+```tsx title="Component.tsx"
+import { useToggle } from "~/hooks/useToggle";
 
 function Component() {
   const [isOn, toggle, setToggle] = useToggle(false);

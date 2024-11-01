@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDebounceCallback } from "./index";
 
-export default function Component() {
+function Component() {
   const [inputValue, setInputValue] = useState("");
 
   const debouncedLog = useDebounceCallback((value: string) => {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDebounceValue } from "./index";
 
-export default function Component() {
+function Component() {
   const [searchInput, setSearchInput] = useState("");
   const debouncedSearchInput = useDebounceValue(searchInput, 500);
 

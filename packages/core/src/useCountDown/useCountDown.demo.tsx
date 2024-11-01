@@ -1,6 +1,6 @@
 import { useCountdown } from "./index";
 
-export default function CountdownDemo() {
+function CountdownDemo() {
   const [counter, { startCountdown, stopCountdown, resetCountdown }] =
     useCountdown({
       countStart: 10,

@@ -1,6 +1,6 @@
 import { useHover } from "./index";
 
-export default function Component() {
+function Component() {
   const [ref, isHovered] = useHover<HTMLDivElement>();
 
   return (

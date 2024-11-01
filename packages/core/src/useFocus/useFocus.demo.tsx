@@ -1,6 +1,6 @@
 import { useFocus } from "./index";
 
-export default function Component() {
+function Component() {
   const [ref, isFocused] = useFocus<HTMLInputElement>((focusState: boolean) => {
     console.log("Focus state:", focusState);
   });
