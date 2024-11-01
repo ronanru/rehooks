@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+const description =
+  "Custom hook that manages a state variable with local storage.";
+
 /**
  * Custom hook that manages a state variable with local storage.
  *

@@ -13,6 +13,9 @@ type CounterReturnType = {
   setCount: Dispatch<SetStateAction<number>>;
 };
 
+const description =
+  "Hook that returns a tuple containing increment, decrement, reset functions, and the current value of the counter.";
+
 /**
  * Hook that returns a tuple containing the following:
  * - `increment`: A function that increments the counter by 1.

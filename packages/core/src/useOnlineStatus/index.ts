@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+const description =
+  "Custom hook that returns the current online/offline status of the browser.";
+
 /**
  * Custom hook that returns the current online/offline status of the browser.
  * Optionally, takes a callback function to be invoked whenever the status changes.

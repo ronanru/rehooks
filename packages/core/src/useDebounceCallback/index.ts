@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useRef } from "react";
 
+const description =
+  "Custom hook that debounces a callback function, executing it after the specified delay.";
+
 /**
  * Custom hook that debounces a callback function, executing it after the specified delay.
  *
