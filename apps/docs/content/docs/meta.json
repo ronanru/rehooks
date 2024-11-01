@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "---Introduction---",
+    "index",
+    "contributing",
+    "---Setup---",
+    "guide",
+    "config",
+    "---API Reference---",
+    "api",
+    "---Hooks---",
+    "hooks",
+    "..."
+  ]
+}
