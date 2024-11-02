@@ -1,16 +1,10 @@
+mod hook;
+use hook::Hook;
 use regex::Regex;
-use serde::Serialize;
+use std::convert::TryInto;
 use std::fs::{self, OpenOptions};
 use std::io::Write;
 use std::path::Path;
-
-#[derive(Serialize)]
-pub struct Hook {
-    pub id: usize,
-    pub title: String,
-    pub description: String,
-    pub content: String,
-}
 
 pub fn import_hooks_from_src(src_dir: &str) -> Result<Vec<Hook>, String> {
     let mut hooks = Vec::new();
@@ -38,7 +32,7 @@ pub fn import_hooks_from_src(src_dir: &str) -> Result<Vec<Hook>, String> {
                 let description = extract_description(&content)?;
 
                 hooks.push(Hook {
-                    id,
+                    id: id.try_into().unwrap(),
                     title,
                     content,
                     description,
