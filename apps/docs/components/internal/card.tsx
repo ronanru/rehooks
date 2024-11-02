@@ -6,7 +6,7 @@ import {
   CardContent,
 } from "@/components/ui";
 import { File, Folder, Files } from "fumadocs-ui/components/files";
-import { Text } from "@/components/internal";
+import { Text } from "@/components/internal/text";
 import { cn } from "utils";
 
 interface Card {
