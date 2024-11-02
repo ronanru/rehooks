@@ -151,7 +151,7 @@ const cards: Card[] = [
       "Written in TypeScript, Rehooks offers comprehensive type safety and autocompletion, making development seamless and error-resistant.",
     content: (
       <div className="flex h-52 items-center justify-center">
-        <Text text="FAST" />
+        <Text text="SOLID" />
       </div>
     ),
     class: "max-w-md",

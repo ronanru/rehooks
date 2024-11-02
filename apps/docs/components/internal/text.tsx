@@ -85,7 +85,7 @@ export function Text({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.8"
-        className="fill-transparent stroke-neutral-200 font-[helvetica] text-8xl font-bold dark:stroke-neutral-900"
+        className="fill-transparent stroke-neutral-200 font-sans text-8xl font-bold tracking-tight dark:stroke-neutral-900"
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
         {text}
@@ -96,7 +96,7 @@ export function Text({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.8"
-        className="fill-transparent stroke-neutral-200 font-[helvetica] text-8xl font-bold dark:stroke-neutral-900"
+        className="fill-transparent stroke-neutral-200 font-sans text-8xl font-bold tracking-tight dark:stroke-neutral-900"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{
           strokeDashoffset: 0,
@@ -117,7 +117,7 @@ export function Text({
         stroke="url(#textGradient)"
         strokeWidth="0.8"
         mask="url(#textMask)"
-        className="fill-transparent font-[helvetica] text-8xl font-bold"
+        className="fill-transparent font-sans text-8xl font-bold tracking-tight"
       >
         {text}
       </text>
