@@ -1,5 +1,5 @@
-import { DotPattern } from "@/components/internal/dot";
 import { HomeLayout } from "fumadocs-ui/home-layout";
+import { DotPattern } from "@/components/internal";
 import { baseOptions } from "../layout.config";
 import type { ReactNode } from "react";
 import { cn } from "utils";
