@@ -1,3 +1,5 @@
+use colored::*;
+
 #[derive(Debug)]
 pub struct HookHealth {
     pub title: String,
@@ -16,7 +18,9 @@ pub fn check_hook_health(hook_code: &str, title: &str) -> HookHealth {
 
     if export_function_count == 0 {
         issues.push("No exported functions found".to_string());
-    } else if use_function_count == 0 {
+    }
+
+    if use_function_count == 0 {
         issues.push("No exported functions start with 'use'".to_string());
     }
 
@@ -29,20 +33,21 @@ pub fn check_hook_health(hook_code: &str, title: &str) -> HookHealth {
 
 pub fn report_health(mut health_reports: Vec<HookHealth>) {
     health_reports.sort_by(|a, b| a.title.cmp(&b.title));
+    let mut hooks_with_issues = Vec::new();
 
     for health in health_reports {
         println!("Hook: {}", health.title);
-        println!(
-            "Status: {}",
-            if health.is_healthy {
-                "Healthy"
-            } else {
-                "Unhealthy"
-            }
-        );
-        if !health.is_healthy {
+        if health.is_healthy {
+            println!("Status: {}", "Healthy".green());
+        } else {
+            println!("Status: {}", "Unhealthy".red());
+            hooks_with_issues.push(health.title.clone());
             println!("Issues: {:?}", health.issues);
         }
         println!("-------------------------");
+    }
+
+    if !hooks_with_issues.is_empty() {
+        println!("Hooks with issues: {:?}", hooks_with_issues);
     }
 }
