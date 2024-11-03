@@ -1,0 +1,9 @@
+[package]
+name = "checker"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+syn = { version = "2.0", features = ["full"] }
+walkdir = "2.3"
+colored = "2.0"
