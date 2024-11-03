@@ -34,13 +34,17 @@ pub fn check_hook_health(hook_code: &str, title: &str) -> HookHealth {
 pub fn report_health(mut health_reports: Vec<HookHealth>) {
     health_reports.sort_by(|a, b| a.title.cmp(&b.title));
     let mut hooks_with_issues = Vec::new();
+    let mut total_hooks = 0;
+    let mut unhealthy_hooks = 0;
 
     for health in health_reports {
+        total_hooks += 1;
         println!("Hook: {}", health.title);
         if health.is_healthy {
             println!("Status: {}", "Healthy".green());
         } else {
             println!("Status: {}", "Unhealthy".red());
+            unhealthy_hooks += 1;
             hooks_with_issues.push(health.title.clone());
             println!("Issues: {:?}", health.issues);
         }
@@ -50,4 +54,10 @@ pub fn report_health(mut health_reports: Vec<HookHealth>) {
     if !hooks_with_issues.is_empty() {
         println!("Hooks with issues: {:?}", hooks_with_issues);
     }
+
+    println!(
+        "{} hooks checked, {} unhealthy hooks.",
+        total_hooks.to_string().green(),
+        unhealthy_hooks.to_string().red()
+    );
 }
