@@ -7,13 +7,17 @@ pub struct HookHealth {
 
 pub fn check_hook_health(hook_code: &str, title: &str) -> HookHealth {
     let mut issues = Vec::new();
+    let export_function_count = hook_code.matches("export function").count();
+    let use_function_count = hook_code.matches("export function use").count();
 
     if !hook_code.contains("const description") {
         issues.push("Missing constant description".to_string());
     }
 
-    if !hook_code.contains("export function") {
+    if export_function_count == 0 {
         issues.push("No exported functions found".to_string());
+    } else if use_function_count == 0 {
+        issues.push("No exported functions start with 'use'".to_string());
     }
 
     HookHealth {
