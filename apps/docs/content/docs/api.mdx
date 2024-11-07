@@ -46,7 +46,7 @@ This endpoint returns a list of all the hooks in the repository.
 ### Usage
 
 ```bash
-GET /api/hooks
+GET /hooks
 ```
 
 ### Response
@@ -73,7 +73,7 @@ This endpoint returns the details of a specific hook.
 ### Usage
 
 ```bash
-GET /api/hooks/useKeyPress
+GET /hooks/useKeyPress
 ```
 
 ### Response
@@ -99,7 +99,7 @@ GET /api/hooks/useKeyPress
 You can use the `limit` query parameter to limit the number of hooks returned. For example, to get the first 10 hooks, you can use the following URL:
 
 ```bash
-GET /api/hooks?limit=10
+GET /hooks?limit=10
 ```
 
 ### Search Query Parameter
@@ -112,5 +112,5 @@ GET /api/hooks?limit=10
 You can use the `search` query parameter to search for a specific hook. For example, to search for the hook `useKeyPress`, you can use the following URL:
 
 ```bash
-GET /api/hooks?search=useKeyPress
+GET /hooks?search=useKeyPress
 ```
