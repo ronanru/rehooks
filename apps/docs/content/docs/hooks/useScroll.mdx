@@ -1,29 +1,43 @@
 ---
 title: useScroll
-description: A hook that returns a boolean value indicating whether the user has scrolled horizontally beyond a specified threshold.
+description: Custom hook that tracks and returns the current scroll position, and provides a method to scroll to specific coordinates.
 ---
 
-# useScroll
+# useScoll
 
 ## Usage
 
 ```tsx title="Component.tsx"
-import { useScroll } from "~/hooks/useScroll";
+import { useScroll } from "./index";
 
 function Component() {
-  const scrolled = useScroll(100);
-  return <div>{scrolled ? "Scrolled" : "Not scrolled"}</div>;
+  const { position, scrollTo } = useScroll();
+
+  return (
+    <div>
+      <h1>Scroll Position</h1>
+      <p>X: {position.x}</p>
+      <p>Y: {position.y}</p>
+      <button onClick={() => scrollTo({ top: 0 })}>Scroll to top</button>
+    </div>
+  );
 }
 ```
 
-## Parameters
+## API
 
-| Name      | Type     | Description                                                    |
-| --------- | -------- | -------------------------------------------------------------- |
-| threshold | `number` | The amount of pixels to scroll before the hook returns `true`. |
+### useScroll
 
-## Returns
+```ts
+function useScroll(): {
+  position: ScrollPosition;
+  scrollTo: (options: ScrollToOptions) => void;
+};
+```
 
-| name     | type      | description                                           |
-| -------- | --------- | :---------------------------------------------------- |
-| scrolled | `boolean` | A boolean value indicating whether the user scrolled. |
+#### Returns
+
+| Name     | Type                                 | Description                                  |
+| -------- | ------------------------------------ | -------------------------------------------- |
+| position | `ScrollPosition`                     | The current scroll position.                 |
+| scrollTo | `(options: ScrollToOptions) => void` | A function to scroll to a specific position. |
