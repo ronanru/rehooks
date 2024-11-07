@@ -18,10 +18,6 @@
 
 <br />
 
-<div align="center">
-  <pre>npx <a href="https://www.npmjs.com/package/rehooks-cli">rehooks-cli@latest</a></pre>
-</div>
-
 <h1 align="center">🪄 Usage</h1>
 <p align="center">
 Initialize the Rehooks configuration easily.
