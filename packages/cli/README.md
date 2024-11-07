@@ -6,7 +6,7 @@
 
 <div align="center">
   <h1>Rehooks CLI</h1>
-  <p>A CLI to import insert directly to your codebase.</p>
+  <p>A CLI to insert hooks directly to your codebase.</p>
 </div>
 
 <div align="center">
@@ -28,6 +28,12 @@ Initialize the Rehooks configuration easily.
 
 <h1 align="center">📦 Packages</h1>
 <p align="center"><a href="https://www.npmjs.com/package/rehooks-ts"><code>rehooks-ts</code></a> - <a href="https://www.npmjs.com/package/rehooks-cli"><code>rehooks-cli</code></a></p>
+
+<div align="center">
+<h1>✨ Resources</h1>
+<p>A list of tools that uses Rehooks API.</p>
+<p><b><a href="https://www.raycast.com/Pyr33x/rehooks">Rehooks Raycast Extension</a></b> -<b> <a href="https://npmjs.org/package/rehooks-cli">Rehooks CLI</a></b></p>
+</div>
 
 <h1 align="center">📚 Documentation</h1>
 <p align="center">
