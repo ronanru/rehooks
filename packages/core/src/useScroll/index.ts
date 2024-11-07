@@ -1,6 +1,6 @@
 import { useState, useLayoutEffect } from "react";
 
-const descripion =
+const description =
   "Custom hook that tracks and returns the current scroll position, and provides a method to scroll to specific coordinates.";
 
 /**
