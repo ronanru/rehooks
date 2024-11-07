@@ -15,3 +15,4 @@ export * from "./useLocalStorage";
 export * from "./useSessionStorage";
 export * from "./useFetch";
 export * from "./useWindowSize";
+export * from "./useTitle";
