@@ -94,5 +94,11 @@
     "title": "useToggle",
     "description": "Returns a stateful value and two functions to update it.",
     "content": "import {\n  useState,\n  useCallback,\n  type Dispatch,\n  type SetStateAction,\n} from \"react\";\n\nconst description = \"Returns a stateful value and two functions to update it.\";\n\n/**\n * Returns a stateful value and two functions to update it.\n *\n * @param defaultValue - The initial value of the state. Defaults to `false`.\n *\n * @returns A tuple containing:\n * - `boolean`: The current value of the state.\n * - `() => void`: A function to toggle the state.\n * - `Dispatch<SetStateAction<boolean>>`: A function to set the state to a new value.\n */\nexport function useToggle(\n  defaultValue?: boolean,\n): [boolean, () => void, Dispatch<SetStateAction<boolean>>] {\n  const [value, setValue] = useState(!!defaultValue);\n\n  const toggle = useCallback(() => {\n    setValue((x) => !x);\n  }, []);\n\n  return [value, toggle, setValue];\n}\n"
+  },
+  {
+    "id": 17,
+    "title": "useWindowSize",
+    "description": "Custom hook that tracks and returns the current window size.",
+    "content": "import { useState, useEffect } from \"react\";\n\ntype WindowSize = {\n  width: number;\n  height: number;\n};\n\nconst description =\n  \"Custom hook that tracks and returns the current window size.\";\n\n/**\n * Custom hook that tracks and returns the current window size.\n * @returns {WindowSize} An object containing the current width and height of the window.\n */\nexport function useWindowSize(): WindowSize {\n  const [windowSize, setWindowSize] = useState<WindowSize>({\n    width: window.innerWidth,\n    height: window.innerHeight,\n  });\n\n  const handleResize = () => {\n    setWindowSize({\n      width: window.innerWidth,\n      height: window.innerHeight,\n    });\n  };\n\n  useEffect(() => {\n    window.addEventListener(\"resize\", handleResize);\n\n    return () => window.removeEventListener(\"resize\", handleResize);\n  }, []);\n\n  return windowSize;\n}\n"
   }
 ]
