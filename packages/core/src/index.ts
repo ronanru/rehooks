@@ -16,3 +16,4 @@ export * from "./useSessionStorage";
 export * from "./useFetch";
 export * from "./useWindowSize";
 export * from "./useTitle";
+export * from "./useBattery";
