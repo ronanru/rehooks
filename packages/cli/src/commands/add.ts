@@ -43,6 +43,8 @@ export const add = new Command()
         ),
       );
 
+      const indexFilePath = path.join(config.directory, "index.ts");
+
       for (const hook of selectedHooks) {
         const hookFilePath = path.join(config.directory, `${hook}.ts`);
 
@@ -70,6 +72,11 @@ export const add = new Command()
         let { content } = selectedHookResponse.data;
         fs.writeFileSync(hookFilePath, content);
         logger.info(green(` - ${hookFilePath}.`));
+
+        fs.appendFileSync(
+          indexFilePath,
+          `export { ${hook} } from "./${hook}";\n`,
+        );
       }
     } catch (error) {
       logger.error(red(`Error adding hooks: ${error}`));
