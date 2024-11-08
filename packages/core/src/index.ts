@@ -17,3 +17,4 @@ export * from "./useFetch";
 export * from "./useWindowSize";
 export * from "./useTitle";
 export * from "./useBattery";
+export * from "./useLang";
