@@ -11,9 +11,11 @@ export const metadata = {
   // PWA
   applicationName: NAME,
   appleWebApp: {
-    capable: true,
     statusBarStyle: "default",
     title: NAME,
+  },
+  other: {
+    "mobile-web-app-capable": "yes",
   },
   formatDetection: {
     telephone: false,
