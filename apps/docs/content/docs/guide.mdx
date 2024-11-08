@@ -52,8 +52,23 @@ These are the options available in the CLI.
 
 ## Commands
 
-| Command          | Description                          |
-| ---------------- | ------------------------------------ |
-| `init [path]`    | Initialize the Rehooks configuration |
-| `add`            | Add custom hooks to your codebase    |
-| `help [command]` | Displays help for a specific command |
+| Command                 | Description                          |
+| ----------------------- | ------------------------------------ |
+| `init [options] [path]` | Initialize the Rehooks configuration |
+| `add [options]`         | Add custom hooks to your codebase    |
+| `help [command]`        | Displays help for a specific command |
+
+### Init
+
+| Option                | Description                                           |
+| --------------------- | ----------------------------------------------------- |
+| `-f, --force`         | Force overwrite existing configuration without prompt |
+| `-c, --config <path>` | Specify a custom path for rehooks.json                |
+| `-h, --help`          | Displays help for command                             |
+
+### Add
+
+| Option        | Description                                        |
+| ------------- | -------------------------------------------------- |
+| `-f, --force` | Force overwrite existing hook files without prompt |
+| `-h, --help`  | Displays help for command                          |
