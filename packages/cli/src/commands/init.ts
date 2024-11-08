@@ -18,6 +18,11 @@ export const init = new Command()
       ? path.resolve(process.cwd(), options.config)
       : path.resolve(process.cwd(), "rehooks.json");
 
+    if (fs.existsSync(configPath) && fs.statSync(configPath).isDirectory()) {
+      logger.error(red(`Error: ${configPath} is a directory, not a file.`));
+      return;
+    }
+
     const spinner = ora(cyan("Initializing Rehooks configuration...")).start();
     let hooksDirExists = false;
     let currentDirectory: string | undefined;
