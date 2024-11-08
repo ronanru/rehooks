@@ -44,31 +44,26 @@ export function Text({
         <linearGradient
           id="textGradient"
           gradientUnits="userSpaceOnUse"
-          cx="50%"
-          cy="50%"
-          r="25%"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
         >
-          {hovered && (
-            <>
-              <stop offset="0%" stopColor={"var(--green-400)"} />
-              <stop offset="25%" stopColor={"var(--green-400)"} />
-              <stop offset="50%" stopColor={"var(--green-400)"} />
-              <stop offset="75%" stopColor={"var(--green-400)"} />
-              <stop offset="100%" stopColor={"var(--green-400)"} />
-            </>
-          )}
+          <stop offset="0%" stopColor={"var(--green-400)"} />
+          <stop offset="100%" stopColor={"var(--green-400)"} />
         </linearGradient>
 
-        <motion.radialGradient
+        <radialGradient
           id="revealMask"
           gradientUnits="userSpaceOnUse"
+          cx={maskPosition.cx}
+          cy={maskPosition.cy}
           r="20%"
-          animate={maskPosition}
-          transition={{ duration: duration ?? 0, ease: "easeOut" }}
         >
           <stop offset="0%" stopColor="white" />
           <stop offset="100%" stopColor="black" />
-        </motion.radialGradient>
+        </radialGradient>
+
         <mask id="textMask">
           <rect
             x="0"
