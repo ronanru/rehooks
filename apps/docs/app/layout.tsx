@@ -1,5 +1,6 @@
 import { RootProvider } from "fumadocs-ui/provider";
 import { NAME, DESCRIPTION, KEYWORDS } from "utils";
+import { Analytics } from "@vercel/analytics/react";
 import { JetBrains_Mono } from "next/font/google";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
@@ -75,6 +76,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     >
       <body className="dark:selection:text-fd-foreground selection:bg-neutral-800 selection:text-white dark:selection:bg-neutral-800">
         <RootProvider>{children}</RootProvider>
+        <Analytics />
       </body>
     </html>
   );
