@@ -18,3 +18,4 @@ export * from "./useWindowSize";
 export * from "./useTitle";
 export * from "./useBattery";
 export * from "./useLang";
+export * from "./useCountUp";
