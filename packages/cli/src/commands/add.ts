@@ -44,11 +44,6 @@ export const add = new Command()
         ),
       );
 
-      const indexFilePath = path.join(config.directory, "index.ts");
-      let indexContent = fs.existsSync(indexFilePath)
-        ? fs.readFileSync(indexFilePath, "utf-8")
-        : "";
-
       for (const hook of selectedHooks) {
         const hookFilePath = path.join(config.directory, `${hook}.ts`);
 
@@ -76,20 +71,7 @@ export const add = new Command()
         let { content } = selectedHookResponse.data;
         fs.writeFileSync(hookFilePath, content);
         logger.info(green(` - ${hookFilePath}.`));
-
-        if (!indexContent.includes(`export { ${hook} } from "./${hook}";`)) {
-          indexContent += `export { ${hook} } from "./${hook}";\n`;
-        }
       }
-
-      const sortedExports =
-        indexContent
-          .split("\n")
-          .filter((line) => line.trim() !== "")
-          .sort()
-          .join("\n") + "\n";
-      fs.writeFileSync(indexFilePath, sortedExports);
-      logger.info(green(`Updated index.ts with sorted exports.`));
     } catch (error) {
       logger.error(red(`Error adding hooks: ${error}`));
     }

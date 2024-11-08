@@ -11,7 +11,8 @@ export const init = new Command()
   .name("init")
   .description("Initialize the Rehooks configuration")
   .argument("[path]", "Specify a custom path for the hooks directory")
-  .action(async (customPath) => {
+  .option("-f, --force", "Force overwrite existing files without prompts")
+  .action(async (customPath, options) => {
     const configPath = path.resolve(process.cwd(), "rehooks.json");
     const spinner = ora(cyan("Initializing Rehooks configuration...")).start();
     let hooksDirExists = false;
@@ -21,27 +22,37 @@ export const init = new Command()
       spinner.info(yellow("rehooks.json already exists."));
       spinner.stop();
 
-      const { overwrite } = await inquirer.prompt([
-        {
-          type: "confirm",
-          name: "overwrite",
-          message: bold(
-            red("rehooks.json already exists. Do you want to overwrite it?"),
+      const currentConfig = JSON.parse(fs.readFileSync(configPath, "utf-8"));
+      currentDirectory = currentConfig.directory;
+
+      if (currentDirectory && currentDirectory === customPath) {
+        logger.warn(
+          yellow(
+            `The hooks directory is already configured as ${bold(currentDirectory)}.`,
           ),
-          default: false,
-        },
-      ]);
-
-      spinner.start();
-
-      if (!overwrite) {
-        spinner.fail(red("Initialization aborted."));
-        logger.warn(yellow("Initialization aborted."));
+        );
         return;
       }
 
-      const currentConfig = JSON.parse(fs.readFileSync(configPath, "utf-8"));
-      currentDirectory = currentConfig.directory;
+      if (options.force) {
+        logger.info(cyan("Forcing overwrite of rehooks.json..."));
+      } else {
+        const { overwrite } = await inquirer.prompt([
+          {
+            type: "confirm",
+            name: "overwrite",
+            message: bold(
+              red("rehooks.json already exists. Do you want to overwrite it?"),
+            ),
+            default: false,
+          },
+        ]);
+        if (!overwrite) {
+          spinner.fail(red("Initialization aborted."));
+          logger.warn(yellow("Initialization aborted."));
+          return;
+        }
+      }
 
       if (currentDirectory && fs.existsSync(currentDirectory)) {
         hooksDirExists = true;
@@ -90,12 +101,6 @@ export const init = new Command()
         fs.mkdirSync(directory, { recursive: true });
         spinner.succeed(
           green(`Hooks directory created at ${bold(directory)}.`),
-        );
-
-        const indexFilePath = path.join(directory, "index.ts");
-        fs.writeFileSync(indexFilePath, "");
-        spinner.succeed(
-          green(`index.ts file created at ${bold(indexFilePath)}.`),
         );
       }
     } catch (error) {
