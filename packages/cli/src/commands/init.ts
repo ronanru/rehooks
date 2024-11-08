@@ -11,8 +11,18 @@ export const init = new Command()
   .name("init")
   .description("Initialize the Rehooks configuration")
   .argument("[path]", "Specify a custom path for the hooks directory")
-  .action(async (customPath) => {
-    const configPath = path.resolve(process.cwd(), "rehooks.json");
+  .option("-f, --force", "Force overwrite existing files without prompts")
+  .option("-c, --config <path>", "Specify a custom path for rehooks.json")
+  .action(async (customPath, options) => {
+    const configPath = options.config
+      ? path.resolve(process.cwd(), options.config)
+      : path.resolve(process.cwd(), "rehooks.json");
+
+    if (fs.existsSync(configPath) && fs.statSync(configPath).isDirectory()) {
+      logger.error(red(`Error: ${configPath} is a directory, not a file.`));
+      return;
+    }
+
     const spinner = ora(cyan("Initializing Rehooks configuration...")).start();
     let hooksDirExists = false;
     let currentDirectory: string | undefined;
@@ -21,27 +31,37 @@ export const init = new Command()
       spinner.info(yellow("rehooks.json already exists."));
       spinner.stop();
 
-      const { overwrite } = await inquirer.prompt([
-        {
-          type: "confirm",
-          name: "overwrite",
-          message: bold(
-            red("rehooks.json already exists. Do you want to overwrite it?"),
+      const currentConfig = JSON.parse(fs.readFileSync(configPath, "utf-8"));
+      currentDirectory = currentConfig.directory;
+
+      if (currentDirectory && currentDirectory === customPath) {
+        logger.warn(
+          yellow(
+            `The hooks directory is already configured as ${bold(currentDirectory)}.`,
           ),
-          default: false,
-        },
-      ]);
-
-      spinner.start();
-
-      if (!overwrite) {
-        spinner.fail(red("Initialization aborted."));
-        logger.warn(yellow("Initialization aborted."));
+        );
         return;
       }
 
-      const currentConfig = JSON.parse(fs.readFileSync(configPath, "utf-8"));
-      currentDirectory = currentConfig.directory;
+      if (options.force) {
+        logger.info(cyan("Forcing overwrite of rehooks.json..."));
+      } else {
+        const { overwriteConfig } = await inquirer.prompt([
+          {
+            type: "confirm",
+            name: "overwriteConfig",
+            message: bold(
+              red("rehooks.json already exists. Do you want to overwrite it?"),
+            ),
+            default: false,
+          },
+        ]);
+        if (!overwriteConfig) {
+          spinner.fail(red("Initialization aborted."));
+          logger.warn(yellow("Initialization aborted."));
+          return;
+        }
+      }
 
       if (currentDirectory && fs.existsSync(currentDirectory)) {
         hooksDirExists = true;
@@ -55,6 +75,7 @@ export const init = new Command()
     }
 
     spinner.stop();
+
     let directory = customPath || "./hooks";
     if (!customPath) {
       const { srcFolderChoice } = await inquirer.prompt([
@@ -72,7 +93,7 @@ export const init = new Command()
     }
 
     spinner.start(cyan("Creating rehooks.json configuration file..."));
-    const defaultConfig = { directory };
+    const defaultConfig = { directory, forceOverwrite: false };
 
     try {
       fs.writeFileSync(configPath, JSON.stringify(defaultConfig, null, 2));

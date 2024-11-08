@@ -11,13 +11,17 @@ import fs from "fs";
 export const add = new Command()
   .name("add")
   .description("Add hooks to your project")
-  .action(async () => {
+  .option("-f, --force", "Force overwrite existing hook files without prompt")
+  .action(async (options) => {
     const config = await getConfig(process.cwd());
 
     if (!config) {
       logger.error(red("rehooks.json not found or invalid configuration."));
       return;
     }
+
+    const { directory, forceOverwrite } = config;
+    const shouldForceOverwrite = options.force || forceOverwrite;
 
     try {
       const fetchSpinner = ora(cyan("Fetching hooks...")).start();
@@ -44,9 +48,9 @@ export const add = new Command()
       );
 
       for (const hook of selectedHooks) {
-        const hookFilePath = path.join(config.directory, `${hook}.ts`);
+        const hookFilePath = path.join(directory, `${hook}.ts`);
 
-        if (fs.existsSync(hookFilePath)) {
+        if (fs.existsSync(hookFilePath) && !shouldForceOverwrite) {
           const { overwrite } = await inquirer.prompt([
             {
               type: "confirm",
