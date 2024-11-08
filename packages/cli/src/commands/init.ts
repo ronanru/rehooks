@@ -83,7 +83,7 @@ export const init = new Command()
     }
 
     spinner.start(cyan("Creating rehooks.json configuration file..."));
-    const defaultConfig = { directory };
+    const defaultConfig = { directory, forceOverwrite: false };
 
     try {
       fs.writeFileSync(configPath, JSON.stringify(defaultConfig, null, 2));

@@ -20,6 +20,9 @@ export const add = new Command()
       return;
     }
 
+    const { directory, forceOverwrite } = config;
+    const shouldForceOverwrite = options.force || forceOverwrite;
+
     try {
       const fetchSpinner = ora(cyan("Fetching hooks...")).start();
       const response = await axios.get("https://rehooks.pyr33x.ir/api/hooks");
@@ -45,9 +48,9 @@ export const add = new Command()
       );
 
       for (const hook of selectedHooks) {
-        const hookFilePath = path.join(config.directory, `${hook}.ts`);
+        const hookFilePath = path.join(directory, `${hook}.ts`);
 
-        if (fs.existsSync(hookFilePath) && !options.force) {
+        if (fs.existsSync(hookFilePath) && !shouldForceOverwrite) {
           const { overwrite } = await inquirer.prompt([
             {
               type: "confirm",
