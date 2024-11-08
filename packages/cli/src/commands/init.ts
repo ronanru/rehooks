@@ -91,6 +91,12 @@ export const init = new Command()
         spinner.succeed(
           green(`Hooks directory created at ${bold(directory)}.`),
         );
+
+        const indexFilePath = path.join(directory, "index.ts");
+        fs.writeFileSync(indexFilePath, "");
+        spinner.succeed(
+          green(`index.ts file created at ${bold(indexFilePath)}.`),
+        );
       }
     } catch (error) {
       spinner.fail(red("Error creating rehooks.json or hooks directory."));
