@@ -12,8 +12,12 @@ export const init = new Command()
   .description("Initialize the Rehooks configuration")
   .argument("[path]", "Specify a custom path for the hooks directory")
   .option("-f, --force", "Force overwrite existing files without prompts")
+  .option("-c, --config <path>", "Specify a custom path for rehooks.json")
   .action(async (customPath, options) => {
-    const configPath = path.resolve(process.cwd(), "rehooks.json");
+    const configPath = options.config
+      ? path.resolve(process.cwd(), options.config)
+      : path.resolve(process.cwd(), "rehooks.json");
+
     const spinner = ora(cyan("Initializing Rehooks configuration...")).start();
     let hooksDirExists = false;
     let currentDirectory: string | undefined;
@@ -37,17 +41,17 @@ export const init = new Command()
       if (options.force) {
         logger.info(cyan("Forcing overwrite of rehooks.json..."));
       } else {
-        const { overwrite } = await inquirer.prompt([
+        const { overwriteConfig } = await inquirer.prompt([
           {
             type: "confirm",
-            name: "overwrite",
+            name: "overwriteConfig",
             message: bold(
               red("rehooks.json already exists. Do you want to overwrite it?"),
             ),
             default: false,
           },
         ]);
-        if (!overwrite) {
+        if (!overwriteConfig) {
           spinner.fail(red("Initialization aborted."));
           logger.warn(yellow("Initialization aborted."));
           return;
@@ -66,6 +70,7 @@ export const init = new Command()
     }
 
     spinner.stop();
+
     let directory = customPath || "./hooks";
     if (!customPath) {
       const { srcFolderChoice } = await inquirer.prompt([
