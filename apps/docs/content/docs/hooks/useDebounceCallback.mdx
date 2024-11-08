@@ -1,0 +1,58 @@
+---
+title: useDebounceCallback
+description: A hook that returns a debounced version of a callback function.
+---
+
+# useDebounceCallback
+
+## Usage
+
+```tsx title="Component.tsx"
+import { useDebounceValue } from "~/hooks/useDebounceValue";
+import { useState, useEffect } from "react";
+
+function Component() {
+  const [searchInput, setSearchInput] = useState<string>("");
+  const debouncedSearchInput = useDebounceValue(searchInput, 500);
+
+  useEffect(() => {
+    if (debouncedSearchInput)
+      console.log("Debounced Search Input:", debouncedSearchInput);
+  }, [debouncedSearchInput]);
+
+  return (
+    <div>
+      <h2>Debounced Search</h2>
+      <input
+        type="text"
+        value={searchInput}
+        onChange={(e) => setSearchInput(e.target.value)}
+        placeholder="Type something to search..."
+      />
+      <p>Search Input: {searchInput}</p>
+      <p>Debounced Input: {debouncedSearchInput}</p>
+    </div>
+  );
+}
+```
+
+## API
+
+### useDebounceCallback
+
+```ts
+function useDebounceCallback<T extends (...args: any[]) => any>(
+  fn: T,
+  delay: number,
+): T;
+```
+
+Returns a debounced version of the provided callback function.
+
+#### Parameters
+
+| Name    | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| fn      | `T`      | The callback function that depends on external values.                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| delay   | `number` | The debounce delay in milliseconds.                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Returns | `T`      | A debounced version of the provided callback function. The debounced function will be called after the specified delay has passed since the last time it was called. If the function is called again before the delay has passed, the debounced function will be called again after the delay has passed since the last time it was called. This can be useful for limiting the rate at which a function is called, especially when the function is expensive to call. |
