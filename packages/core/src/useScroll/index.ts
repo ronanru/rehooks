@@ -1,32 +1,48 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState, useLayoutEffect } from "react";
 
 const description =
-  "A custom hook that tracks whether the horizontal scroll position exceeds a given threshold.";
+  "Custom hook that tracks and returns the current scroll position, and provides a method to scroll to specific coordinates.";
 
 /**
- * A custom hook that tracks whether the horizontal scroll position exceeds a given threshold.
- *
- * @param {number} threshold - The scroll threshold in pixels to determine when the scroll state changes.
- * @returns {boolean} `true` if the horizontal scroll position is greater than the threshold, otherwise `false`.
- *
- * @example
- * // Usage example:
- * const isScrolled = useScroll(100);
- * if (isScrolled) {
- *   console.log("The scroll position is greater than 100 pixels.");
- * }
+ * Represents the scroll position in the x and y directions.
  */
-export function useScroll(threshold: number): boolean {
-  const [scrolled, setScrolled] = useState(false);
+type ScrollPosition = {
+  x: number;
+  y: number;
+};
 
-  const onScroll = useCallback(() => {
-    setScrolled(window.scrollY > threshold);
-  }, [threshold]);
+/**
+ * Custom hook that tracks and returns the current scroll position,
+ * and provides a method to scroll to specific coordinates.
+ *
+ * @returns {{ position: ScrollPosition; scrollTo: (options: ScrollToOptions) => void }}
+ */
+export function useScroll(): {
+  position: ScrollPosition;
+  scrollTo: (options: ScrollToOptions) => void;
+} {
+  const [position, setPosition] = useState<ScrollPosition>({
+    x: window.scrollX,
+    y: window.scrollY,
+  });
 
-  useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [onScroll]);
+  const handleScroll = () => {
+    setPosition({
+      x: window.scrollX,
+      y: window.scrollY,
+    });
+  };
 
-  return scrolled;
+  useLayoutEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return {
+    position,
+    scrollTo: window.scrollTo.bind(window),
+  };
 }
