@@ -12,7 +12,7 @@ import { useDebounceCallback } from "~/hooks/useDebounceCallback";
 import { useState } from "react";
 
 function Component() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState<string>("");
 
   const debouncedLog = useDebounceCallback((value: string) => {
     console.log("Debounced Input Value:", value);
