@@ -158,6 +158,9 @@ importers:
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
+      ua-parser-js:
+        specifier: ^1.0.39
+        version: 1.0.39
 
   packages/tsconfig: {}
 
@@ -2765,6 +2768,10 @@ packages:
   typescript@5.6.3:
     resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
     engines: {node: '>=14.17'}
+    hasBin: true
+
+  ua-parser-js@1.0.39:
+    resolution: {integrity: sha512-k24RCVWlEcjkdOxYmVJgeD/0a1TiSpqLg+ZalVGV9lsnr4yqu0w7tX/x2xX6G4zpkgQnRf89lxuZ1wsbjXM8lw==}
     hasBin: true
 
   undici-types@6.19.8:
@@ -5683,6 +5690,8 @@ snapshots:
   type-fest@4.26.1: {}
 
   typescript@5.6.3: {}
+
+  ua-parser-js@1.0.39: {}
 
   undici-types@6.19.8: {}
 
