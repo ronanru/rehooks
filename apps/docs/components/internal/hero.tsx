@@ -1,7 +1,6 @@
 "use client";
 
 import { useClipboard } from "rehooks-ts";
-import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui";
 import Link from "next/link";
 
@@ -53,7 +52,7 @@ export function Hero() {
         <Button
           size="circular"
           onClick={() => copy("npx rehooks-cli@latest init")}
-          className="font-mono"
+          className="cursor-copy font-mono"
         >
           {isCopied ? "Copied to Clipboard!" : "$ npx rehooks-cli@latest"}
         </Button>
