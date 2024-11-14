@@ -80,7 +80,7 @@ export function Text({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.8"
-        className="fill-transparent stroke-neutral-200 font-mono text-8xl font-bold tracking-tighter dark:stroke-neutral-900"
+        className="fill-transparent stroke-neutral-300 font-mono text-8xl font-bold tracking-tighter dark:stroke-neutral-800/50"
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
         {text}
@@ -91,7 +91,7 @@ export function Text({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.8"
-        className="fill-transparent stroke-neutral-200 font-mono text-8xl font-bold tracking-tighter dark:stroke-neutral-900"
+        className="fill-transparent stroke-neutral-300 font-mono text-8xl font-bold tracking-tighter dark:stroke-neutral-800/50"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         animate={{
           strokeDashoffset: 0,
