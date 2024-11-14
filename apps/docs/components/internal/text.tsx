@@ -38,7 +38,7 @@ export function Text({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
-      className="select-none"
+      className="cursor-default select-none"
     >
       <defs>
         <linearGradient
