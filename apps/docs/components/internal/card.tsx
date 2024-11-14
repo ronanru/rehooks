@@ -111,7 +111,7 @@ const cards: Card[] = [
               <div
                 key={item.id}
                 className={cn(
-                  "group flex h-10 items-center justify-center rounded-md border border-neutral-400 bg-neutral-200/50 px-20 dark:border-neutral-800 dark:bg-neutral-900/50",
+                  "group flex h-10 select-none items-center justify-center rounded-md border border-neutral-400 bg-neutral-200/50 px-20 transition-colors hover:border-neutral-500 hover:bg-neutral-200/80 dark:border-neutral-800 dark:bg-neutral-900/50 hover:dark:border-neutral-700 hover:dark:bg-neutral-900/80",
                   item.class,
                 )}
               >
@@ -129,7 +129,7 @@ const cards: Card[] = [
               <div
                 key={item.id}
                 className={cn(
-                  "group flex h-10 items-center justify-center rounded-md border border-neutral-400 bg-neutral-200/50 px-20 dark:border-neutral-800 dark:bg-neutral-900/50",
+                  "group flex h-10 select-none items-center justify-center rounded-md border border-neutral-400 bg-neutral-200/50 px-20 transition-colors hover:border-neutral-500 hover:bg-neutral-200/80 dark:border-neutral-800 dark:bg-neutral-900/50 hover:dark:border-neutral-700 hover:dark:bg-neutral-900/80",
                   item.class,
                 )}
               >
