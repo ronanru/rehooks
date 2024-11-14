@@ -1,7 +1,7 @@
 "use client";
 
-import { useClipboard } from "rehooks-ts";
 import { Button } from "@/components/ui";
+import { useClipboard } from "@/hooks";
 import Link from "next/link";
 
 export function Hero() {
