@@ -37,10 +37,10 @@ export const meta = {
     template: "%s | Rehooks",
   },
   description: "A CLI to insert hooks directly to your project.",
-  creator: "Pyr33x",
+  creator: "Mehdi Parandak",
   authors: {
     url: "https://github.com/pyr33x",
-    name: "Pyr33x",
+    name: "Mehdi Parandak",
   },
   keywords: keywords,
 
