@@ -9,7 +9,7 @@ async function main() {
   const packageInfo = await getPackageInfo();
   const program = new Command()
     .name("rehooks")
-    .description("A CLI to insert hooks directly to your codebase.")
+    .description("A CLI to insert hooks directly to your project.")
     .version(
       packageInfo.version || "3.8.0",
       "-v, --version",

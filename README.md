@@ -6,7 +6,7 @@
 
 <div align="center">
   <h1>Rehooks CLI</h1>
-  <p>A CLI to insert hooks directly to your codebase.</p>
+  <p>A CLI to insert hooks directly to your project.</p>
 </div>
 
 <div align="center">

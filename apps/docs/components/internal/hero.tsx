@@ -46,7 +46,7 @@ export function Hero() {
         Hooks
       </h1>
       <p className="dark:text-fd-muted-foreground/50 text-fd-muted-foreground mt-2 text-balance text-center text-base font-medium lg:text-xl">
-        A CLI to insert hooks directly to your codebase.
+        A CLI to insert hooks directly to your project.
       </p>
       <div className="mt-5 flex flex-row flex-wrap justify-center gap-2">
         <Button
