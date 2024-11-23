@@ -29,7 +29,6 @@ export const meta = {
   formatDetection: {
     telephone: false,
   },
-
   /** PWA */
 
   title: {
@@ -50,6 +49,7 @@ export const meta = {
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  /** Icons  */
 
   /** Robots */
   robots: {
