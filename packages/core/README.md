@@ -1,10 +1,4 @@
 <div align="center">
-  <img src="./assets/banner.jpg" alt="rehooks" />
-</div>
-
-<br />
-
-<div align="center">
   <h1>Rehooks</h1>
   <p>An optimized, and flexible react production-ready hooks library written in TypeScript</p>
 </div>
