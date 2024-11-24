@@ -3,9 +3,45 @@ import { getConfig } from "~/utils/config";
 import { logger } from "~/utils/logger";
 import { Command } from "commander";
 import inquirer from "inquirer";
+import semver from "semver";
 import path from "path";
 import ora from "ora";
 import fs from "fs";
+
+async function checkReactVersion() {
+  const packageJsonPath = path.resolve(process.cwd(), "package.json");
+
+  if (!fs.existsSync(packageJsonPath)) {
+    logger.error(
+      red("Error: package.json not found in the project directory."),
+    );
+    return false;
+  }
+
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
+  const reactVersion =
+    packageJson.dependencies?.react || packageJson.peerDependencies?.react;
+
+  if (!reactVersion) {
+    logger.error(
+      red(
+        "Error: React is not listed as a dependency or peer dependency in package.json.",
+      ),
+    );
+    return false;
+  }
+
+  const cleanedVersion = semver.minVersion(reactVersion);
+  if (!cleanedVersion || semver.lt(cleanedVersion, "18.0.0")) {
+    logger.error(
+      red(
+        `Error: React version (${cleanedVersion || reactVersion}) is lower than 18. Please upgrade.`,
+      ),
+    );
+    return false;
+  }
+  return true;
+}
 
 export const init = new Command()
   .name("init")
@@ -14,6 +50,13 @@ export const init = new Command()
   .option("-f, --force", "Force overwrite existing files without prompts")
   .option("-c, --config <path>", "Specify a custom path for rehooks.json")
   .action(async (customPath, options) => {
+    const isReactCompatible = await checkReactVersion();
+    if (!isReactCompatible) {
+      logger.error(
+        red("Initialization aborted due to React compatibility issues."),
+      );
+      return;
+    }
     const configPath = options.config
       ? path.resolve(process.cwd(), options.config)
       : path.resolve(process.cwd(), "rehooks.json");
