@@ -27,7 +27,14 @@ It will create a `rehooks.json` in the root of your project. This file contains 
   an argument to the `init` command.
 </Callout>
 
-Now It's time to add hooks into your project. To achieve this you must use the `add` command.
+<Callout type="warn">
+  Rehooks CLI requires React version 18 or higher. If your project uses a lower
+  version, you may encounter compatibility issues. Also your project must
+  include `package.json` file.
+</Callout>
+
+Now It's time to add hooks into your project. To achieve this you must use the
+`add` command.
 
 ```bash title="Terminal"
 npx rehooks-cli add
