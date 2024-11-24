@@ -11,7 +11,7 @@ async function main() {
     .name("rehooks")
     .description("A CLI to insert hooks directly to your project.")
     .version(
-      packageInfo.version || "3.8.0",
+      packageInfo.version || "3.8.2",
       "-v, --version",
       "Displays the version number",
     );
