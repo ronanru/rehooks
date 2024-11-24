@@ -40,8 +40,6 @@ async function checkReactVersion() {
     );
     return false;
   }
-
-  logger.info(green(`React version (${cleanedVersion}) is compatible.`));
   return true;
 }
 
