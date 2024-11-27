@@ -23,3 +23,4 @@ export * from "./useIsMounted";
 export * from "./useUnmount";
 export * from "./useIsClient";
 export * from "./useDevice";
+export * from "./useThrottle";
