@@ -19,7 +19,7 @@ export default function Layout({
         cy={1}
         cr={1}
         className={cn(
-          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]",
+          "p-2 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]",
         )}
       />
     </HomeLayout>
