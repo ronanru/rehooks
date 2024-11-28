@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui";
 import { useClipboard } from "@/hooks";
 import Link from "next/link";
@@ -9,7 +10,7 @@ export function Hero() {
   return (
     <>
       <div className="mb-8">
-        {/* <a
+        <a
           href="https://npmjs.org/package/rehooks-cli"
           target="_blank"
           rel="noopener noreferrer"
@@ -21,21 +22,6 @@ export function Hero() {
           </span>
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500 to-green-600 opacity-0 blur transition-opacity group-hover:opacity-20 dark:from-green-400 dark:to-green-500" />
           <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-green-500 to-green-600 opacity-30 dark:from-green-400 dark:to-green-500 dark:opacity-40" />
-        </a> */}
-        <a
-          href="https://www.producthunt.com/posts/rehooks?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-rehooks"
-          target="_blank"
-        >
-          <img
-            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=571513&theme=dark"
-            alt="Rehooks - Streamline&#0032;Your&#0032;React&#0032;Hooks&#0044;&#0032;One&#0032;Command&#0032;at&#0032;a&#0032;Time | Product Hunt"
-            style={{
-              width: "250px",
-              height: "54px",
-            }}
-            width="250"
-            height="54"
-          />
         </a>
       </div>
       <h1 className="text-balance text-center text-4xl font-black lg:text-5xl">
