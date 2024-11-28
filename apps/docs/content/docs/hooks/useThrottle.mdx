@@ -11,7 +11,7 @@ description: Custom hook that throttles a callback function.
 import { useThrottle } from "~/hooks/useThrottle";
 
 function Component() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [results, setResults] = useState<string[]>([]);
 
   const searchAPI = async (term: string) => {
