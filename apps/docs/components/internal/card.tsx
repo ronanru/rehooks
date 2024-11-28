@@ -86,15 +86,9 @@ const cards: Card[] = [
     description:
       "All hooks are meticulously crafted with SOLID principles, ensuring efficient, optimized, and robust performance.",
     content: (
-      <Files className="select-none">
-        <Folder name="hooks" defaultOpen>
-          <File name="useSessionStorage.ts" />
-          <File name="useLocalStorage.ts" />
-          <File name="useClipboard.ts" />
-          <File name="useKeyPress.ts" />
-        </Folder>
-        <File name="rehooks.json" />
-      </Files>
+      <div className="flex h-52 items-center justify-center">
+        <Text text="SOLID" />
+      </div>
     ),
     class: "max-w-md",
   },
@@ -150,9 +144,15 @@ const cards: Card[] = [
     description:
       "Written in TypeScript, Rehooks offers comprehensive type safety and autocompletion, making development seamless and error-resistant.",
     content: (
-      <div className="flex h-52 items-center justify-center">
-        <Text text="SOLID" />
-      </div>
+      <Files className="select-none">
+        <Folder name="hooks" defaultOpen disabled>
+          <File name="useSessionStorage.ts" />
+          <File name="useLocalStorage.ts" />
+          <File name="useClipboard.ts" />
+          <File name="useKeyPress.ts" />
+        </Folder>
+        <File name="rehooks.json" />
+      </Files>
     ),
     class: "max-w-md",
   },
