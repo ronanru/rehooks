@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import path from "path";
 import fs from "fs";
 
-type HookData = Readonly<{
+type Hook = Readonly<{
   id: number;
   title: string;
   description: string;
@@ -11,7 +11,7 @@ type HookData = Readonly<{
 
 const filePath = path.join(process.cwd(), "app", "hooks.json");
 
-async function loadData(): Promise<HookData[]> {
+async function loadData(): Promise<Hook[]> {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, "utf8", (err, data) => {
       if (err) {
@@ -31,7 +31,7 @@ export async function GET(
   const { title } = params;
 
   try {
-    const data: HookData[] = await loadData();
+    const data: Hook[] = await loadData();
     const hook = data.find((hook) => hook.title === title);
 
     if (!hook) {
@@ -41,7 +41,14 @@ export async function GET(
       );
     }
 
-    return NextResponse.json(hook);
+    return NextResponse.json(hook, {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    });
   } catch (error) {
     console.error("Error:", error);
     return NextResponse.json(

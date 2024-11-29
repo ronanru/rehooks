@@ -3,14 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-export function Text({
-  text,
-  duration,
-}: {
-  text: string;
-  duration?: number;
-  automatic?: boolean;
-}) {
+export function Text({ text }: { text: string; automatic?: boolean }) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
