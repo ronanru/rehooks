@@ -3,23 +3,27 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-export function Text({ text }: { text: string; automatic?: boolean }) {
+export function Text({ text }: { text: string }) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
-  const [hovered, setHovered] = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
 
   useEffect(() => {
-    if (svgRef.current && cursor.x !== null && cursor.y !== null) {
-      const svgRect = svgRef.current.getBoundingClientRect();
-      const cxPercentage = ((cursor.x - svgRect.left) / svgRect.width) * 100;
-      const cyPercentage = ((cursor.y - svgRect.top) / svgRect.height) * 100;
-      setMaskPosition({
-        cx: `${cxPercentage}%`,
-        cy: `${cyPercentage}%`,
-      });
-    }
-  }, [cursor]);
+    const handleMouseMove = (e: MouseEvent) => {
+      const svgRect = svgRef.current?.getBoundingClientRect();
+      if (svgRect) {
+        const cxPercentage = ((e.clientX - svgRect.left) / svgRect.width) * 100;
+        const cyPercentage = ((e.clientY - svgRect.top) / svgRect.height) * 100;
+        setMaskPosition({ cx: `${cxPercentage}%`, cy: `${cyPercentage}%` });
+      }
+    };
+
+    const svgElement = svgRef.current;
+    svgElement?.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      svgElement?.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   return (
     <svg
@@ -28,9 +32,6 @@ export function Text({ text }: { text: string; automatic?: boolean }) {
       height="100%"
       viewBox="0 0 300 100"
       xmlns="http://www.w3.org/2000/svg"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
       className="cursor-default select-none"
     >
       <defs>
@@ -67,6 +68,7 @@ export function Text({ text }: { text: string; automatic?: boolean }) {
           />
         </mask>
       </defs>
+
       <text
         x="50%"
         y="50%"
@@ -74,10 +76,10 @@ export function Text({ text }: { text: string; automatic?: boolean }) {
         dominantBaseline="middle"
         strokeWidth="0.8"
         className="fill-transparent stroke-neutral-300 font-mono text-8xl font-bold tracking-tighter dark:stroke-neutral-800/50"
-        style={{ opacity: hovered ? 0.7 : 0 }}
       >
         {text}
       </text>
+
       <motion.text
         x="50%"
         y="50%"
