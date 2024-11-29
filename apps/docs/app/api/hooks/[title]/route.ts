@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import path from "path";
 import fs from "fs";
 
-type HookData = Readonly<{
+type Hook = Readonly<{
   id: number;
   title: string;
   description: string;
@@ -11,7 +11,7 @@ type HookData = Readonly<{
 
 const filePath = path.join(process.cwd(), "app", "hooks.json");
 
-async function loadData(): Promise<HookData[]> {
+async function loadData(): Promise<Hook[]> {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, "utf8", (err, data) => {
       if (err) {
