@@ -1,13 +1,7 @@
 import { NextResponse } from "next/server";
+import type { Hook } from "utils";
 import path from "path";
 import fs from "fs";
-
-type Hook = Readonly<{
-  id: number;
-  title: string;
-  description: string;
-  content: string;
-}>;
 
 const filePath = path.join(process.cwd(), "app", "hooks.json");
 
