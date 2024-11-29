@@ -55,7 +55,14 @@ export async function GET(request: Request) {
     console.error("Error:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 },
+      {
+        status: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+      },
     );
   }
 }
