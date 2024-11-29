@@ -41,7 +41,14 @@ export async function GET(
       );
     }
 
-    return NextResponse.json(hook);
+    return NextResponse.json(hook, {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    });
   } catch (error) {
     console.error("Error:", error);
     return NextResponse.json(
