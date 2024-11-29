@@ -31,7 +31,7 @@ export async function GET(
   const { title } = params;
 
   try {
-    const data: HookData[] = await loadData();
+    const data: Hook[] = await loadData();
     const hook = data.find((hook) => hook.title === title);
 
     if (!hook) {
