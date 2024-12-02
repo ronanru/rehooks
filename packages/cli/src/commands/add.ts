@@ -11,8 +11,9 @@ import fs from "fs";
 export const add = new Command()
   .name("add")
   .description("Add hooks to your project")
+  .argument("[hook]", "Specify a hook name to add")
   .option("-f, --force", "Force overwrite existing hook files without prompt")
-  .action(async (options) => {
+  .action(async (hook, options) => {
     const config = await getConfig(process.cwd());
 
     if (!config) {
@@ -24,6 +25,39 @@ export const add = new Command()
     const shouldForceOverwrite = options.force || forceOverwrite;
 
     try {
+      if (hook) {
+        const hookFilePath = path.join(directory, `${hook}.ts`);
+        if (fs.existsSync(hookFilePath) && !shouldForceOverwrite) {
+          const { overwrite } = await inquirer.prompt([
+            {
+              type: "confirm",
+              name: "overwrite",
+              message: bold(
+                red(`${hook}.ts already exists. Do you want to overwrite it?`),
+              ),
+              default: false,
+            },
+          ]);
+
+          if (!overwrite) {
+            logger.info(cyan(`Skipping ${hook}.ts.`));
+            return;
+          }
+        }
+
+        const spinner = ora();
+
+        const selectedHookResponse = await axios.get(
+          `https://rehooks.pyr33x.ir/api/hooks/${hook}`,
+        );
+        let { content } = selectedHookResponse.data;
+        fs.writeFileSync(hookFilePath, content);
+        spinner.succeed(
+          green(`Created ${bold(hook)} hook at ${bold(hookFilePath)}.`),
+        );
+        return;
+      }
+
       const fetchSpinner = ora(cyan("Fetching hooks...")).start();
       const response = await axios.get("https://rehooks.pyr33x.ir/api/hooks");
       const hooks = response.data;
