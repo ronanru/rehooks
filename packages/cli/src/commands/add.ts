@@ -33,8 +33,15 @@ export const add = new Command()
         {
           type: "checkbox",
           name: "selectedHooks",
-          message: bold("Select hooks to add:"),
+          message: bold("Pick hooks to add:"),
           choices: hooks.map((h: { title: string }) => h.title),
+          required: true,
+          theme: {
+            icon: {
+              checked: green("✔"),
+              cursor: "",
+            },
+          },
         },
       ]);
 
