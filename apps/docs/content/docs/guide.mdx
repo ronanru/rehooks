@@ -48,6 +48,12 @@ This command will ask you to select the hooks you want to add. You can select mu
 npx rehooks-cli [options] [command]
 ```
 
+> Arguments are optional. You may want to leave args empty, so by running `npx rehooks-cli add` you'll access to the list of hooks.
+
+```bash title="Terminal"
+npx rehooks-cli add useFocus useFetch useWindowSize
+```
+
 ## Options
 
 These are the options available in the CLI.
@@ -62,7 +68,7 @@ These are the options available in the CLI.
 | Command                 | Description                          |
 | ----------------------- | ------------------------------------ |
 | `init [options] [path]` | Initialize the Rehooks configuration |
-| `add [options]`         | Add custom hooks to your project     |
+| `add [options] [hooks]` | Add custom hooks to your project     |
 | `help [command]`        | Displays help for a specific command |
 
 ### Init

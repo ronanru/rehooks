@@ -11,8 +11,9 @@ import fs from "fs";
 export const add = new Command()
   .name("add")
   .description("Add hooks to your project")
+  .argument("[hooks...]", "Specify one or more hook names to add")
   .option("-f, --force", "Force overwrite existing hook files without prompt")
-  .action(async (options) => {
+  .action(async (hooks, options) => {
     const config = await getConfig(process.cwd());
 
     if (!config) {
@@ -24,17 +25,61 @@ export const add = new Command()
     const shouldForceOverwrite = options.force || forceOverwrite;
 
     try {
+      if (hooks.length > 0) {
+        for (const hook of hooks) {
+          const hookFilePath = path.join(directory, `${hook}.ts`);
+
+          if (fs.existsSync(hookFilePath) && !shouldForceOverwrite) {
+            const { overwrite } = await inquirer.prompt([
+              {
+                type: "confirm",
+                name: "overwrite",
+                message: bold(
+                  red(
+                    `${hook}.ts already exists. Do you want to overwrite it?`,
+                  ),
+                ),
+                default: false,
+              },
+            ]);
+
+            if (!overwrite) {
+              logger.info(cyan(`Skipping ${hook}.ts.`));
+              continue;
+            }
+          }
+
+          const spinner = ora(cyan(`Adding ${hook}...`)).start();
+          const selectedHookResponse = await axios.get(
+            `https://rehooks.pyr33x.ir/api/hooks/${hook}`,
+          );
+          let { content } = selectedHookResponse.data;
+          fs.writeFileSync(hookFilePath, content);
+          spinner.succeed(
+            green(`Created ${bold(hook)} hook at ${bold(hookFilePath)}.`),
+          );
+        }
+        return;
+      }
+
       const fetchSpinner = ora(cyan("Fetching hooks...")).start();
       const response = await axios.get("https://rehooks.pyr33x.ir/api/hooks");
-      const hooks = response.data;
+      const hooksData = response.data;
       fetchSpinner.succeed(green("Done."));
 
       const { selectedHooks } = await inquirer.prompt([
         {
           type: "checkbox",
           name: "selectedHooks",
-          message: bold("Select hooks to add:"),
-          choices: hooks.map((h: { title: string }) => h.title),
+          message: bold("Pick hooks to add:"),
+          choices: hooksData.map((h: { title: string }) => h.title),
+          required: true,
+          theme: {
+            icon: {
+              checked: green("✔"),
+              cursor: "",
+            },
+          },
         },
       ]);
 

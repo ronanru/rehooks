@@ -17,7 +17,7 @@ export function Hero() {
           className="group relative flex h-10 items-center gap-2 rounded-full bg-gradient-to-b from-green-900/50 to-green-700 px-6 text-lg font-medium text-green-300 transition-colors hover:text-green-200 dark:from-green-700/50 dark:to-gray-900 dark:text-green-300 dark:hover:text-green-200"
         >
           <span className="relative z-10 flex items-center gap-2">
-            Rehooks v3 is out{" "}
+            Rehooks v4 is out{" "}
             <ArrowUpRight className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </span>
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500 to-green-600 opacity-0 blur transition-opacity group-hover:opacity-20 dark:from-green-400 dark:to-green-500" />
