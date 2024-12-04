@@ -37,13 +37,20 @@ export default function Component() {
 ### useHover
 
 ```ts
-function useHover(): boolean;
+const [ref, isHovering] = useHover<T>();
 ```
 
 Returns a boolean value indicating whether the user is hovering over the element.
+
+#### Parameters
+
+| Name | Type | Description                       |
+| ---- | ---- | --------------------------------- |
+| T    | `T`  | The type of the element to track. |
 
 #### Returns
 
 | Name       | Type      | Description                                                               |
 | ---------- | --------- | ------------------------------------------------------------------------- |
+| ref        | `Ref`     | A ref to the element to track.                                            |
 | isHovering | `boolean` | A boolean value indicating whether the user is hovering over the element. |
