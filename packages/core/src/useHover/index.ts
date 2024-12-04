@@ -1,7 +1,27 @@
-import { useState, useRef } from "react";
-import { useEventListener } from "./../useEventListener";
+import { useState, useRef, useEffect } from "react";
 
 const description = "A custom hook to track whether an element is hovered.";
+
+/**
+ * Adds an event listener to a given target.
+ *
+ * @param eventType - The type of event to listen for.
+ * @param listener - The event handler function.
+ * @param target - The target to which the event listener will be attached.
+ */
+function useEventListener<K extends keyof HTMLElementEventMap>(
+  eventType: K,
+  listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+  target: React.RefObject<HTMLElement>,
+): void {
+  useEffect(() => {
+    const element = target.current;
+    if (!element) return;
+
+    element.addEventListener(eventType, listener);
+    return () => element.removeEventListener(eventType, listener);
+  }, [eventType, listener, target]);
+}
 
 /**
  * A custom hook to track whether an element is hovered.
