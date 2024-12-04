@@ -37,7 +37,7 @@ export default function Component() {
 ### useHover
 
 ```ts
-const [ref, isHovering] = useHover<T>();
+function useHover<T extends HTMLElement>(): [Ref<T>, boolean];
 ```
 
 Returns a boolean value indicating whether the user is hovering over the element.
