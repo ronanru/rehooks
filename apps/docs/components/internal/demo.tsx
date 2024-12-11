@@ -52,7 +52,7 @@ export function Beam({ className }: { className?: string }) {
           </Circle>
         </div>
         <div className="flex flex-col justify-center">
-          <Circle ref={div6Ref} className="size-16">
+          <Circle ref={div6Ref}>
             <Icons.rehooks />
           </Circle>
         </div>
