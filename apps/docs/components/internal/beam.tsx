@@ -1,6 +1,7 @@
 "use client";
 
 import { RefObject, useEffect, useId, useState } from "react";
+import { useDebounceCallback } from "@/hooks";
 import { motion } from "framer-motion";
 import { cn } from "utils";
 
@@ -61,37 +62,37 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         y2: ["0%", "0%"],
       };
 
+  const debouncedUpdatePath = useDebounceCallback(() => {
+    if (containerRef.current && fromRef.current && toRef.current) {
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const rectA = fromRef.current.getBoundingClientRect();
+      const rectB = toRef.current.getBoundingClientRect();
+
+      const svgWidth = containerRect.width;
+      const svgHeight = containerRect.height;
+      setSvgDimensions({ width: svgWidth, height: svgHeight });
+
+      const startX =
+        rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
+      const startY =
+        rectA.top - containerRect.top + rectA.height / 2 + startYOffset;
+      const endX =
+        rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
+      const endY =
+        rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
+
+      const controlY = startY - curvature;
+      const d = `M ${startX},${startY} Q ${
+        (startX + endX) / 2
+      },${controlY} ${endX},${endY}`;
+      setPathD(d);
+    }
+  }, 100);
+
   useEffect(() => {
-    const updatePath = () => {
-      if (containerRef.current && fromRef.current && toRef.current) {
-        const containerRect = containerRef.current.getBoundingClientRect();
-        const rectA = fromRef.current.getBoundingClientRect();
-        const rectB = toRef.current.getBoundingClientRect();
-
-        const svgWidth = containerRect.width;
-        const svgHeight = containerRect.height;
-        setSvgDimensions({ width: svgWidth, height: svgHeight });
-
-        const startX =
-          rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
-        const startY =
-          rectA.top - containerRect.top + rectA.height / 2 + startYOffset;
-        const endX =
-          rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
-        const endY =
-          rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
-
-        const controlY = startY - curvature;
-        const d = `M ${startX},${startY} Q ${
-          (startX + endX) / 2
-        },${controlY} ${endX},${endY}`;
-        setPathD(d);
-      }
-    };
-
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
-        updatePath();
+        debouncedUpdatePath();
       }
     });
 
@@ -99,7 +100,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       resizeObserver.observe(containerRef.current);
     }
 
-    updatePath();
+    debouncedUpdatePath();
 
     return () => {
       resizeObserver.disconnect();
@@ -113,6 +114,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
     startYOffset,
     endXOffset,
     endYOffset,
+    debouncedUpdatePath,
   ]);
 
   return (
@@ -161,7 +163,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
           transition={{
             delay,
             duration,
-            ease: [0.16, 1, 0.3, 1], // https://easings.net/#easeOutExpo
+            ease: [0.16, 1, 0.3, 1],
             repeat: Infinity,
             repeatDelay: 0,
           }}
