@@ -132,7 +132,7 @@ const Icons = {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_47_2)">
+      <g clipPath="url(#clip0_47_2)">
         <mask
           id="mask0_47_2"
           style={{ maskType: "alpha" }}
@@ -152,8 +152,8 @@ const Icons = {
             d="M106.5 209.45C163.358 209.45 209.45 163.358 209.45 106.5C209.45 49.6421 163.358 3.5498 106.5 3.5498C49.6423 3.5498 3.55 49.6421 3.55 106.5C3.55 163.358 49.6423 209.45 106.5 209.45Z"
             fill="black"
             stroke="black"
-            stroke-opacity="0.5"
-            stroke-width="6"
+            strokeOpacity="0.5"
+            strokeWidth="6"
           />
           <path
             d="M176.918 186.399L81.818 63.8999H63.9V149.064H78.2344V82.1038L165.665 195.066C169.611 192.426 173.369 189.528 176.918 186.399Z"
@@ -174,8 +174,8 @@ const Icons = {
           y2="189.925"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_47_2"
@@ -185,8 +185,8 @@ const Icons = {
           y2="126.469"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <clipPath id="clip0_47_2">
           <rect width="213" height="213" fill="white" />
@@ -255,7 +255,7 @@ const Icons = {
       xmlns="http://www.w3.org/2000/svg"
       className="mt-1 size-6"
     >
-      <g clip-path="url(#clip0_47_11)">
+      <g clipPath="url(#clip0_47_11)">
         <path
           d="M63.9921 3.20796C65.0405 4.5063 65.5748 6.25811 66.6439 9.76172L90 86.3012C81.2271 81.7594 71.8111 78.5792 62.0768 76.8701L46.8696 25.6048C46.7483 25.1959 46.4976 24.8372 46.1549 24.5823C45.8122 24.3274 45.396 24.19 44.9686 24.1907C44.5411 24.1913 44.1254 24.33 43.7835 24.586C43.4417 24.842 43.1921 25.2015 43.072 25.6108L28.0491 76.8445C18.2708 78.5455 8.81138 81.7306 0 86.2892L23.4703 9.74384C24.5429 6.24653 25.0794 4.49753 26.1278 3.20165C27.0533 2.05769 28.2571 1.16928 29.6244 0.621111C31.173 0 33.0064 0 36.6729 0H53.4364C57.1078 0 58.9433 0 60.4937 0.622163C61.8621 1.17166 63.0665 2.06193 63.9918 3.20796H63.9921Z"
           fill="currentColor"
