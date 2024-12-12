@@ -64,7 +64,7 @@ const Notification = ({ name, icon }: Item) => {
   return (
     <figure
       className={cn(
-        "relative mx-auto min-h-fit w-full max-w-full cursor-pointer overflow-hidden rounded-2xl border p-4",
+        "relative mx-auto min-h-fit w-full max-w-full cursor-pointer select-none overflow-hidden rounded-2xl border p-4",
         "transform-gpu transition-all duration-200 ease-in-out hover:scale-[103%]",
         "border-neutral-400 bg-neutral-200/50 hover:border-neutral-500 hover:bg-neutral-200/80",
         "dark:border-neutral-800 dark:bg-neutral-900/50 hover:dark:border-neutral-700 hover:dark:bg-neutral-900/80",
@@ -108,12 +108,12 @@ export function Notifications({
       const newNotifications =
         endIndex > baseNotifications.length
           ? [
-              ...baseNotifications.slice(startIndex),
-              ...baseNotifications.slice(
-                0,
-                endIndex % baseNotifications.length,
-              ),
-            ]
+            ...baseNotifications.slice(startIndex),
+            ...baseNotifications.slice(
+              0,
+              endIndex % baseNotifications.length,
+            ),
+          ]
           : baseNotifications.slice(startIndex, endIndex);
 
       setDisplayedNotifications(newNotifications);

@@ -35,9 +35,9 @@ function BentoCard({
     <div
       key={name}
       className={cn(
-        "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl",
-        "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
-        "transform-gpu dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+        "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl border backdrop-blur-xl",
+        "border-neutral-200 bg-white/20",
+        "transform-gpu dark:border-neutral-800 dark:bg-neutral-900/20",
         className,
       )}
     >
