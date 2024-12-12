@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { Badge } from "@/components/internal/badge";
 import { Button } from "@/components/ui";
 import { useClipboard } from "@/hooks";
 import Link from "next/link";
@@ -10,19 +10,17 @@ export function Hero() {
   return (
     <>
       <div className="mb-8">
-        <a
+        <Badge
           href="https://npmjs.org/package/rehooks-cli"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative flex h-10 items-center gap-2 rounded-full bg-gradient-to-b from-green-900/50 to-green-700 px-6 text-lg font-medium text-green-300 transition-colors hover:text-green-200 dark:from-green-700/50 dark:to-gray-900 dark:text-green-300 dark:hover:text-green-200"
+          variant="green"
+          shine
+          shineColor="#4ade80"
+          borderRadius={9999}
         >
-          <span className="relative z-10 flex items-center gap-2">
-            Rehooks v4 is out{" "}
-            <ArrowUpRight className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </span>
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500 to-green-600 opacity-0 blur transition-opacity group-hover:opacity-20 dark:from-green-400 dark:to-green-500" />
-          <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-green-500 to-green-600 opacity-30 dark:from-green-400 dark:to-green-500 dark:opacity-40" />
-        </a>
+          Rehooks v4 is out
+        </Badge>
       </div>
       <h1 className="text-balance text-center text-4xl font-black lg:text-5xl">
         Streamline{" "}

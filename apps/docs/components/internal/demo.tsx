@@ -1,7 +1,7 @@
 "use client";
 
+import { AnimatedBeam } from "@/components/internal/beam";
 import React, { forwardRef, useRef } from "react";
-import { AnimatedBeam } from "./beam";
 import { cn } from "utils";
 
 const Circle = forwardRef<
@@ -12,7 +12,7 @@ const Circle = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "border-border z-10 flex size-12 items-center justify-center rounded-full border-2 bg-neutral-200/50 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)] backdrop-blur-sm dark:bg-neutral-900/50",
+        "border-border z-10 flex size-12 items-center justify-center rounded-full border-2 bg-neutral-100 p-3 dark:bg-neutral-900",
         className,
       )}
     >
@@ -27,11 +27,11 @@ export function Beam({ className }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const div1Ref = useRef<HTMLDivElement>(null);
   const div2Ref = useRef<HTMLDivElement>(null);
-  const div3ref = useRef<HTMLDivElement>(null);
-  const div4ref = useRef<HTMLDivElement>(null);
-  const div5ref = useRef<HTMLDivElement>(null);
-  const div6ref = useRef<HTMLDivElement>(null);
-  const div7ref = useRef<HTMLDivElement>(null);
+  const div3Ref = useRef<HTMLDivElement>(null);
+  const div4Ref = useRef<HTMLDivElement>(null);
+  const div5Ref = useRef<HTMLDivElement>(null);
+  const div6Ref = useRef<HTMLDivElement>(null);
+  const div7Ref = useRef<HTMLDivElement>(null);
 
   return (
     <div
@@ -41,31 +41,31 @@ export function Beam({ className }: { className?: string }) {
       )}
       ref={containerRef}
     >
-      <div className="flex size-full max-w-lg flex-row items-stretch justify-between gap-10">
-        <div className="flex flex-col justify-center gap-2">
+      <div className="flex size-full max-w-md flex-row items-stretch justify-between gap-2">
+        <div className="flex flex-col justify-center gap-y-3">
           <Circle ref={div1Ref}>
             <Icons.typescript />
           </Circle>
           <Circle ref={div2Ref}>
             <Icons.rust />
           </Circle>
-          <Circle ref={div3ref}>
+          <Circle ref={div3Ref}>
             <Icons.typescript />
           </Circle>
         </div>
         <div className="flex flex-col justify-center">
-          <Circle ref={div4ref}>
+          <Circle ref={div4Ref} className="size-16">
             <Icons.rehooks />
           </Circle>
         </div>
-        <div className="flex flex-col justify-center gap-2">
-          <Circle ref={div5ref}>
+        <div className="flex flex-col justify-center gap-y-3">
+          <Circle ref={div5Ref}>
             <Icons.react />
           </Circle>
-          <Circle ref={div6ref}>
+          <Circle ref={div6Ref}>
             <Icons.nextjs />
           </Circle>
-          <Circle ref={div7ref}>
+          <Circle ref={div7Ref}>
             <Icons.astro />
           </Circle>
         </div>
@@ -74,32 +74,40 @@ export function Beam({ className }: { className?: string }) {
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div1Ref}
-        toRef={div4ref}
+        toRef={div4Ref}
+        curvature={-75}
+        endYOffset={-10}
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div2Ref}
-        toRef={div4ref}
+        toRef={div4Ref}
       />
       <AnimatedBeam
         containerRef={containerRef}
-        fromRef={div3ref}
-        toRef={div4ref}
+        fromRef={div3Ref}
+        toRef={div4Ref}
+        curvature={75}
+        endYOffset={10}
       />
       <AnimatedBeam
         containerRef={containerRef}
-        fromRef={div4ref}
-        toRef={div5ref}
+        fromRef={div5Ref}
+        toRef={div4Ref}
+        curvature={-75}
+        endYOffset={-10}
       />
       <AnimatedBeam
         containerRef={containerRef}
-        fromRef={div4ref}
-        toRef={div6ref}
+        fromRef={div6Ref}
+        toRef={div4Ref}
       />
       <AnimatedBeam
         containerRef={containerRef}
-        fromRef={div4ref}
-        toRef={div7ref}
+        fromRef={div7Ref}
+        toRef={div4Ref}
+        curvature={75}
+        endYOffset={10}
       />
     </div>
   );

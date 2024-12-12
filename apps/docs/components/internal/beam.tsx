@@ -5,7 +5,7 @@ import { useDebounceCallback } from "@/hooks";
 import { motion } from "framer-motion";
 import { cn } from "utils";
 
-export interface AnimatedBeamProps {
+export interface BeamProps {
   className?: string;
   containerRef: RefObject<HTMLElement>;
   fromRef: RefObject<HTMLElement>;
@@ -25,7 +25,7 @@ export interface AnimatedBeamProps {
   endYOffset?: number;
 }
 
-export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
+export const AnimatedBeam: React.FC<BeamProps> = ({
   className,
   containerRef,
   fromRef,
