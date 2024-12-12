@@ -5,8 +5,8 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui";
-import { File, Folder, Files } from "fumadocs-ui/components/files";
 import { Beam } from "@/components/internal/demo";
+import { List } from "@/components/internal/list";
 import { cn } from "utils";
 
 interface Card {
@@ -94,17 +94,8 @@ const cards: Card[] = [
     name: "TypeScript",
     description:
       "Written in TypeScript, Rehooks offers comprehensive type safety and autocompletion, making development seamless and error-resistant.",
-    content: (
-      <Files className="select-none">
-        <Folder name="hooks" defaultOpen disabled>
-          <File name="useSessionStorage.ts" />
-          <File name="useLocalStorage.ts" />
-          <File name="useClipboard.ts" />
-          <File name="useKeyPress.ts" />
-        </Folder>
-        <File name="rehooks.json" />
-      </Files>
-    ),
+    content: <List />,
+
     class: "max-w-md",
   },
   {
