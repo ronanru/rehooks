@@ -84,7 +84,7 @@ const features = [
       "All hooks are meticulously crafted with SOLID principles, ensuring efficient, optimized, and robust performance.",
     className: "col-span-3 lg:col-span-2",
     background: (
-      <Beam className="absolute right-2 top-4 h-[300px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
+      <Beam className="pointer-events-none absolute h-[220px] border-none px-12 transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] lg:h-[240px]" />
     ),
   },
   {

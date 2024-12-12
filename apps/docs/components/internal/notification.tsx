@@ -7,63 +7,60 @@ import { cn } from "utils";
 interface Item {
   name: string;
   icon: string;
-  color: string;
 }
 
 const baseNotifications = [
   {
     name: "useDebounceValue",
     icon: "🔧",
-    color: "#212121",
   },
   {
     name: "useKeyPress",
     icon: "🔧",
-    color: "#212121",
   },
   {
     name: "useFetch",
     icon: "🔧",
-    color: "#212121",
   },
   {
     name: "useEventCallback",
     icon: "🔧",
-    color: "#212121",
   },
   {
     name: "useDevice",
     icon: "🔧",
-    color: "#212121",
   },
   {
     name: "useThrottle",
     icon: "🔧",
-    color: "#212121",
   },
   {
     name: "useLocalStorage",
     icon: "🔧",
-    color: "#212121",
   },
   {
     name: "useSessionStorage",
     icon: "🔧",
-    color: "#212121",
   },
   {
     name: "useToggle",
     icon: "🔧",
-    color: "#212121",
   },
   {
     name: "useWindowSize",
     icon: "🔧",
-    color: "#212121",
+  },
+  {
+    name: "useFocus",
+    icon: "🔧",
+  },
+  {
+    name: "useEventlistener",
+    icon: "🔧",
   },
 ];
 
-const Notification = ({ name, icon, color }: Item) => {
+const Notification = ({ name, icon }: Item) => {
   return (
     <figure
       className={cn(
@@ -75,10 +72,7 @@ const Notification = ({ name, icon, color }: Item) => {
     >
       <div className="flex flex-row items-center gap-3">
         <div
-          className="flex size-10 items-center justify-center rounded-xl"
-          style={{
-            backgroundColor: color,
-          }}
+          className={`flex size-10 items-center justify-center rounded-xl bg-neutral-300 dark:bg-neutral-800`}
         >
           <span className="text-lg">{icon}</span>
         </div>
