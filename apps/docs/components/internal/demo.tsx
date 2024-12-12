@@ -42,7 +42,7 @@ export function Beam({ className }: { className?: string }) {
       ref={containerRef}
     >
       <div className="flex size-full max-w-lg flex-row items-stretch justify-between gap-10">
-        <div className="flex flex-col justify-center gap-2">
+        <div className="flex flex-col justify-center gap-y-4">
           <Circle ref={div1Ref}>
             <Icons.typescript />
           </Circle>
