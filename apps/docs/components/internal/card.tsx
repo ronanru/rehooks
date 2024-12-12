@@ -6,9 +6,8 @@ import {
   CardContent,
 } from "@/components/ui";
 import { File, Folder, Files } from "fumadocs-ui/components/files";
-import { Text } from "@/components/internal/text";
-import { cn } from "utils";
 import { Beam } from "@/components/internal/demo";
+import { cn } from "utils";
 
 interface Card {
   id: number;

@@ -1,7 +1,7 @@
 "use client";
 
+import { AnimatedBeam } from "@/components/internal/beam";
 import React, { forwardRef, useRef } from "react";
-import { AnimatedBeam } from "./beam";
 import { cn } from "utils";
 
 const Circle = forwardRef<
@@ -58,7 +58,7 @@ export function Beam({ className }: { className?: string }) {
             <Icons.rehooks />
           </Circle>
         </div>
-        <div className="flex flex-col justify-center gap-2">
+        <div className="flex flex-col justify-center gap-y-4">
           <Circle ref={div5ref}>
             <Icons.react />
           </Circle>
