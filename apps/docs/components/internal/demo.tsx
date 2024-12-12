@@ -96,13 +96,11 @@ export function Beam({ className }: { className?: string }) {
         toRef={div4Ref}
         curvature={-75}
         endYOffset={-10}
-        reverse
       />
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div6Ref}
         toRef={div4Ref}
-        reverse
       />
       <AnimatedBeam
         containerRef={containerRef}
@@ -110,7 +108,6 @@ export function Beam({ className }: { className?: string }) {
         toRef={div4Ref}
         curvature={75}
         endYOffset={10}
-        reverse
       />
     </div>
   );
