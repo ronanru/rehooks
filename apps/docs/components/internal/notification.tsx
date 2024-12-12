@@ -145,7 +145,7 @@ export function Notifications({
   return (
     <div
       className={cn(
-        "relative flex h-52 w-full flex-col overflow-hidden p-2",
+        "relative flex h-52 w-full transform-gpu flex-col overflow-hidden p-2",
         className,
       )}
     >
