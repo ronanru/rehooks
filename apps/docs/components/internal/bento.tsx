@@ -48,7 +48,6 @@ function BentoCard({
         </h3>
         <p className="text-neutral-400">{description}</p>
       </div>
-
       <div
         className={cn(
           "pointer-events-none absolute bottom-0 flex w-full transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:opacity-100",

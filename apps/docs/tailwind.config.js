@@ -42,12 +42,16 @@ export default {
           from: { transform: "translateY(0)" },
           to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
+        gradient: {
+          to: { "background-position": "200% center" },
+        },
       },
       animation: {
         "background-shine": "background-shine 1.5s linear infinite",
         shine: "shine var(--duration) infinite linear",
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        gradient: "gradient 8s linear infinite",
       },
     },
   },

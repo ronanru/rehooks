@@ -92,6 +92,13 @@ const features = [
     description:
       "Rehooks is open-source under the MIT license, fostering community collaboration and welcoming contributions.",
     className: "col-span-3 lg:col-span-1",
+    background: (
+      <div className="absolute top-16 w-full">
+        <h1 className="animate-gradient bg-[linear-gradient(to_right,theme(colors.emerald.500),theme(colors.green.400),theme(colors.yellow.200),theme(colors.sky.300),theme(colors.green.400),theme(colors.emerald.500))] bg-[length:200%_auto] bg-clip-text text-center text-7xl font-extrabold text-transparent">
+          OSS
+        </h1>
+      </div>
+    ),
   },
 ];
 
