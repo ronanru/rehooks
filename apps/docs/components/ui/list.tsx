@@ -57,7 +57,7 @@ export function AnimatedListItem({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <motion.div {...animations} layout className="mx-auto w-full transform-gpu">
+    <motion.div {...animations} layout className="mx-auto w-full">
       {children}
     </motion.div>
   );
