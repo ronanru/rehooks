@@ -23,23 +23,24 @@ export default {
             backgroundPosition: "-200% 0",
           },
         },
+        shine: {
+          "0%": {
+            "background-position": "0% 0%",
+          },
+          "50%": {
+            "background-position": "100% 100%",
+          },
+          to: {
+            "background-position": "0% 0%",
+          },
+        },
       },
       animation: {
         "background-shine": "background-shine 1.5s linear infinite",
+        shine: "shine var(--duration) infinite linear",
       },
     },
   },
   presets: [createPreset()],
-  plugins: [addVariablesForColors],
+  plugins: [],
 };
-
-function addVariablesForColors({ addBase, theme }) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
-  );
-
-  addBase({
-    ":root": newVars,
-  });
-}
