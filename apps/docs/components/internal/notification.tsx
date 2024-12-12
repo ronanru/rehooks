@@ -41,6 +41,26 @@ const baseNotifications = [
     icon: "🔧",
     color: "#212121",
   },
+  {
+    name: "useLocalStorage",
+    icon: "🔧",
+    color: "#212121",
+  },
+  {
+    name: "useSessionStorage",
+    icon: "🔧",
+    color: "#212121",
+  },
+  {
+    name: "useToggle",
+    icon: "🔧",
+    color: "#212121",
+  },
+  {
+    name: "useWindowSize",
+    icon: "🔧",
+    color: "#212121",
+  },
 ];
 
 const Notification = ({ name, icon, color }: Item) => {
@@ -72,7 +92,7 @@ const Notification = ({ name, icon, color }: Item) => {
   );
 };
 
-export function List({
+export function Notifications({
   className,
   visibleItems = 3,
   rotationInterval = 3000,

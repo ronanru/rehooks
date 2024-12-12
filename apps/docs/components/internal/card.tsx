@@ -6,7 +6,7 @@ import {
   CardContent,
 } from "@/components/ui";
 import { Beam } from "@/components/internal/demo";
-import { List } from "@/components/internal/list";
+import { Notifications } from "@/components/internal/notification";
 import { cn } from "utils";
 
 interface Card {
@@ -94,8 +94,7 @@ const cards: Card[] = [
     name: "TypeScript",
     description:
       "Written in TypeScript, Rehooks offers comprehensive type safety and autocompletion, making development seamless and error-resistant.",
-    content: <List />,
-
+    content: <Notifications />,
     class: "max-w-md",
   },
   {
