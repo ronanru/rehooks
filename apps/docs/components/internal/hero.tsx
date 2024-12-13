@@ -1,12 +1,26 @@
 "use client";
 
-import { Badge } from "@/components/internal/badge";
+import { useClipboard, useKeyPress } from "@/hooks";
+import { Badge } from "@/components/internal";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui";
-import { useClipboard } from "@/hooks";
+import { useEffect } from "react";
 import Link from "next/link";
 
 export function Hero() {
+  const router = useRouter();
   const { copy, isCopied } = useClipboard();
+  const copyKeyPressed = useKeyPress({ key: "c", meta: true });
+  const documentPressed = useKeyPress({ key: "d", meta: true });
+
+  const handleCopy = () => {
+    copy("npx rehooks-cli@latest init");
+  };
+
+  useEffect(() => {
+    copyKeyPressed ? handleCopy() : null;
+    documentPressed ? router.push("/docs") : null;
+  }, [copy]);
   return (
     <>
       <div className="mb-8">
@@ -35,14 +49,24 @@ export function Hero() {
       <div className="mt-5 flex flex-row flex-wrap justify-center gap-2">
         <Button
           size="circular"
-          onClick={() => copy("npx rehooks-cli@latest init")}
+          onClick={handleCopy}
           className="cursor-copy font-mono"
         >
-          {isCopied ? "Copied to Clipboard!" : "$ npx rehooks-cli@latest"}
+          {isCopied ? null : (
+            <kbd className="pointer-events-none mr-2 inline-flex h-5 select-none items-center gap-1 rounded bg-neutral-100 px-1.5 font-mono text-neutral-900 dark:bg-green-300 dark:text-green-900">
+              <span className="text-xl">⌘</span>
+              <span>C</span>
+            </kbd>
+          )}
+          {isCopied ? "Copied to Clipboard!" : "npx rehooks-cli@latest"}
         </Button>
         <Link href="/docs" className="outline-none ring-0">
           <Button size="circular" variant="secondary" className="font-mono">
-            Docs
+            Documentation
+            <kbd className="pointer-events-none ml-2 inline-flex h-5 select-none items-center gap-1 rounded bg-neutral-200 px-1.5 font-mono text-neutral-900 dark:bg-neutral-700 dark:text-neutral-100">
+              <span className="text-xl">⌘</span>
+              <span>D</span>
+            </kbd>
           </Button>
         </Link>
       </div>
