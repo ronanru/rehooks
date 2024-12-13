@@ -108,12 +108,12 @@ export function Notifications({
       const newNotifications =
         endIndex > baseNotifications.length
           ? [
-            ...baseNotifications.slice(startIndex),
-            ...baseNotifications.slice(
-              0,
-              endIndex % baseNotifications.length,
-            ),
-          ]
+              ...baseNotifications.slice(startIndex),
+              ...baseNotifications.slice(
+                0,
+                endIndex % baseNotifications.length,
+              ),
+            ]
           : baseNotifications.slice(startIndex, endIndex);
 
       setDisplayedNotifications(newNotifications);
