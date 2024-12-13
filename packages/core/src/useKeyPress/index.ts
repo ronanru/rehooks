@@ -5,6 +5,7 @@ interface KeyConfig {
   ctrl?: boolean;
   alt?: boolean;
   shift?: boolean;
+  meta?: boolean;
 }
 
 const description = "Custom hook to detect if a specified key is pressed.";
@@ -33,29 +34,31 @@ const description = "Custom hook to detect if a specified key is pressed.";
 
 export function useKeyPress(config: KeyConfig): boolean {
   const [keyPressed, setKeyPressed] = useState(false);
-  const { key: targetKey, ctrl, alt, shift } = config;
+  const { key: targetKey, ctrl, alt, shift, meta } = config;
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    const { key, ctrlKey, altKey, shiftKey } = e;
+    const { key, ctrlKey, altKey, shiftKey, metaKey } = e;
 
     if (
       (!ctrl && !alt && !shift && key === targetKey) ||
       (ctrl && key === targetKey && ctrlKey === ctrl) ||
       (alt && key === targetKey && altKey === alt) ||
-      (shift && key === targetKey && shiftKey === shift)
+      (shift && key === targetKey && shiftKey === shift) ||
+      (meta && key === targetKey && metaKey === meta)
     ) {
       setKeyPressed(true);
     }
   };
 
   const handleKeyUp = (e: KeyboardEvent) => {
-    const { key, ctrlKey, altKey, shiftKey } = e;
+    const { key, ctrlKey, altKey, shiftKey, metaKey } = e;
 
     if (
       (!ctrl && !alt && !shift && key === targetKey) ||
       (ctrl && key === targetKey && ctrlKey === ctrl) ||
       (alt && key === targetKey && altKey === alt) ||
-      (shift && key === targetKey && shiftKey === shift)
+      (shift && key === targetKey && shiftKey === shift) ||
+      (meta && key === targetKey && metaKey === meta)
     ) {
       setKeyPressed(false);
     }
