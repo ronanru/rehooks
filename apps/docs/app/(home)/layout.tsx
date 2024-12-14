@@ -1,8 +1,7 @@
 import { HomeLayout } from "fumadocs-ui/home-layout";
 import { DotPattern } from "@/components/internal";
-import { baseOptions } from "../layout.config";
+import { baseOptions } from "@/app/layout.config";
 import type { ReactNode } from "react";
-import { cn } from "utils";
 
 export default function Layout({
   children,
@@ -18,9 +17,7 @@ export default function Layout({
         cx={1}
         cy={1}
         cr={1}
-        className={cn(
-          "p-2 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]",
-        )}
+        className="p-2 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]"
       />
     </HomeLayout>
   );

@@ -21,8 +21,8 @@ importers:
         specifier: ^2.3.3
         version: 2.3.3
       typescript:
-        specifier: 5.5.4
-        version: 5.5.4
+        specifier: 5.6.3
+        version: 5.6.3
 
   apps/docs:
     dependencies:
@@ -51,6 +51,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.1.0
         version: 1.1.0(@types/react@18.3.11)(react@18.3.1)
+      '@rehooks/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@types/mdx':
         specifier: ^2.0.13
         version: 2.0.13
@@ -87,9 +90,6 @@ importers:
       typescript:
         specifier: ^5.5.4
         version: 5.6.3
-      utils:
-        specifier: workspace:*
-        version: link:../../packages/utils
 
   packages/cli:
     dependencies:
@@ -152,15 +152,15 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1
     devDependencies:
+      '@rehooks/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/react':
         specifier: ^18.3.11
         version: 18.3.11
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.0
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
       tsup:
         specifier: ^8.3.0
         version: 8.3.0(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
@@ -179,15 +179,15 @@ importers:
         specifier: ^14.2.8
         version: 14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
+      '@rehooks/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
       tailwind-merge:
         specifier: ^2.5.3
         version: 2.5.3
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
       tsup:
         specifier: ^8.3.0
         version: 8.3.0(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
@@ -2780,11 +2780,6 @@ packages:
   type-fest@4.26.1:
     resolution: {integrity: sha512-yOGpmOAL7CkKe/91I5O3gPICmJNLJ1G4zFYVAsRHg7M64biSnPtRj0WNQt++bRkjYOqjWXrhnUw1utzmVErAdg==}
     engines: {node: '>=16'}
-
-  typescript@5.5.4:
-    resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
-    engines: {node: '>=14.17'}
-    hasBin: true
 
   typescript@5.6.3:
     resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
@@ -5711,8 +5706,6 @@ snapshots:
   type-fest@0.21.3: {}
 
   type-fest@4.26.1: {}
-
-  typescript@5.5.4: {}
 
   typescript@5.6.3: {}
 

@@ -2,7 +2,7 @@
 
 import { AnimatedBeam } from "@/components/internal/beam";
 import React, { forwardRef, useRef } from "react";
-import { cn } from "utils";
+import { cn } from "@rehooks/utils";
 
 const Circle = forwardRef<
   HTMLDivElement,

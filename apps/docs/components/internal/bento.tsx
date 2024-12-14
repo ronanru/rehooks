@@ -1,5 +1,5 @@
+import { cn } from "@rehooks/utils";
 import { ReactNode } from "react";
-import { cn } from "utils";
 
 function BentoGrid({
   children,

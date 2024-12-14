@@ -3,8 +3,8 @@ import { Analytics } from "@vercel/analytics/react";
 import { JetBrains_Mono } from "next/font/google";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
+import { meta } from "@rehooks/utils";
 import type { Metadata } from "next";
-import { meta } from "utils";
 import "./global.css";
 
 export const metadata = {

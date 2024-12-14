@@ -5,7 +5,7 @@ import {
   BentoGrid,
   Beam,
 } from "@/components/internal";
-import { cn } from "utils";
+import { cn } from "@rehooks/utils";
 
 const hooks = [
   {

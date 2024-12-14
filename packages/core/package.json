@@ -41,7 +41,7 @@
   "devDependencies": {
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
-    "tsconfig": "workspace:*",
+    "@rehooks/tsconfig": "workspace:*",
     "tsup": "^8.3.0",
     "typescript": "^5.6.3",
     "ua-parser-js": "^1.0.39"
