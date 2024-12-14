@@ -1,7 +1,4 @@
 import { createPreset } from "fumadocs-ui/tailwind-plugin";
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -51,7 +48,7 @@ export default {
         shine: "shine var(--duration) infinite linear",
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
-        gradient: "gradient 8s linear infinite",
+        gradient: "gradient 5s linear infinite",
       },
     },
   },
