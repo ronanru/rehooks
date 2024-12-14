@@ -28,11 +28,10 @@ function Component() {
   );
 
   return (
-    <div className="mx-auto max-w-md p-4">
-      <div className="mb-4">
+    <div>
+      <div>
         <input
           type="text"
-          className="w-full rounded border p-2"
           placeholder="Search..."
           value={searchTerm}
           onChange={(e) => {
@@ -40,16 +39,14 @@ function Component() {
             handleSearch(e.target.value);
           }}
         />
-        <div className="mt-1 text-sm text-gray-500">
+        <div>
           Try typing quickly - the search is throttled to once per second
         </div>
       </div>
 
-      <div className="space-y-2">
+      <div>
         {results.map((result, index) => (
-          <div key={index} className="rounded border p-2">
-            {result}
-          </div>
+          <div key={index}>{result}</div>
         ))}
       </div>
     </div>
