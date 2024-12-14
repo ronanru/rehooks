@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import { AnimatedList } from "@/components/ui";
-import { cn } from "utils";
+import { cn } from "@rehooks/utils";
 
 interface Item {
   name: string;

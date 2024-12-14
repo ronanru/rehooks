@@ -18,6 +18,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "rehooks-ts": "workspace:*",
     "@radix-ui/react-slot": "^1.1.0",
     "@types/mdx": "^2.0.13",
     "@types/node": "22.5.4",
@@ -30,6 +31,6 @@
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4",
-    "utils": "workspace:*"
+    "@rehooks/utils": "workspace:*"
   }
 }

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { Hook } from "utils";
+import type { Hook } from "@rehooks/utils";
 import path from "path";
 import fs from "fs";
 

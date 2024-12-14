@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
+import { cn } from "@rehooks/utils";
 import * as React from "react";
-import { cn } from "utils";
 
 type TColorProp = string | string[];
 

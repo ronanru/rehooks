@@ -1,5 +1,5 @@
+import { cn } from "@rehooks/utils";
 import { useId } from "react";
-import { cn } from "utils";
 
 interface DotPatternProps {
   width?: any;

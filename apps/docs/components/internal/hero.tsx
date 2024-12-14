@@ -1,6 +1,6 @@
 "use client";
 
-import { useClipboard, useKeyPress } from "@/hooks";
+import { useClipboard, useKeyPress } from "rehooks-ts";
 import { Badge } from "@/components/internal";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui";
