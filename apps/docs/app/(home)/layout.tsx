@@ -5,9 +5,9 @@ import type { ReactNode } from "react";
 
 export default function Layout({
   children,
-}: {
+}: Readonly<{
   children: ReactNode;
-}): React.ReactElement {
+}>): React.ReactElement {
   return (
     <HomeLayout {...baseOptions}>
       {children}
