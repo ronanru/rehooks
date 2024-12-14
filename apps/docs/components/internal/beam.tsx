@@ -1,7 +1,7 @@
 "use client";
 
 import { RefObject, useEffect, useId, useState } from "react";
-import { useDebounceCallback } from "@/hooks";
+import { useDebounceCallback } from "rehooks-ts";
 import { motion } from "framer-motion";
 import { cn } from "utils";
 
