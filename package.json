@@ -5,11 +5,12 @@
   "scripts": {
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\"",
-    "build": "turbo run build",
-    "dev": "turbo run dev",
     "check-types": "turbo run check-types",
+    "prepare": "husky install",
+    "build": "turbo run build",
+    "clean": "turbo run clean",
     "lint": "turbo run lint",
-    "prepare": "husky install"
+    "dev": "turbo run dev"
   },
   "keywords": [
     "rehooks",
