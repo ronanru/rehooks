@@ -40,7 +40,8 @@ const features = [
     name: "Variety of Hooks",
     description:
       "Rehooks provides a wide range of hooks for various use cases.",
-    className: "col-span-3 lg:col-span-1",
+    className:
+      "col-span-3 lg:col-span-1 rounded-t-2xl lg:rounded-tl-2xl lg:rounded-tr-none border-b-[0.5px] border-r-[0.5px] border-t-[1px] border-l-[1px]",
     background: (
       <Marquee
         pauseOnHover
@@ -73,7 +74,8 @@ const features = [
     name: "TypeScript",
     description:
       "Written in TypeScript, Rehooks offers comprehensive type safety and autocompletion.",
-    className: "col-span-3 lg:col-span-2",
+    className:
+      "col-span-3 lg:col-span-2 lg:rounded-tr-2xl border-b-[0.5px] border-r-[1px] border-t-[1px] border-l-[0.5px]",
     background: (
       <Notifications className="absolute top-4 h-[300px] w-full border-none px-12 transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
     ),
@@ -82,7 +84,8 @@ const features = [
     name: "Performance-Driven",
     description:
       "All hooks are meticulously crafted with SOLID principles, ensuring efficient, optimized, and robust performance.",
-    className: "col-span-3 lg:col-span-2",
+    className:
+      "col-span-3 lg:col-span-2 lg:rounded-bl-2xl border-b-[1px] border-r-[0.5px] border-t-[0.5px] border-l-[1px]",
     background: (
       <Beam className="pointer-events-none absolute h-[220px] border-none px-12 transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] lg:h-[240px]" />
     ),
@@ -91,7 +94,8 @@ const features = [
     name: "Open-Source",
     description:
       "Rehooks is open-source under the MIT license, fostering community collaboration and welcoming contributions.",
-    className: "col-span-3 lg:col-span-1",
+    className:
+      "col-span-3 lg:col-span-1 rounded-b-2xl lg:rounded-br-2xl lg:rounded-bl-none border-b-[1px] border-r-[1px] border-t-[0.5px] border-l-[0.5px]",
     background: (
       <div className="absolute top-16 w-full">
         <h1 className="animate-gradient select-none bg-[linear-gradient(to_right,theme(colors.sky.400),theme(colors.yellow.100),theme(colors.sky.400))] bg-[length:200%_auto] bg-clip-text text-center text-7xl font-extrabold text-transparent">

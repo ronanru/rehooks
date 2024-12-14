@@ -9,12 +9,7 @@ function BentoGrid({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "grid w-full auto-rows-[22rem] grid-cols-3 gap-4",
-        className,
-      )}
-    >
+    <div className={cn("grid w-full auto-rows-[22rem] grid-cols-3", className)}>
       {children}
     </div>
   );
@@ -35,14 +30,14 @@ function BentoCard({
     <div
       key={name}
       className={cn(
-        "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl border backdrop-blur-xl",
-        "border-neutral-200 bg-white/20",
+        "group relative col-span-3 flex flex-col justify-between overflow-hidden backdrop-blur-3xl",
+        "border-neutral-200 bg-white/10",
         "transform-gpu dark:border-neutral-800 dark:bg-neutral-900/20",
         className,
       )}
     >
       <div>{background}</div>
-      <div className="pointer-events-none z-10 flex transform-gpu flex-col p-6">
+      <div className="pointer-events-none z-10 flex transform-gpu flex-col px-4 py-4">
         <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
           {name}
         </h3>
