@@ -51,6 +51,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.1.0
         version: 1.1.0(@types/react@18.3.11)(react@18.3.1)
+      '@rehooks/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/config-tailwind
       '@rehooks/utils':
         specifier: workspace:*
         version: link:../../packages/utils
