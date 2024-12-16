@@ -1,16 +1,17 @@
 import { createPreset } from "fumadocs-ui/tailwind-plugin";
-import sharedConfig from "@rehooks/tailwind-config";
 import type { Config } from "tailwindcss";
 
-const config: Pick<Config, "content" | "presets"> = {
+const config: Pick<Config, "content" | "presets" | "plugins"> = {
   content: [
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./content/**/*.{md,mdx}",
     "./mdx-components.{ts,tsx}",
     "./node_modules/fumadocs-ui/dist/**/*.js",
+    "../../packages/ui/src/**/*.{ts,tsx}",
   ],
-  presets: [sharedConfig, createPreset()],
+  presets: [createPreset()],
+  plugins: [require("tailwindcss-animate")],
 };
 
 export default config;

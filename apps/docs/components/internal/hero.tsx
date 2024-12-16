@@ -1,9 +1,8 @@
 "use client";
 
 import { useClipboard, useKeyPress } from "rehooks-ts";
-import { Badge } from "@/components/internal";
+import { Button, Badge } from "@rehooks/ui/components";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui";
 import { useEffect } from "react";
 import Link from "next/link";
 
@@ -48,7 +47,7 @@ export function Hero() {
       </p>
       <div className="mt-5 flex flex-row flex-wrap justify-center gap-2">
         <Button
-          size="circular"
+          variant="secondary"
           onClick={handleCopy}
           className="cursor-copy font-mono"
         >
@@ -61,7 +60,7 @@ export function Hero() {
           {isCopied ? "Copied to Clipboard!" : "npx rehooks-cli@latest"}
         </Button>
         <Link href="/docs" className="outline-none ring-0">
-          <Button size="circular" variant="secondary" className="font-mono">
+          <Button variant="secondary" className="font-mono">
             Documentation
             <kbd className="pointer-events-none ml-2 inline-flex h-5 select-none items-center gap-1 rounded bg-neutral-200 px-1.5 font-mono text-neutral-900 dark:bg-neutral-700 dark:text-neutral-100">
               <span className="text-xl">⌘</span>

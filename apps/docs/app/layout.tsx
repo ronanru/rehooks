@@ -4,7 +4,7 @@ import { inter, jetbrains } from "./fonts";
 import type { ReactNode } from "react";
 import { meta } from "@rehooks/utils";
 import type { Metadata } from "next";
-import "@/styles/global.css";
+import "@rehooks/ui/styles";
 
 export const metadata = {
   ...meta,

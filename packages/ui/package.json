@@ -8,27 +8,32 @@
     "dist"
   ],
   "exports": {
-    "./styles.css": "./dist/index.css",
-    "./card": "./src/card.tsx"
+    "./components": "./src/components/index.ts",
+    "./styles": "./src/styles/index.ts"
   },
-  "license": "MIT",
   "scripts": {
-    "build": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
+    "build": "tailwindcss -i ./src/styles/globals.css -o ./dist/index.css",
     "lint": "eslint src/",
-    "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
+    "dev": "tailwindcss -i ./src/styles/globals.css -o ./dist/index.css --watch",
     "type-check": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": "^18.2.0"
   },
   "devDependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
     "@rehooks/eslint-config": "workspace:*",
     "@rehooks/tailwind-config": "workspace:*",
     "@rehooks/tsconfig": "workspace:*",
+    "@rehooks/utils": "workspace:*",
+    "@types/node": "22.5.4",
     "@types/react": "^18.2.61",
     "autoprefixer": "^10.4.18",
+    "class-variance-authority": "^0.7.0",
+    "lucide-react": "^0.453.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "5.5.4"
   }
 }
