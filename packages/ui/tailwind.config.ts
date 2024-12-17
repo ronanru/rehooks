@@ -1,14 +1,29 @@
+import { createPreset } from "fumadocs-ui/tailwind-plugin";
 import tailwindcssAnimate from "tailwindcss-animate";
 import sharedConfig from "@rehooks/tailwind-config";
 import type { Config } from "tailwindcss";
 
 const config: Pick<
   Config,
-  "prefix" | "presets" | "content" | "plugins" | "theme" | "darkMode"
+  "prefix" | "presets" | "content" | "plugins" | "theme"
 > = {
-  // darkMode: ["class"],
-  content: ["./src/components/**/*.{ts,tsx}"],
+  content: [
+    "./src/components/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./content/**/*.{md,mdx}",
+    "./mdx-components.{ts,tsx}",
+    "./node_modules/fumadocs-ui/dist/**/*.js",
+    "../../packages/ui/src/**/*.{ts,tsx}",
+  ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -46,11 +61,19 @@ const config: Pick<
         },
       },
       borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
         "background-shine": {
           from: {
             backgroundPosition: "0 0",
@@ -58,6 +81,9 @@ const config: Pick<
           to: {
             backgroundPosition: "-200% 0",
           },
+        },
+        gradient: {
+          to: { "background-position": "200% center" },
         },
         shine: {
           "0%": {
@@ -70,19 +96,18 @@ const config: Pick<
             "background-position": "0% 0%",
           },
         },
-        gradient: {
-          to: { "background-position": "200% center" },
-        },
       },
       animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
         "background-shine": "background-shine 1.5s linear infinite",
         shine: "shine var(--duration) infinite linear",
         gradient: "gradient 5s linear infinite",
       },
     },
   },
+  presets: [sharedConfig, createPreset()],
   plugins: [tailwindcssAnimate],
-  presets: [sharedConfig],
 };
 
 export default config;

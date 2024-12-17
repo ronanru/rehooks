@@ -1,3 +1,3 @@
 export * from "./button";
-export * from "./dot";
-export * from "./badge";
+export * from "./grid";
+export * from "./shine";
