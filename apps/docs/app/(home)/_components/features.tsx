@@ -6,7 +6,6 @@ import {
   CardContent,
   CodeBlock,
 } from "@rehooks/ui/components";
-
 import { cards, type Card as CardType } from "@rehooks/utils";
 
 export function Features() {
@@ -15,10 +14,13 @@ export function Features() {
       <h2 className="text-muted-foreground/50 select-none text-xl font-medium">
         FEATURES
       </h2>
-      <h3 className="text-foreground mt-1.5 max-w-lg text-wrap text-center text-xl italic">
+      <h3 className="text-foreground my-1 text-wrap text-center text-3xl font-semibold">
+        Crafted for Efficiency and Performance
+      </h3>
+      <h4 className="text-muted-foreground mt-1.5 max-w-lg text-wrap text-center text-xl italic">
         I've created Rehooks to streamline the process of creating custom hooks,
         and get rid of heavy packages.
-      </h3>
+      </h4>
       <Cards />
     </>
   );
