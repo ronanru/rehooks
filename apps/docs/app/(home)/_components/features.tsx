@@ -6,6 +6,7 @@ import {
   CardContent,
   CodeBlock,
 } from "@rehooks/ui/components";
+import { cards, type Card as CardType } from "@rehooks/utils";
 
 export function Features() {
   return (
@@ -22,63 +23,21 @@ export function Features() {
   );
 }
 
-const cards = [
-  {
-    label: "Rehooks",
-    title: "TypeScript",
-    description:
-      "Written in TypeScript, Rehooks offers comprehensive type safety and autocompletion.",
-  },
-  {
-    label: "Rehooks",
-    title: "Performant",
-    description:
-      "All hooks are meticulously crafted with SOLID principles, ensuring efficient, optimized, and robust performance.",
-  },
-  {
-    label: "Rehooks",
-    title: "Performant",
-    description:
-      "Rehooks is designed to be performant, with optimized code and minimal overhead.",
-  },
-  {
-    label: "Rehooks",
-    title: "Open Source",
-    code: `const rehooks = {
-  openSource: true,
-  license: "MIT"
-  // Expanding OSS Community
-}`,
-  },
-];
-
 function Cards() {
   return (
     <div className="mt-8 grid max-w-6xl grid-cols-1 gap-4 lg:grid-cols-4">
-      {cards.map(
-        ({
-          label,
-          title,
-          description,
-          code,
-        }: {
-          label: string;
-          title: string;
-          description?: string;
-          code?: string;
-        }) => (
-          <Card key={title} className="max-w-md">
-            <CardHeader>
-              <CardLabel>{label}</CardLabel>
-              <CardTitle>{title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {code && <CodeBlock>{code}</CodeBlock>}
-              {description && <p>{description}</p>}
-            </CardContent>
-          </Card>
-        ),
-      )}
+      {cards.map((card: CardType) => (
+        <Card key={card.title} className="max-w-md">
+          <CardHeader>
+            <CardLabel>{card.label}</CardLabel>
+            <CardTitle>{card.title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {card.code && <CodeBlock>{card.code}</CodeBlock>}
+            {card.content && <p>{card.content}</p>}
+          </CardContent>
+        </Card>
+      ))}
     </div>
   );
 }

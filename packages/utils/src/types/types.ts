@@ -4,3 +4,10 @@ export type Hook = Readonly<{
   description: string;
   content: string;
 }>;
+
+export type Card = {
+  label: string;
+  title: string;
+  content?: string;
+  code?: string;
+};
