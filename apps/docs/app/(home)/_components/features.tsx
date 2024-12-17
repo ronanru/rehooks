@@ -15,7 +15,7 @@ export function Features() {
         FEATURES
       </h2>
       <h3 className="text-foreground my-1 text-wrap text-center text-3xl font-semibold">
-        Crafted for Efficiency and Performance
+        Crafted for Efficiency
       </h3>
       <h4 className="text-muted-foreground mt-1.5 max-w-lg text-wrap text-center text-xl italic">
         I've created Rehooks to streamline the process of creating custom hooks,
