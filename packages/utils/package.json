@@ -20,14 +20,9 @@
   ],
   "devDependencies": {
     "@rehooks/tsconfig": "workspace:*",
-    "@rehooks/ui": "workspace:*",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.5.3",
-    "typescript": "^5.6.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6"
+    "typescript": "^5.6.3"
   },
   "dependencies": {
     "next": "^14.2.8"

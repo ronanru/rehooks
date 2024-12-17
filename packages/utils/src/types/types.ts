@@ -8,7 +8,6 @@ export type Hook = Readonly<{
 export type Card = {
   label: string;
   title: string;
-  content?: React.ReactNode | string;
+  content?: string;
   code?: string;
-  className?: string;
 };
