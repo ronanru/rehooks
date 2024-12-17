@@ -4,7 +4,6 @@ import { GithubIcon, ArrowRight } from "@rehooks/ui/icons";
 import { Button, Shine } from "@rehooks/ui/components";
 import { GITHUB_LINK } from "@rehooks/utils";
 import { useClipboard } from "rehooks-ts";
-import { cn } from "@rehooks/utils";
 import Link from "next/link";
 
 export function Hero() {
@@ -13,6 +12,7 @@ export function Hero() {
   const handleCopy = () => {
     copy("npx rehooks-cli@latest init");
   };
+
   return (
     <>
       <h1 className="text-balance text-center text-4xl font-black lg:text-5xl">
@@ -27,25 +27,31 @@ export function Hero() {
         and stay with the SOLID principles.
       </p>
       <div className="mt-5 grid grid-cols-2 gap-y-2.5">
-        <Link href="/docs">
+        <Link href="/docs" className="outline-none ring-0">
           <Button className="rounded-full">
             <ArrowRight className="size-6" />
             Get Started
           </Button>
         </Link>
-        <a href={GITHUB_LINK} target="_blank" rel="noopener noreferrer">
-          <Button variant="outline" className="-ml-1.5 rounded-full">
+        <a
+          href={GITHUB_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group outline-none ring-0"
+        >
+          <Button variant="outline" className="group -ml-1.5 rounded-full">
             Star on Github
-            <GithubIcon className="size-6" />
+            <GithubIcon className="size-6 transform transition duration-200 group-hover:rotate-[360deg]" />
           </Button>
         </a>
         <Shine
           borderRadius={9999}
+          borderWidth={1.5}
           className="col-span-2"
           color={["#4f46e5", "#6d28d9", "#8b5cf6"]}
         >
           <Button
-            className="w-full rounded-full font-mono"
+            className="w-full rounded-full border-[1.5px] font-mono"
             onClick={handleCopy}
             variant="outline"
           >

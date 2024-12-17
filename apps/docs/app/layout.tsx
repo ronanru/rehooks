@@ -20,7 +20,13 @@ export default function Layout({
       suppressHydrationWarning
     >
       <body className="dark:selection:text-fd-foreground selection:bg-neutral-800 selection:text-white dark:selection:bg-neutral-800">
-        <RootProvider>{children}</RootProvider>
+        <RootProvider
+          theme={{
+            enabled: false,
+          }}
+        >
+          {children}
+        </RootProvider>
         <Analytics />
       </body>
     </html>
