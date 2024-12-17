@@ -55,7 +55,9 @@ export function Hero() {
             onClick={handleCopy}
             variant="outline"
           >
-            {isCopied ? "Copied to Clipboard!" : "$ npx rehooks-cli@latest"}
+            {isCopied
+              ? "Copied to Clipboard!"
+              : "$ npx rehooks-cli@latest init"}
           </Button>
         </Shine>
       </div>
