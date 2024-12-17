@@ -27,9 +27,9 @@ export function Hero() {
         and stay with the SOLID principles.
       </p>
       <div className="mt-5 grid grid-cols-2 gap-y-2.5">
-        <Link href="/docs" className="outline-none ring-0">
-          <Button className="rounded-full">
-            <ArrowRight className="size-6" />
+        <Link href="/docs" className="group outline-none ring-0">
+          <Button className="group rounded-full">
+            <ArrowRight className="size-6 transform transition duration-200 group-hover:translate-x-0.5" />
             Get Started
           </Button>
         </Link>
