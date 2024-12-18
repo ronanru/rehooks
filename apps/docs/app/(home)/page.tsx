@@ -1,7 +1,7 @@
 import { Features } from "@/app/(home)/_components/features";
 import { Scroll } from "@/app/(home)/_components/scroll";
-import { Hero } from "@/app/(home)/_components/hero";
 import { Stack } from "@/app/(home)/_components/stack";
+import { Hero } from "@/app/(home)/_components/hero";
 
 export default function HomePage() {
   return (
