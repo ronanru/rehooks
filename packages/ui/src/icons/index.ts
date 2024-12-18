@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
-export { ArrowRight };
+import { ArrowRight, ArrowUp } from "lucide-react";
+export { ArrowRight, ArrowUp };
 export * from "./github";
 export * from "./npm";

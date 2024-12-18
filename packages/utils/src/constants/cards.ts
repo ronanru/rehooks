@@ -8,6 +8,8 @@ export const cards: Card[] = [
   openSource: true,
   license: "MIT",
   issues: "open",
+  commits: "+500",
+  version: "v4.0.0",
 }`,
   },
   {

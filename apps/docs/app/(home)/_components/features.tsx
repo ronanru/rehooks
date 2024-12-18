@@ -28,7 +28,7 @@ export function Features() {
 
 function Cards() {
   return (
-    <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-4">
+    <div className="mt-8 grid max-w-7xl grid-cols-1 gap-4 lg:grid-cols-4">
       {cards.map(({ title, label, content, code, className }: CardType) => (
         <Card key={title} className={cn("max-w-md", className)}>
           <CardHeader>
