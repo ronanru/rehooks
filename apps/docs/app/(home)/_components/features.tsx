@@ -8,7 +8,7 @@ import {
   CardContent,
   CodeBlock,
 } from "@rehooks/ui/components";
-import { cards, cn, type Card as CardType } from "@rehooks/utils";
+import { cards, type Card as CardType } from "@rehooks/utils";
 
 export function Features() {
   return (
@@ -19,7 +19,7 @@ export function Features() {
       <h3 className="text-foreground my-1 text-wrap text-center text-3xl font-semibold">
         Crafted for Efficiency
       </h3>
-      <h4 className="text-muted-foreground mt-1.5 max-w-lg text-wrap text-center text-xl italic">
+      <h4 className="text-muted-foreground mt-1.5 max-w-lg text-pretty text-center text-xl italic">
         I've created Rehooks to streamline the process of creating custom hooks,
         and get rid of heavy packages.
       </h4>
@@ -32,12 +32,12 @@ function Cards() {
   return (
     <div className="mt-8 grid max-w-7xl grid-cols-1 gap-4 lg:grid-cols-4">
       {cards.map(({ title, label, content, code, className }: CardType) => (
-        <Card key={title} className={cn("max-w-md", className)}>
+        <Card key={title} className="max-w-md">
           <CardHeader>
             <CardLabel>{label}</CardLabel>
             <CardTitle>{title}</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className={className}>
             {code && <CodeBlock>{code}</CodeBlock>}
             {content && <p>{content}</p>}
           </CardContent>

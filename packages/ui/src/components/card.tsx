@@ -65,10 +65,7 @@ const CardContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      "relative text-wrap rounded-md p-4 font-mono text-sm",
-      className,
-    )}
+    className={cn("relative text-pretty rounded-md p-4 text-sm", className)}
     {...props}
   />
 ));
@@ -81,7 +78,6 @@ type CodeBlockProps = {
   string?: string;
   keyword?: string;
   identifier?: string;
-  isDark?: "dark" | "light" | "system";
 };
 
 const CodeBlock = ({
@@ -91,7 +87,6 @@ const CodeBlock = ({
   string = "#FF4666",
   keyword = "#FF4666",
   identifier = "#000",
-  isDark,
   ...props
 }: CodeBlockProps & ComponentPropsWithoutRef<"code">) => {
   const codeHTML = highlight(children as string);
