@@ -1,8 +1,8 @@
 import { createMDXSource } from "fumadocs-mdx";
 import { loader } from "fumadocs-core/source";
+import { icons } from "@rehooks/ui/icons";
 import { docs, meta } from "@/.source";
 import { createElement } from "react";
-import { icons } from "lucide-react";
 
 export const source = loader({
   baseUrl: "/docs",

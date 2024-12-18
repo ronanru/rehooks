@@ -14,7 +14,6 @@
     "fumadocs-mdx": "10.0.2",
     "fumadocs-ui": "13.4.10",
     "next": "^14.2.8",
-    "next-themes": "^0.4.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -27,7 +26,6 @@
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
-    "lucide-react": "^0.453.0",
     "postcss": "^8.4.45",
     "rehooks-ts": "workspace:*",
     "tailwindcss": "^3.4.1",
