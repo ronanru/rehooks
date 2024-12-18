@@ -11,7 +11,8 @@
     "./components": "./src/components/index.ts",
     "./styles": "./src/styles/index.ts",
     "./tailwind.config": "./tailwind.config.ts",
-    "./icons": "./src/icons/index.ts"
+    "./icons": "./src/icons/index.ts",
+    "./icons/stack": "./src/icons/stack/index.ts"
   },
   "scripts": {
     "build": "tailwindcss -i ./src/styles/globals.css -o ./dist/index.css",

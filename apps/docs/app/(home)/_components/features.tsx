@@ -11,8 +11,8 @@ import { cards, cn, type Card as CardType } from "@rehooks/utils";
 export function Features() {
   return (
     <>
-      <h2 className="text-muted-foreground/50 select-none text-xl font-medium">
-        FEATURES
+      <h2 className="text-muted-foreground/50 select-none text-xl font-medium uppercase">
+        Features
       </h2>
       <h3 className="text-foreground my-1 text-wrap text-center text-3xl font-semibold">
         Crafted for Efficiency

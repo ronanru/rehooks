@@ -1,0 +1,31 @@
+import { React, TypeScript, Turborepo, Rust } from "@rehooks/ui/icons/stack";
+
+export function Stack() {
+  return (
+    <>
+      <h2 className="text-muted-foreground/50 select-none text-xl font-medium uppercase">
+        Stack
+      </h2>
+      <h3 className="text-foreground my-1 text-wrap text-center text-3xl font-semibold">
+        Powered by Innovation
+      </h3>
+      <h4 className="text-muted-foreground mt-1.5 max-w-lg text-wrap text-center text-xl italic">
+        Rehooks is built with TypeScript to power the best developer experience
+        and type-safety.
+      </h4>
+      <div className="mt-8 flex flex-row items-center justify-center gap-x-6 lg:gap-x-8">
+        <Stacks />
+      </div>
+    </>
+  );
+}
+
+function Stacks() {
+  return (
+    <>
+      <TypeScript className="size-[50px] transform opacity-50 transition duration-75 hover:opacity-100 lg:size-[65px]" />
+      <Turborepo className="size-[50px] transform opacity-50 transition duration-75 hover:opacity-100 lg:size-[65px]" />
+      <Rust className="size-[50px] transform opacity-50 transition duration-75 hover:opacity-100 lg:size-[65px]" />
+    </>
+  );
+}
