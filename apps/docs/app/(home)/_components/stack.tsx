@@ -1,4 +1,6 @@
-import { React, TypeScript, Turborepo, Rust } from "@rehooks/ui/icons/stack";
+"use client";
+
+import { React, Turborepo, Rust, Next } from "@rehooks/ui/icons/stack";
 
 export function Stack() {
   return (
@@ -23,9 +25,9 @@ export function Stack() {
 function Stacks() {
   return (
     <>
-      <TypeScript className="size-[50px] transform opacity-50 transition duration-75 hover:opacity-100 lg:size-[65px]" />
-      <Turborepo className="size-[50px] transform opacity-50 transition duration-75 hover:opacity-100 lg:size-[65px]" />
-      <Rust className="size-[50px] transform opacity-50 transition duration-75 hover:opacity-100 lg:size-[65px]" />
+      <Rust className="size-[65px] transform transition duration-75 lg:size-[65px]" />
+      <Next className="size-[65px] transform transition duration-75 lg:size-[65px]" />
+      <Turborepo className="size-[65px] transform transition duration-75 lg:size-[65px]" />
     </>
   );
 }

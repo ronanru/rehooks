@@ -1,12 +1,6 @@
 import type { SVGProps } from "react";
 
-export function React({
-  className,
-  ...props
-}: {
-  className?: string;
-  props?: SVGProps<SVGSVGElement>;
-}) {
+export function React({ className, ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 256 228"

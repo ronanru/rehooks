@@ -74,6 +74,16 @@ const CardContent = React.forwardRef<
 ));
 CardContent.displayName = "CardContent";
 
+type CodeBlockProps = {
+  children: string;
+  cls?: string;
+  sign?: string;
+  string?: string;
+  keyword?: string;
+  identifier?: string;
+  isDark?: "dark" | "light" | "system";
+};
+
 const CodeBlock = ({
   children,
   cls = "#4686FF",
@@ -81,15 +91,9 @@ const CodeBlock = ({
   string = "#FF4666",
   keyword = "#FF4666",
   identifier = "#000",
+  isDark,
   ...props
-}: {
-  children: string;
-  cls?: string;
-  sign?: string;
-  string?: string;
-  keyword?: string;
-  identifier?: string;
-} & ComponentPropsWithoutRef<"code">) => {
+}: CodeBlockProps & ComponentPropsWithoutRef<"code">) => {
   const codeHTML = highlight(children as string);
   return (
     <pre>
@@ -100,10 +104,9 @@ const CodeBlock = ({
             "--sh-sign": sign,
             "--sh-string": string,
             "--sh-keyword": keyword,
-            "--sh-identifier": identifier,
           } as React.CSSProperties
         }
-        className="font-mono text-sm"
+        className={cn("font-mono text-sm")}
         dangerouslySetInnerHTML={{ __html: codeHTML }}
         {...props}
       />

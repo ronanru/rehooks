@@ -17,7 +17,7 @@ export default function Layout({
         x={-1}
         y={-1}
         strokeDasharray={"4 2"}
-        className="-z-50 [mask-image:radial-gradient(350px_circle_at_center,white,#ffffff50)]"
+        className="-z-50 [mask-image:radial-gradient(350px_circle_at_center,white,#ffffff50)] dark:[mask-image:radial-gradient(350px_circle_at_center,white,#ffffff20)]"
       />
     </HomeLayout>
   );
