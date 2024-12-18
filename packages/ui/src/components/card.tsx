@@ -73,11 +73,10 @@ CardContent.displayName = "CardContent";
 
 const CodeBlock = ({
   children,
-  cls = "#7aa2f7",
+  cls = "#4686FF",
   sign = "#666666",
   string = "#FF4666",
   keyword = "#FF4666",
-  comment = "#8891A3",
   identifier = "#000",
   ...props
 }: {
@@ -86,8 +85,6 @@ const CodeBlock = ({
   sign?: string;
   string?: string;
   keyword?: string;
-  comment?: string;
-  entity?: string;
   identifier?: string;
 } & ComponentPropsWithoutRef<"code">) => {
   const codeHTML = highlight(children as string);

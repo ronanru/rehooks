@@ -10,4 +10,5 @@ export type Card = {
   title: string;
   content?: string;
   code?: string;
+  className?: string;
 };

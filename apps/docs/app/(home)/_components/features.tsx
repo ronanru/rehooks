@@ -6,7 +6,7 @@ import {
   CardContent,
   CodeBlock,
 } from "@rehooks/ui/components";
-import { cards, type Card as CardType } from "@rehooks/utils";
+import { cards, cn, type Card as CardType } from "@rehooks/utils";
 
 export function Features() {
   return (
@@ -28,16 +28,16 @@ export function Features() {
 
 function Cards() {
   return (
-    <div className="mt-8 grid max-w-6xl grid-cols-1 gap-4 lg:grid-cols-4">
-      {cards.map((card: CardType) => (
-        <Card key={card.title} className="max-w-md">
+    <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-4">
+      {cards.map(({ title, label, content, code, className }: CardType) => (
+        <Card key={title} className={cn("max-w-md", className)}>
           <CardHeader>
-            <CardLabel>{card.label}</CardLabel>
-            <CardTitle>{card.title}</CardTitle>
+            <CardLabel>{label}</CardLabel>
+            <CardTitle>{title}</CardTitle>
           </CardHeader>
           <CardContent>
-            {card.code && <CodeBlock>{card.code}</CodeBlock>}
-            {card.content && <p>{card.content}</p>}
+            {code && <CodeBlock>{code}</CodeBlock>}
+            {content && <p>{content}</p>}
           </CardContent>
         </Card>
       ))}
