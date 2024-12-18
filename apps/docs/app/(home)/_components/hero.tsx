@@ -4,6 +4,7 @@ import { GithubIcon, ArrowRight } from "@rehooks/ui/icons";
 import { Button, Shine } from "@rehooks/ui/components";
 import { GITHUB_LINK } from "@rehooks/utils";
 import { useClipboard } from "rehooks-ts";
+import { useEffect } from "react";
 import Link from "next/link";
 
 export function Hero() {
@@ -12,6 +13,13 @@ export function Hero() {
   const handleCopy = () => {
     copy("npx rehooks-cli@latest init");
   };
+
+  useEffect(() => {
+    const toggleTheme = document.querySelector(
+      `button[aria-label="Toggle Theme"]`,
+    );
+    toggleTheme?.remove();
+  }, []);
 
   return (
     <>

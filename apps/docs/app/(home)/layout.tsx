@@ -1,7 +1,6 @@
 import { HomeLayout } from "fumadocs-ui/home-layout";
 import { baseOptions } from "@/app/layout.config";
 import { Grid } from "@rehooks/ui/components";
-import { ThemeProvider } from "next-themes";
 import type { ReactNode } from "react";
 
 export default function Layout({
@@ -11,13 +10,7 @@ export default function Layout({
 }>): React.ReactElement {
   return (
     <HomeLayout {...baseOptions}>
-      <ThemeProvider
-        disableTransitionOnChange
-        defaultTheme="system"
-        enableSystem
-      >
-        {children}
-      </ThemeProvider>
+      {children}
       <Grid
         width={30}
         height={30}
