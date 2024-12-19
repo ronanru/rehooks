@@ -13,13 +13,13 @@ import { cards, type Card as CardType } from "@rehooks/utils";
 export function Features() {
   return (
     <>
-      <h2 className="text-muted-foreground/50 select-none text-xl font-medium uppercase">
+      <h2 className="text-fd-muted-foreground/50 select-none text-xl font-medium uppercase">
         Features
       </h2>
-      <h3 className="text-foreground my-1 text-wrap text-center text-3xl font-semibold">
+      <h3 className="text-fd-foreground my-1 text-wrap text-center text-3xl font-semibold">
         Crafted for Efficiency
       </h3>
-      <h4 className="text-muted-foreground mt-1.5 max-w-lg text-pretty text-center text-xl italic">
+      <h4 className="text-fd-muted-foreground mt-1.5 max-w-lg text-pretty text-center text-xl italic">
         I've created Rehooks to streamline the process of creating custom hooks,
         and get rid of heavy packages.
       </h4>
