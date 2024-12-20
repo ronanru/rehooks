@@ -15,14 +15,14 @@ export function Hero() {
 
   return (
     <>
-      <h1 className="text-balance text-center text-4xl font-black lg:text-5xl">
+      <h1 className="text-fd-foreground text-balance text-center text-4xl font-black lg:text-5xl">
         Streamline{" "}
         <span className="animate-background-shine inline-flex transform bg-[linear-gradient(110deg,#8b5cf6,45%,#a78bfa,55%,#8b5cf6)] bg-[length:250%_100%] bg-clip-text text-transparent">
           React
         </span>{" "}
         Hooks
       </h1>
-      <p className="dark:text-fd-muted-foreground/50 text-fd-muted-foreground mt-2 max-w-3xl text-balance text-center text-lg font-medium lg:text-xl">
+      <p className="text-fd-muted-foreground mt-2 max-w-3xl text-balance text-center text-lg font-medium lg:text-xl">
         A CLI to insert hooks directly to your project. Avoid repetitive code
         and stay with the SOLID principles.
       </p>

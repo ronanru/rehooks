@@ -16,18 +16,10 @@ export function Stack() {
         and type-safety.
       </h4>
       <div className="mt-8 flex flex-row items-center justify-center gap-x-6 lg:gap-x-8">
-        <Stacks />
+        <Rust className="size-[65px] transform transition duration-75 lg:size-[65px]" />
+        <Next className="size-[65px] transform transition duration-75 lg:size-[65px]" />
+        <Turborepo className="size-[65px] transform transition duration-75 lg:size-[65px]" />
       </div>
-    </>
-  );
-}
-
-function Stacks() {
-  return (
-    <>
-      <Rust className="size-[65px] transform transition duration-75 lg:size-[65px]" />
-      <Next className="size-[65px] transform transition duration-75 lg:size-[65px]" />
-      <Turborepo className="size-[65px] transform transition duration-75 lg:size-[65px]" />
     </>
   );
 }

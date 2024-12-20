@@ -1,4 +1,3 @@
-import { ArrowRight } from "@rehooks/ui/icons";
 import { GITHUB_LINK, REHOOKS_NPM } from "@rehooks/utils";
 import { type HomeLayoutProps } from "fumadocs-ui/layouts/home";
 
