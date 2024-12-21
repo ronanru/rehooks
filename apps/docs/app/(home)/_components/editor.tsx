@@ -64,7 +64,7 @@ export function Editor() {
   const list = activeTab === "hook" ? hooksList : componentsList;
 
   return (
-    <div className="text-fd-foreground border-fd-border/50 relative flex h-auto max-w-full flex-col overflow-hidden rounded-2xl border bg-stone-950">
+    <div className="text-fd-foreground border-fd-border/50 relative flex h-auto max-w-[350px] flex-col overflow-hidden rounded-2xl border bg-stone-950 sm:max-w-full">
       <div className="flex select-none border-b border-neutral-800">
         <TabButton
           active={activeTab === "hook"}
