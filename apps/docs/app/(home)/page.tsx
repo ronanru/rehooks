@@ -1,5 +1,5 @@
+import { Editor } from "@/app/(home)/_components/editor";
 import { Features } from "@/app/(home)/_components/features";
-import { VideoPlayer } from "@/app/(home)/_components/video";
 import { Hero } from "@/app/(home)/_components/hero";
 import { Star } from "@rehooks/ui/components";
 
@@ -8,8 +8,8 @@ export default function HomePage() {
     <div className="h-full w-full">
       <div className="mx-8 my-28 flex min-h-screen flex-col items-center justify-center lg:my-36">
         <Hero />
-        <div className="my-12 hidden xl:block">
-          <VideoPlayer />
+        <div className="my-12">
+          <Editor />
         </div>
         <div className="mt-10 flex flex-col items-center justify-center">
           <Features />
@@ -21,7 +21,6 @@ export default function HomePage() {
         ease={200}
         refresh
       />
-      );
     </div>
   );
 }

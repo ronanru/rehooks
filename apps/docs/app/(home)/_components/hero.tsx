@@ -15,16 +15,15 @@ export function Hero() {
 
   return (
     <>
-      <h1 className="text-fd-foreground max-w-xl text-balance text-center text-4xl font-black tracking-tight lg:text-6xl">
+      <h1 className="max-w-md text-balance bg-gradient-to-t from-black to-black bg-clip-text text-center text-4xl font-bold text-transparent lg:text-6xl dark:from-violet-200 dark:from-75% dark:to-white">
         Streamline Your{" "}
         <span className="animate-background-shine inline-flex transform bg-[linear-gradient(110deg,#8b5cf6,45%,#a78bfa,55%,#8b5cf6)] bg-[length:250%_100%] bg-clip-text text-transparent">
           React
         </span>{" "}
         Hooks
       </h1>
-      <p className="text-fd-muted-foreground mt-2 max-w-3xl text-balance text-center text-lg font-medium lg:text-xl">
-        A CLI to insert hooks directly to your project. Avoid repetitive code
-        and stay with the SOLID principles.
+      <p className="text-fd-muted-foreground font-norma; mt-2 max-w-2xl text-balance text-center text-lg lg:text-2xl">
+        Avoid repetitive hook patterns, a source for making your own hooks.
       </p>
       <div className="mt-5 grid grid-cols-2 gap-y-2.5">
         <Link href="/docs" className="group outline-none ring-0">
@@ -48,7 +47,7 @@ export function Hero() {
           borderRadius={9999}
           borderWidth={1.5}
           className="col-span-2"
-          color={["#4f46e5", "#6d28d9", "#8b5cf6"]}
+          color={["#8b5cf6", "#5b21b6"]}
         >
           <Button
             className="w-full rounded-full border-[1.5px] font-mono"

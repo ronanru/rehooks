@@ -78,6 +78,9 @@ type CodeBlockProps = {
   string?: string;
   keyword?: string;
   identifier?: string;
+  jsxliterals?: string;
+  property?: string;
+  entity?: string;
 };
 
 const CodeBlock = ({
@@ -86,7 +89,10 @@ const CodeBlock = ({
   sign = "#666666",
   string = "#8B5CF6",
   keyword = "#8B5CF6",
-  identifier = "#000",
+  identifier = "#f472b6",
+  jsxliterals = "#ddd6fe",
+  property = "#c4b5fd",
+  entity = "#8b5cf6",
   ...props
 }: CodeBlockProps & ComponentPropsWithoutRef<"code">) => {
   const codeHTML = highlight(children as string);
@@ -99,6 +105,10 @@ const CodeBlock = ({
             "--sh-sign": sign,
             "--sh-string": string,
             "--sh-keyword": keyword,
+            "--sh-identifier": identifier,
+            "--sh-jsxliterals": jsxliterals,
+            "--sh-property": property,
+            "--sh-entity": entity,
           } as React.CSSProperties
         }
         className={cn("font-mono text-sm")}

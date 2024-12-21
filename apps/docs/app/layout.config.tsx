@@ -1,5 +1,4 @@
-import { GITHUB_LINK, REHOOKS_NPM } from "@rehooks/utils";
-import { type HomeLayoutProps } from "fumadocs-ui/layouts/home";
+import { type HomeLayoutProps } from "fumadocs-ui/home-layout";
 
 export const baseOptions: HomeLayoutProps = {
   githubUrl: "https://github.com/Pyr33x/rehooks",
@@ -9,18 +8,8 @@ export const baseOptions: HomeLayoutProps = {
 
   links: [
     {
-      text: "Documentation",
+      text: "Docs",
       url: "/docs",
-      active: "nested-url",
-    },
-    {
-      text: "GitHub",
-      url: GITHUB_LINK,
-      active: "nested-url",
-    },
-    {
-      text: "NPM",
-      url: REHOOKS_NPM,
       active: "nested-url",
     },
   ],
