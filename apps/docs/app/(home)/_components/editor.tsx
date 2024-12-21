@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  Alert,
-  AlertDescription,
-  BorderBeam,
-  CodeBlock,
-} from "@rehooks/ui/components";
+import { BorderBeam, CodeBlock } from "@rehooks/ui/components";
 import { Wrench, Hammer } from "@rehooks/ui/icons";
 import { useState } from "react";
 

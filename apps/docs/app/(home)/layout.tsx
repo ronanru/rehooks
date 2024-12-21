@@ -10,16 +10,11 @@ export default function Layout({
   children: ReactNode;
 }>): React.ReactElement {
   return (
-    <HomeLayout
-      nav={{
-        component: <p>salam</p>,
-      }}
-      {...baseOptions}
-    >
+    <HomeLayout {...baseOptions}>
       {children}
       <Grid
-        width={40}
-        height={40}
+        width={46}
+        height={46}
         x={-1}
         y={-1}
         strokeDasharray={"4 2"}
