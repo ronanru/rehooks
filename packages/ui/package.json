@@ -26,7 +26,6 @@
   "devDependencies": {
     "@radix-ui/react-slot": "^1.1.0",
     "@rehooks/eslint-config": "workspace:*",
-    "@rehooks/tailwind-config": "workspace:*",
     "@rehooks/tsconfig": "workspace:*",
     "@rehooks/utils": "workspace:*",
     "@types/node": "22.5.4",

@@ -24,6 +24,6 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "../../packages/ui/src/icons/github.tsx", "../../packages/ui/src/icons/npm.tsx"],
+  "include": ["video.d.ts" ,"next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "../../packages/ui/src/icons/github.tsx", "../../packages/ui/src/icons/npm.tsx"],
   "exclude": ["node_modules"]
 }

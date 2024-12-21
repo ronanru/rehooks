@@ -1,9 +1,8 @@
 import { createPreset } from "fumadocs-ui/tailwind-plugin";
 import tailwindcssAnimate from "tailwindcss-animate";
-import sharedConfig from "@rehooks/tailwind-config";
 import type { Config } from "tailwindcss";
 
-const config: Pick<Config, "presets" | "content" | "plugins" | "theme"> = {
+const confg: Pick<Config, "presets" | "plugins" | "content" | "theme"> = {
   content: [
     "./src/components/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -14,14 +13,22 @@ const config: Pick<Config, "presets" | "content" | "plugins" | "theme"> = {
     "../../packages/ui/src/**/*.{ts,tsx}",
   ],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
+      container: {
+        center: true,
+        padding: "2rem",
+        screens: {
+          "2xl": "1400px",
+        },
+      },
+      animation: {
+        beam: "beam calc(var(--duration)*1s) infinite linear",
+        "background-shine": "background-shine 1.5s linear infinite",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        shine: "shine var(--duration) infinite linear",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        gradient: "gradient 5s linear infinite",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -53,23 +60,16 @@ const config: Pick<Config, "presets" | "content" | "plugins" | "theme"> = {
             "background-position": "0% 0%",
           },
         },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "background-shine": "background-shine 1.5s linear infinite",
-        shine: "shine var(--duration) infinite linear",
-        gradient: "gradient 5s linear infinite",
+        beam: {
+          "100%": {
+            "offset-distance": "100%",
+          },
+        },
       },
     },
   },
-  presets: [
-    sharedConfig,
-    createPreset({
-      preset: "purple",
-    }),
-  ],
+  presets: [createPreset()],
   plugins: [tailwindcssAnimate],
 };
 
-export default config;
+export default confg;

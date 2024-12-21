@@ -84,8 +84,8 @@ const CodeBlock = ({
   children,
   cls = "#4686FF",
   sign = "#666666",
-  string = "#FF4666",
-  keyword = "#FF4666",
+  string = "#8B5CF6",
+  keyword = "#8B5CF6",
   identifier = "#000",
   ...props
 }: CodeBlockProps & ComponentPropsWithoutRef<"code">) => {
