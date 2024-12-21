@@ -155,15 +155,6 @@ importers:
         specifier: ^2.0.0
         version: 2.3.3(eslint@8.57.1)
 
-  packages/config-tailwind:
-    devDependencies:
-      '@rehooks/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      tailwindcss:
-        specifier: ^3.4.1
-        version: 3.4.13
-
   packages/core:
     dependencies:
       react:
