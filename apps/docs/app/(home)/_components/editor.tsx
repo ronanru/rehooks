@@ -9,79 +9,103 @@ import {
 import { Wrench, Hammer } from "@rehooks/ui/icons";
 import { useState } from "react";
 
-const code = `export function useSessionStorage<T>(
+const hookCode = `export function useSessionStorage<T>(
   key: string,
   initialValue: T,
 ): [T, (value: T) => void] {
-  const [storedValue, setStoredValue] = useState<T>(() => {
+  const [store, setStore] = useState<T>(() => {
     try {
       const item = window.sessionStorage.getItem(key);
       return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      console.error('Error reading session storage key:', error);
+    } catch (err) {
+      console.error('Error reading session key:', err);
       return initialValue;
     }
-  });`;
+ });`;
+
+const productCode = `export function Product() {
+  const [product, setProduct] = useSessionStorage(
+    "product", {
+    name: "Rehooks",
+    price: 100,
+  });
+
+  const handleChange = (event) => {
+    setProduct(event.target.value);
+  };
+
+  return (
+    <div>
+      <h2>Session Storage Demo</h2>
+      <input value={product} onChange={handleChange} />
+      <p>Your name is: {product}</p>
+    </div>
+  );
+}`;
+
+const hooksList = [
+  { name: "useSessionStorage" },
+  { name: "useEventCallback" },
+  { name: "useThrottle" },
+  { name: "useFocus" },
+  { name: "useFetch" },
+];
+
+const componentsList = [
+  { name: "Dropdown" },
+  { name: "Command" },
+  { name: "Product" },
+  { name: "Table" },
+  { name: "List" },
+];
 
 export function Editor() {
   const [activeTab, setActiveTab] = useState("hook");
+  const list = activeTab === "hook" ? hooksList : componentsList;
 
   return (
     <div className="text-fd-foreground border-fd-border/50 relative flex h-auto max-w-full flex-col overflow-hidden rounded-2xl border bg-stone-950">
-      <div className="flex select-none border-b border-zinc-800">
+      <div className="flex select-none border-b border-neutral-800">
         <TabButton
           active={activeTab === "hook"}
           onClick={() => setActiveTab("hook")}
         >
           <span className="flex items-center gap-2">
-            <Wrench className="h-4 w-4" />
+            <Wrench className="size-4" />
             useSessionStorage.ts
           </span>
         </TabButton>
         <TabButton
-          className="cursor-not-allowed"
-          disabled
-          active={activeTab === "component"}
-          onClick={() => setActiveTab("component")}
+          active={activeTab === "product"}
+          onClick={() => setActiveTab("product")}
         >
           <span className="flex items-center gap-2">
-            <Hammer className="h-4 w-4" /> Product.tsx
+            <Hammer className="size-4" /> Product.tsx
           </span>
         </TabButton>
       </div>
 
       <div className="flex w-full flex-1 flex-col md:flex-row">
-        <div className="flex-1 p-4">
+        <div className="min-h-[300px] max-w-[750px] flex-1 overflow-auto p-4">
           <div className="text-fd-muted-foreground mb-2 select-none font-mono text-sm tracking-tight">
-            src &gt; hooks &gt; useSessionStorage
+            {activeTab === "hook"
+              ? "src > hooks > useSessionStorage"
+              : "src > components > Product"}
           </div>
-
-          <Alert className="mb-4 border-violet-900 bg-violet-950/50">
-            <AlertDescription className="select-none text-violet-300">
-              Successfully imported useSessionStorage!
-            </AlertDescription>
-          </Alert>
-
-          <CodeBlock className="text-sm md:text-base lg:text-lg">
-            {code}
+          <CodeBlock className="text-xs sm:text-sm md:text-base lg:text-lg">
+            {activeTab === "hook" ? hookCode : productCode}
           </CodeBlock>
         </div>
 
-        <div className="hidden w-[300px] select-none border-l border-zinc-800 p-4 lg:block">
+        <div className="max-w-full select-none border-t border-neutral-800 p-4 md:border-l md:border-t-0 lg:w-[300px]">
           <div className="space-y-2">
-            {[
-              { name: "useSessionStorage" },
-              { name: "useEventCallback" },
-              { name: "useThrottle" },
-              { name: "useFocus" },
-              { name: "useFetch" },
-            ].map((stat) => (
-              <Stat key={stat.name} {...stat} />
-            ))}
+            {list.map((stat) => {
+              return <Stat key={stat.name} {...stat} />;
+            })}
           </div>
         </div>
       </div>
-      <BorderBeam className="absolute inset-0 z-10 rounded-2xl" duration={7} />
+      <BorderBeam className="absolute inset-0 z-10 rounded-2xl" duration={5} />
     </div>
   );
 }
@@ -105,7 +129,7 @@ function TabButton({
       onClick={onClick}
       className={`px-4 py-2 text-sm font-medium ${className} ${
         active
-          ? "border-b-2 border-b-violet-500 text-white"
+          ? "border-b border-b-violet-500 bg-neutral-900/50 text-white"
           : "text-fd-muted-foreground"
       }`}
     >
