@@ -72,7 +72,7 @@ export function Editor() {
 
       <div className="flex w-full flex-1 flex-col md:flex-row">
         <div className="min-h-[300px] max-w-[600px] flex-1 overflow-auto p-4">
-          <div className="text-fd-muted-foreground bg-fd-muted/40 mb-2 select-none rounded-md p-2 font-mono text-sm tracking-tight">
+          <div className="text-fd-muted-foreground mb-2 select-none rounded-md bg-neutral-900 p-2 font-mono text-sm tracking-tight">
             {activeTab === "hook"
               ? "src > hooks > useToggle"
               : "src > components > Settings"}
@@ -112,7 +112,7 @@ function TabButton({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`inline-flex w-full items-center justify-center border-b px-4 py-2 text-sm font-medium ${className} ${
+      className={`inline-flex w-full items-center justify-center border-b border-neutral-800 px-4 py-2 text-sm font-medium ${className} ${
         active
           ? "border-b-violet-500 bg-neutral-900/50 text-white"
           : "text-fd-muted-foreground"

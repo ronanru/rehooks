@@ -22,6 +22,9 @@ const confg: Pick<Config, "presets" | "plugins" | "content" | "theme"> = {
         },
       },
       animation: {
+        grid: "grid 15s linear infinite",
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         beam: "beam calc(var(--duration)*1s) infinite linear",
         "background-shine": "background-shine 1.5s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -30,6 +33,18 @@ const confg: Pick<Config, "presets" | "plugins" | "content" | "theme"> = {
         gradient: "gradient 5s linear infinite",
       },
       keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
+        grid: {
+          "0%": { transform: "translateY(-50%)" },
+          "100%": { transform: "translateY(0)" },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },

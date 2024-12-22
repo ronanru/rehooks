@@ -4,5 +4,7 @@ export * from "./shine";
 export * from "./card";
 export * from "./beam";
 export * from "./star";
-export * from "./alert";
 export * from "./input";
+export * from "./bento";
+export * from "./retro";
+export * from "./marquee";
