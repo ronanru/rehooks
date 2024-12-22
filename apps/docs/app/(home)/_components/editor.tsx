@@ -29,19 +29,19 @@ const settingCode = `export function Settings() {
 };`;
 
 const hooksList = [
-  { name: "useSessionStorage" },
-  { name: "useEventCallback" },
-  { name: "useThrottle" },
-  { name: "useFocus" },
-  { name: "useFetch" },
+  { name: "Product", component: "useSessionStorage" },
+  { name: "Dropdown", component: "useEventCallback" },
+  { name: "Command", component: "useThrottle" },
+  { name: "Table", component: "useFocus" },
+  { name: "List", component: "useFetch" },
 ];
 
 const componentsList = [
-  { name: "Dropdown" },
-  { name: "Command" },
-  { name: "Product" },
-  { name: "Table" },
-  { name: "List" },
+  { name: "useSessionStorage", component: "Dropdown" },
+  { name: "useEventCallback", component: "Command" },
+  { name: "useThrottle", component: "Product" },
+  { name: "useFocus", component: "Table" },
+  { name: "useFetch", component: "List" },
 ];
 
 export function Editor() {
@@ -91,7 +91,7 @@ export function Editor() {
           </div>
         </div>
       </div>
-      <BorderBeam className="absolute inset-0 z-10 rounded-2xl" duration={5} />
+      <BorderBeam className="absolute inset-0 z-10 rounded-2xl" duration={4} />
     </div>
   );
 }
@@ -115,7 +115,7 @@ function TabButton({
       onClick={onClick}
       className={`inline-flex w-full items-center justify-center border-b border-neutral-800 px-4 py-2 text-sm font-medium ${className} ${
         active
-          ? "border-b-violet-500 bg-neutral-900/50 text-white"
+          ? "border-b-violet-500 bg-neutral-900/80 text-white"
           : "text-fd-muted-foreground"
       }`}
     >
@@ -124,11 +124,16 @@ function TabButton({
   );
 }
 
-function Stat({ name }: { name: string }) {
+function Stat({ name, component }: { name: string; component?: string }) {
   return (
-    <div className="flex items-center text-sm">
-      <span className="text-fd-muted-foreground mr-2">→</span>
-      <span className="flex-1 text-white">{name}</span>
+    <div className="flex flex-col">
+      <div className="flex flex-row gap-x-4">
+        <span className="text-base font-medium">{component}</span>
+      </div>
+      <div className="flex flex-row text-white">
+        <span className="mr-2 text-sm text-violet-500">→</span>
+        <span className="flex-1 text-sm text-white">{name}</span>
+      </div>
     </div>
   );
 }

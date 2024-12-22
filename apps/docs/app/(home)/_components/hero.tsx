@@ -15,7 +15,7 @@ export function Hero() {
 
   return (
     <>
-      <h1 className="max-w-md text-balance bg-gradient-to-t from-black to-black bg-clip-text text-center text-4xl font-bold text-transparent lg:text-6xl dark:from-violet-200 dark:from-75% dark:to-white">
+      <h1 className="max-w-lg text-balance bg-gradient-to-t from-black to-black bg-clip-text text-center text-4xl font-black text-transparent lg:text-6xl dark:from-violet-200 dark:from-75% dark:to-white">
         Streamline Your{" "}
         <span className="animate-background-shine inline-flex transform bg-[linear-gradient(110deg,#8b5cf6,45%,#a78bfa,55%,#8b5cf6)] bg-[length:250%_100%] bg-clip-text text-transparent">
           React
