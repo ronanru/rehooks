@@ -249,9 +249,6 @@ importers:
       '@rehooks/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
-      '@rehooks/ui':
-        specifier: workspace:*
-        version: link:../ui
       clsx:
         specifier: ^2.1.1
         version: 2.1.1

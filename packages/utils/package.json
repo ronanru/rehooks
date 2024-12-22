@@ -20,7 +20,6 @@
   ],
   "devDependencies": {
     "@rehooks/tsconfig": "workspace:*",
-    "@rehooks/ui": "workspace:*",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.5.3",
     "typescript": "^5.6.3"
