@@ -78,7 +78,7 @@ export function Editor() {
               ? "src > hooks > useToggle"
               : "src > components > Settings"}
           </div>
-          <CodeBlock className="text-xs sm:text-sm md:text-base lg:text-lg">
+          <CodeBlock className="text-sm md:text-base lg:text-lg">
             {activeTab === "hook" ? hookCode : settingCode}
           </CodeBlock>
         </div>
