@@ -1,7 +1,7 @@
 import { cn } from "@rehooks/utils";
 import { useId } from "react";
 
-type GridProps<T> = {
+type GridProps = {
   width?: number;
   height?: number;
   x?: number;
