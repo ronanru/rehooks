@@ -1,22 +1,24 @@
-import { Globe, Braces, Layers, Zap } from "@rehooks/ui/icons";
-import { Retro, Marquee } from "@rehooks/ui/components";
+import { Globe as GlobeIcon, Braces, Layers, Zap } from "@rehooks/ui/icons";
+import { Retro, Marquee, Globe } from "@rehooks/ui/components";
 import { cn, hooks } from "@rehooks/utils";
 
 export const features = [
   {
-    Icon: Globe,
+    Icon: GlobeIcon,
     name: "Open-Source Codebase",
     description:
       "Rehooks is an open-source repository, to expand OSS communities.",
-    className: "lg:row-start-2 lg:row-end-2 lg:col-start-3 lg:col-end-3",
-    background: <div className="absolute -right-20 -top-20 opacity-60" />,
+    className:
+      "lg:row-start-1 lg:row-end-1 lg:col-start-1 lg:col-end-2 rounded-t-2xl lg:rounded-tl-2xl lg:rounded-tr-none border-b-[0.5px] border-r-[1px] lg:border-r-[0.5px] border-t-[1px] border-l-[1px]",
+    background: <div className="absolute inset-0" />,
   },
   {
     Icon: Braces,
     name: "TypeScript Support",
     description:
       "Rehooks is written in TypeScript, ensuring type safety and maintainability throughout the codebase.",
-    className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-2",
+    className:
+      "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-2 lg:rounded-br-2xl lg:rounded-tr-none border-b-[0.5px] lg:border-b-[1px] border-r-[1px] border-t-[0.5px] border-l-[1px] lg:border-l-[0.5px]",
     background: <div className="absolute -right-20 -top-20 opacity-60" />,
   },
   {
@@ -24,12 +26,13 @@ export const features = [
     name: "Variety of Hooks",
     description:
       "Rehooks offers a diverse variety of powerful hooks for different use cases, to efficiently implement functionality in components.",
-    className: "lg:col-start-1 lg:col-end-3 lg:row-start-2 lg:row-end-3",
+    className:
+      "lg:col-start-1 lg:col-end-3 lg:row-start-2 lg:row-end-3 lg:rounded-bl-2xl border-b-[1px] lg:border-r-[0.5px] border-t-[0.5px] border-l-[1px] lg:rounded-bl-2xl border-b-[0.5px] lg:border-b-[1px] border-r-[1px] border-t-[0.5px] border-l-[1px]",
     background: (
       <>
         <Marquee
           pauseOnHover
-          className="absolute top-10 h-64 [--duration:20s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)]"
+          className="absolute top-10 h-64 [--duration:20s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] lg:rounded-bl-2xl"
         >
           {hooks.map((hook, idx) => (
             <figure
@@ -64,7 +67,8 @@ export const features = [
     name: "Performant & Reusability",
     description:
       "Crafted with SOLID principles, ensuring type-safety and maintainability throughout the codebase.",
-    className: "lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-1",
+    className:
+      "lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-1 rounded-b-2xl lg:rounded-br-none lg:rounded-tr-2xl lg:rounded-bl-none border-b-[0.5px] border-r-[1px] border-t-[1px] border-l-[1px] lg:border-l-[0.5px]",
     background: (
       <Retro
         angle={20}

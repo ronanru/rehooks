@@ -184,6 +184,9 @@ importers:
 
   packages/ui:
     dependencies:
+      cobe:
+        specifier: ^0.6.3
+        version: 0.6.3
       fumadocs-ui:
         specifier: 13.4.10
         version: 13.4.10(@types/react-dom@18.3.0)(@types/react@18.3.11)(next@14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.13)
@@ -1818,6 +1821,9 @@ packages:
       react: ^18.0.0
       react-dom: ^18.0.0
 
+  cobe@0.6.3:
+    resolution: {integrity: sha512-WHr7X4o1ym94GZ96h7b1pNemZJacbOzd02dZtnVwuC4oWBaLg96PBmp2rIS1SAhUDhhC/QyS9WEqkpZIs/ZBTg==}
+
   code-block-writer@13.0.3:
     resolution: {integrity: sha512-Oofo0pq3IKnsFtuHqSF7TqBfr71aeyZDVJ0HpmqB7FBM2qEigL0iPONSCZSO9pE9dZTAxANe5XHG9Uy0YMv8cg==}
 
@@ -3443,6 +3449,9 @@ packages:
 
   periscopic@3.1.0:
     resolution: {integrity: sha512-vKiQ8RRtkl9P+r/+oefh25C3fhybptkHKCZSPlcXiJux2tJF55GnEj3BVn4A5gKfq9NWWXXrxkHBwVPUfH0opw==}
+
+  phenomenon@1.6.0:
+    resolution: {integrity: sha512-7h9/fjPD3qNlgggzm88cY58l9sudZ6Ey+UmZsizfhtawO6E3srZQXywaNm2lBwT72TbpHYRPy7ytIHeBUD/G0A==}
 
   picocolors@1.1.0:
     resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
@@ -6075,6 +6084,10 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
+  cobe@0.6.3:
+    dependencies:
+      phenomenon: 1.6.0
+
   code-block-writer@13.0.3: {}
 
   collapse-white-space@2.1.0: {}
@@ -8192,6 +8205,8 @@ snapshots:
       '@types/estree': 1.0.6
       estree-walker: 3.0.3
       is-reference: 3.0.2
+
+  phenomenon@1.6.0: {}
 
   picocolors@1.1.0: {}
 

@@ -40,6 +40,7 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
+    "cobe": "^0.6.3",
     "fumadocs-ui": "13.4.10"
   }
 }
