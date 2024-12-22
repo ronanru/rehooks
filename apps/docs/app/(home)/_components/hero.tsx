@@ -28,7 +28,7 @@ export function Hero() {
       <div className="mt-5 grid grid-cols-2 gap-y-2.5">
         <Link href="/docs" className="group outline-none ring-0">
           <Button className="group rounded-full">
-            <ArrowRight className="size-6 transform transition duration-200 group-hover:translate-x-0.5" />
+            <ArrowRight className="size-6 transform transition duration-300 group-hover:translate-x-0.5" />
             Get Started
           </Button>
         </Link>
@@ -40,7 +40,7 @@ export function Hero() {
         >
           <Button variant="outline" className="group -ml-1.5 rounded-full">
             Star on Github
-            <GithubIcon className="size-6 transform transition duration-200 group-hover:rotate-[360deg]" />
+            <GithubIcon className="size-6 transform transition duration-300 group-hover:rotate-[360deg]" />
           </Button>
         </a>
         <Shine
