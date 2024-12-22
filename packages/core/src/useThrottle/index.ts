@@ -4,17 +4,18 @@ const description =
   "Custom React hook that returns a throttled version of the provided function.";
 
 /**
- * Interface for throttle options
- * @interface ThrottleOptions
+ * Type for throttle options
+ * @typedef {Object} ThrottleOptions
  * @property {number} [wait=300] - The number of milliseconds to throttle invocations to
  * @property {boolean} [leading=true] - Specify invoking on the leading edge of the timeout
  * @property {boolean} [trailing=true] - Specify invoking on the trailing edge of the timeout
  */
-interface ThrottleOptions {
+
+type ThrottleOptions = {
   wait?: number;
   leading?: boolean;
   trailing?: boolean;
-}
+};
 
 /**
  * Custom React hook that returns a throttled version of the provided function.

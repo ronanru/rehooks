@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-export interface DeviceDetect {
+type DeviceDetect = {
   isMobile: boolean;
   isDesktop: boolean;
   isTablet: boolean;
   DesktopView: () => boolean;
   MobileView: () => boolean;
   TabletView: () => boolean;
-}
+};
 
 const description =
   "A hook that detects the device type and returns a boolean value for each device type.";

@@ -1,6 +1,6 @@
 import { cn } from "@rehooks/utils";
 
-interface BorderProps {
+type BorderProps = {
   className?: string;
   size?: number;
   duration?: number;
@@ -9,7 +9,7 @@ interface BorderProps {
   colorFrom?: string;
   colorTo?: string;
   delay?: number;
-}
+};
 
 export function BorderBeam({
   className,

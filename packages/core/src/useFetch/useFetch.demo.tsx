@@ -1,14 +1,14 @@
 import { useFetch } from "./index";
 
-interface User {
+type User = {
   id: number;
   name: string;
   email: string;
-}
+};
 
-interface ApiError {
+type ApiError = {
   message: string;
-}
+};
 
 function Component() {
   const { data, error, isPending, isSuccess, isError, refetch } = useFetch<

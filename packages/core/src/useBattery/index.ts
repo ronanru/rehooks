@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const description = "Custom hook to retrieve battery information and status.";
 
-interface BatteryManager {
+type BatteryManager = {
   level: number;
   charging: boolean;
   chargingTime: number;
@@ -17,20 +17,20 @@ interface BatteryManager {
     listener: EventListener | EventListenerObject | null,
     options?: boolean | EventListenerOptions,
   ): void;
-}
+};
 
-interface BatteryState {
+type BatteryState = {
   supported: boolean;
   loading: boolean;
   level: number | null;
   charging: boolean | null;
   chargingTime: number | null;
   dischargingTime: number | null;
-}
+};
 
-interface NavigatorWithBattery extends Navigator {
+type NavigatorWithBattery = Navigator & {
   getBattery?: () => Promise<BatteryManager>;
-}
+};
 
 /**
  * Custom hook to retrieve battery information and status.
