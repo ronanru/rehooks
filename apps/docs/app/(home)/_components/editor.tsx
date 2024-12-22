@@ -113,10 +113,11 @@ function TabButton({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`inline-flex w-full items-center justify-center border-b border-neutral-800 px-4 py-2 text-sm font-medium ${className} ${active
+      className={`inline-flex w-full items-center justify-center border-b border-neutral-800 px-4 py-2 text-sm font-medium ${className} ${
+        active
           ? "border-b-violet-500 bg-neutral-900/80 text-white"
           : "text-fd-muted-foreground"
-        }`}
+      }`}
     >
       {children}
     </button>
@@ -127,7 +128,7 @@ function Stat({ name, component }: { name: string; component?: string }) {
   return (
     <div className="flex flex-col">
       <div className="flex flex-row gap-x-4">
-        <span className="text-base font-medium">{component}</span>
+        <span className="text-base font-medium text-white">{component}</span>
       </div>
       <div className="flex flex-row text-white">
         <span className="mr-2 text-sm text-violet-500">→</span>

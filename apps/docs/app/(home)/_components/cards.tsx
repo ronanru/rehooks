@@ -1,5 +1,5 @@
 import { Globe as GlobeIcon, Braces, Layers, Zap } from "@rehooks/ui/icons";
-import { Retro, Marquee, Globe } from "@rehooks/ui/components";
+import { Retro, Marquee } from "@rehooks/ui/components";
 import { cn, hooks } from "@rehooks/utils";
 
 export const features = [
@@ -71,10 +71,11 @@ export const features = [
       "lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-1 rounded-b-2xl lg:rounded-br-none lg:rounded-tr-2xl lg:rounded-bl-none border-b-[1px] lg:border-b-[0.5px] border-r-[1px] border-t-[1px] border-l-[1px] lg:border-l-[0.5px]",
     background: (
       <Retro
-        angle={20}
+        angle={0}
         cellSize={75}
         darkLineColor="#666666"
         lightLineColor="#000000"
+        className="absolute inset-0"
       />
     ),
   },

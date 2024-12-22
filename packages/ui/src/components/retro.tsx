@@ -13,7 +13,7 @@ export function Retro({
   className,
   angle = 65,
   cellSize = 60,
-  opacity = 0.5,
+  opacity = 0.3,
   lightLineColor = "gray",
   darkLineColor = "gray",
   ...props
