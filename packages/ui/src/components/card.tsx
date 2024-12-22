@@ -77,6 +77,7 @@ type CodeBlockProps = {
   sign?: string;
   string?: string;
   keyword?: string;
+  comment?: string;
   identifier?: string;
   jsxliterals?: string;
   property?: string;
@@ -89,6 +90,7 @@ const CodeBlock = ({
   sign = "#666666",
   string = "#7c3aed",
   keyword = "#a78bfa",
+  comment = "#666666",
   identifier = "#f472b6",
   jsxliterals = "#ddd6fe",
   property = "#c4b5fd",
@@ -105,6 +107,7 @@ const CodeBlock = ({
             "--sh-sign": sign,
             "--sh-string": string,
             "--sh-keyword": keyword,
+            "--sh-comment": comment,
             "--sh-identifier": identifier,
             "--sh-jsxliterals": jsxliterals,
             "--sh-property": property,
