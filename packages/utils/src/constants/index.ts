@@ -1,3 +1,3 @@
 export * from "./metadata";
 export * from "./link";
-export * from "./cards";
+export * from "./hooks";

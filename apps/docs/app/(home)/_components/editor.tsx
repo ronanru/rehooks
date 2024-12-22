@@ -65,7 +65,8 @@ export function Editor() {
           onClick={() => setActiveTab("settings")}
         >
           <span className="flex items-center gap-2">
-            <Settings className="size-4" /> Settings.tsx
+            <Settings className="size-4" />
+            Settings.tsx
           </span>
         </TabButton>
       </div>
