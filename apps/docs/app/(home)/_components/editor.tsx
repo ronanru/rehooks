@@ -1,42 +1,32 @@
 "use client";
 
 import { BorderBeam, CodeBlock } from "@rehooks/ui/components";
-import { Wrench, Hammer } from "@rehooks/ui/icons";
+import { Wrench, Settings } from "@rehooks/ui/icons";
 import { useState } from "react";
 
-const hookCode = `export function useSessionStorage<T>(
-  key: string,
-  initialValue: T,
-): [T, (value: T) => void] {
-  const [store, setStore] = useState<T>(() => {
-    try {
-      const item = window.sessionStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (err) {
-      console.error('Error reading session key:', err);
-      return initialValue;
-    }
- });`;
+const hookCode = `export function useToggle(
+  defaultValue?: boolean,
+): [boolean, () => void, Dispatch<SetStateAction<boolean>>] {
+  const [value, setValue] = useState(!!defaultValue);
 
-const productCode = `export function Product() {
-  const [product, setProduct] = useSessionStorage(
-    "product", {
-    name: "Rehooks",
-    price: 100,
-  });
+  const toggle = useCallback(() => {
+    setValue((x) => !x);
+  }, []);
 
-  const handleChange = (event) => {
-    setProduct(event.target.value);
-  };
+  return [value, toggle, setValue];
+};`;
 
+const settingCode = `export function Settings() {
+  const [isOn, toggle, setToggle] = useToggle(false);
   return (
     <div>
-      <h2>Session Storage Demo</h2>
-      <input value={product} onChange={handleChange} />
-      <p>Your name is: {product}</p>
+      <p>Current state: {isOn ? "ON" : "OFF"}</p>
+      <button onClick={toggle}>Toggle</button>
+      <button onClick={() => setToggle(true)}>Turn On</button>
+      <button onClick={() => setToggle(false)}>Turn Off</button>
     </div>
   );
-}`;
+};`;
 
 const hooksList = [
   { name: "useSessionStorage" },
@@ -60,35 +50,35 @@ export function Editor() {
 
   return (
     <div className="text-fd-foreground border-fd-border/50 relative flex h-auto max-w-[350px] flex-col overflow-hidden rounded-2xl border bg-stone-950 sm:max-w-full">
-      <div className="flex select-none border-b border-neutral-800">
+      <div className="flex select-none border-neutral-800">
         <TabButton
           active={activeTab === "hook"}
           onClick={() => setActiveTab("hook")}
         >
           <span className="flex items-center gap-2">
             <Wrench className="size-4" />
-            useSessionStorage.ts
+            useToggle.ts
           </span>
         </TabButton>
         <TabButton
-          active={activeTab === "product"}
-          onClick={() => setActiveTab("product")}
+          active={activeTab === "settings"}
+          onClick={() => setActiveTab("settings")}
         >
           <span className="flex items-center gap-2">
-            <Hammer className="size-4" /> Product.tsx
+            <Settings className="size-4" /> Settings.tsx
           </span>
         </TabButton>
       </div>
 
       <div className="flex w-full flex-1 flex-col md:flex-row">
-        <div className="min-h-[300px] max-w-[750px] flex-1 overflow-auto p-4">
-          <div className="text-fd-muted-foreground mb-2 select-none font-mono text-sm tracking-tight">
+        <div className="min-h-[300px] max-w-[600px] flex-1 overflow-auto p-4">
+          <div className="text-fd-muted-foreground bg-fd-muted/40 mb-2 select-none rounded-md p-2 font-mono text-sm tracking-tight">
             {activeTab === "hook"
-              ? "src > hooks > useSessionStorage"
-              : "src > components > Product"}
+              ? "src > hooks > useToggle"
+              : "src > components > Settings"}
           </div>
           <CodeBlock className="text-xs sm:text-sm md:text-base lg:text-lg">
-            {activeTab === "hook" ? hookCode : productCode}
+            {activeTab === "hook" ? hookCode : settingCode}
           </CodeBlock>
         </div>
 
@@ -122,9 +112,9 @@ function TabButton({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`px-4 py-2 text-sm font-medium ${className} ${
+      className={`inline-flex w-full items-center justify-center border-b px-4 py-2 text-sm font-medium ${className} ${
         active
-          ? "border-b border-b-violet-500 bg-neutral-900/50 text-white"
+          ? "border-b-violet-500 bg-neutral-900/50 text-white"
           : "text-fd-muted-foreground"
       }`}
     >

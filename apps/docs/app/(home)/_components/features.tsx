@@ -23,26 +23,20 @@ export function Features() {
         I've created Rehooks to streamline the process of creating custom hooks,
         and get rid of heavy packages.
       </h4>
-      <Cards />
+      <div className="mt-8 grid max-w-7xl grid-cols-1 gap-4 lg:grid-cols-4">
+        {cards.map(({ title, label, content, code, className }: CardType) => (
+          <Card key={title} className="max-w-md">
+            <CardHeader>
+              <CardLabel>{label}</CardLabel>
+              <CardTitle>{title}</CardTitle>
+            </CardHeader>
+            <CardContent className={className}>
+              {code && <CodeBlock>{code}</CodeBlock>}
+              {content && <p>{content}</p>}
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </>
-  );
-}
-
-function Cards() {
-  return (
-    <div className="mt-8 grid max-w-7xl grid-cols-1 gap-4 lg:grid-cols-4">
-      {cards.map(({ title, label, content, code, className }: CardType) => (
-        <Card key={title} className="max-w-md">
-          <CardHeader>
-            <CardLabel>{label}</CardLabel>
-            <CardTitle>{title}</CardTitle>
-          </CardHeader>
-          <CardContent className={className}>
-            {code && <CodeBlock>{code}</CodeBlock>}
-            {content && <p>{content}</p>}
-          </CardContent>
-        </Card>
-      ))}
-    </div>
   );
 }
