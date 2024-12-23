@@ -3,8 +3,8 @@
 import { Globe as GlobeIcon, Braces, Layers, Zap } from "@rehooks/ui/icons";
 import { Retro, Marquee, Text } from "@rehooks/ui/components";
 import { cn, hooks } from "@rehooks/utils";
-import React from "react";
 import createGlobe from "cobe";
+import React from "react";
 
 export const Globe = ({ className }: { className?: string }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
@@ -28,9 +28,9 @@ export const Globe = ({ className }: { className?: string }) => {
       markerColor: [0.545, 0.361, 0.965],
       glowColor: [0.1, 0.1, 0.1],
       markers: [
-        { location: [37.7595, -122.4367], size: 0.07 },
-        { location: [40.7128, -74.006], size: 0.07 },
-        { location: [52.7128, -242.831], size: 0.07 },
+        { location: [37.7595, -122.4367], size: 0.04 },
+        { location: [40.7128, -74.006], size: 0.04 },
+        { location: [52.7128, -242.831], size: 0.04 },
       ],
       onRender: (state) => {
         state.phi = phi;
@@ -47,7 +47,7 @@ export const Globe = ({ className }: { className?: string }) => {
     <canvas
       ref={canvasRef}
       style={{ width: 600, height: 600, maxWidth: "100%", aspectRatio: 1 }}
-      className={className}
+      className={cn("pointer-events-none transform-gpu", className)}
     />
   );
 };
