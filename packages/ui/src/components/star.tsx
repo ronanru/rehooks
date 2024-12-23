@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@rehooks/utils";
 
-type MousePosition = {
+interface MousePosition {
   x: number;
   y: number;
-};
+}
 
 function MousePosition(): MousePosition {
   const [mousePosition, setMousePosition] = useState<MousePosition>({

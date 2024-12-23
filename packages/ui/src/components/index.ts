@@ -7,4 +7,4 @@ export * from "./star";
 export * from "./bento";
 export * from "./retro";
 export * from "./marquee";
-export * from "./cobe";
+export * from "./text";

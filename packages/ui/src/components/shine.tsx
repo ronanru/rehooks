@@ -4,14 +4,14 @@ import { cn } from "@rehooks/utils";
 
 type TColorProp = string | string[];
 
-type ShineProps = {
+interface ShineProps {
   borderRadius?: number;
   borderWidth?: number;
   duration?: number;
   color?: TColorProp;
   className?: string;
   children: React.ReactNode;
-};
+}
 
 export function Shine({
   borderRadius = 8,

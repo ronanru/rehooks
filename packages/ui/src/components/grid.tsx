@@ -1,7 +1,7 @@
 import { cn } from "@rehooks/utils";
 import { useId } from "react";
 
-type GridProps = {
+interface GridProps {
   width?: number;
   height?: number;
   x?: number;
@@ -10,7 +10,7 @@ type GridProps = {
   strokeDasharray?: string;
   className?: string;
   [key: string]: unknown;
-};
+}
 
 export function Grid({
   width = 40,

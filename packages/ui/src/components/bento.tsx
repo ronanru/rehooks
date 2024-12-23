@@ -1,20 +1,18 @@
-import { ArrowRightIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@rehooks/utils";
-import { Button } from "./button";
 
-type BentoGridProps = {
+interface BentoGridProps {
   children: ReactNode;
   className?: string;
-};
+}
 
-type BentoCardProps = {
+interface BentoCardProps {
   name: string;
   className: string;
   background: ReactNode;
-  Icon: any;
+  Icon: ReactNode;
   description: string;
-};
+}
 
 function BentoGrid({ children, className }: BentoGridProps) {
   return (

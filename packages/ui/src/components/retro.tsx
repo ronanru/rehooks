@@ -1,13 +1,13 @@
 import { cn } from "@rehooks/utils";
 
-type RetroProps = React.HTMLAttributes<HTMLDivElement> & {
+interface RetroProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   angle?: number;
   cellSize?: number;
   opacity?: number;
   lightLineColor?: string;
   darkLineColor?: string;
-};
+}
 
 export function Retro({
   className,

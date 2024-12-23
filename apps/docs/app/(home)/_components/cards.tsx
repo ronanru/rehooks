@@ -1,5 +1,5 @@
 import { Globe as GlobeIcon, Braces, Layers, Zap } from "@rehooks/ui/icons";
-import { Retro, Marquee } from "@rehooks/ui/components";
+import { Retro, Marquee, Text } from "@rehooks/ui/components";
 import { cn, hooks } from "@rehooks/utils";
 
 export const features = [
@@ -19,7 +19,7 @@ export const features = [
       "Rehooks is written in TypeScript, ensuring type safety and maintainability throughout the codebase.",
     className:
       "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-2 lg:rounded-br-2xl lg:rounded-tr-none border-b-[0.5px] lg:border-b-[1px] border-r-[1px] border-t-[0.5px] border-l-[1px] lg:border-l-[0.5px]",
-    background: <div className="absolute -right-20 -top-20 opacity-60" />,
+    background: <Text text="TS" className="absolute -top-16" />,
   },
   {
     Icon: Layers,

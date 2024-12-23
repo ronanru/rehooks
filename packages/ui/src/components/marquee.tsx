@@ -1,14 +1,14 @@
 import { ComponentPropsWithoutRef } from "react";
 import { cn } from "@rehooks/utils";
 
-type MarqueeProps = ComponentPropsWithoutRef<"div"> & {
+interface MarqueeProps extends ComponentPropsWithoutRef<"div"> {
   className?: string;
   reverse?: boolean;
   pauseOnHover?: boolean;
   children: React.ReactNode;
   vertical?: boolean;
   repeat?: number;
-};
+}
 
 export function Marquee({
   className,
