@@ -76,7 +76,7 @@ export function Text({
         </mask>
       </defs>
       <text
-        className="fill-transparent stroke-neutral-400 text-7xl font-black dark:stroke-neutral-700"
+        className="fill-transparent stroke-neutral-400 text-7xl font-black dark:stroke-neutral-800"
         dominantBaseline="middle"
         strokeWidth="0.3"
         style={{ opacity: hovered ? 0.7 : 0 }}
@@ -91,7 +91,7 @@ export function Text({
           strokeDashoffset: 0,
           strokeDasharray: 1000,
         }}
-        className="fill-transparent stroke-neutral-400 text-7xl font-black dark:stroke-neutral-700"
+        className="fill-transparent stroke-neutral-400 text-7xl font-black dark:stroke-neutral-800"
         dominantBaseline="middle"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         strokeWidth="0.3"

@@ -1,3 +1,5 @@
+"use client";
+
 import { BentoCard, BentoGrid } from "@rehooks/ui/components";
 import { features } from "@/app/(home)/_components/cards";
 

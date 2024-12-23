@@ -49,7 +49,7 @@ export function Editor() {
   const list = activeTab === "hook" ? hooksList : componentsList;
 
   return (
-    <div className="text-fd-foreground border-fd-border/50 relative flex h-auto max-w-[350px] flex-col overflow-hidden rounded-2xl border bg-stone-950 shadow-[0_0px_100px_rgba(109,40,217,.25)] sm:max-w-full">
+    <div className="text-fd-foreground border-fd-border/50 relative flex h-auto max-w-[350px] flex-col overflow-hidden rounded-2xl border bg-neutral-950 shadow-[0_0px_100px_rgba(91,33,182,.15)] sm:max-w-full">
       <div className="flex select-none border-neutral-800">
         <TabButton
           active={activeTab === "hook"}

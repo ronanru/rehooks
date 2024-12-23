@@ -10,7 +10,7 @@ interface BentoCardProps {
   name: string;
   className: string;
   background: ReactNode;
-  Icon: ReactNode;
+  Icon: any;
   description: string;
 }
 

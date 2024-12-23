@@ -1,6 +1,56 @@
+"use client";
+
 import { Globe as GlobeIcon, Braces, Layers, Zap } from "@rehooks/ui/icons";
 import { Retro, Marquee, Text } from "@rehooks/ui/components";
 import { cn, hooks } from "@rehooks/utils";
+import React from "react";
+import createGlobe from "cobe";
+
+export const Globe = ({ className }: { className?: string }) => {
+  const canvasRef = React.useRef<HTMLCanvasElement>(null);
+
+  React.useEffect(() => {
+    let phi = 0;
+
+    if (!canvasRef.current) return;
+
+    const globe = createGlobe(canvasRef.current, {
+      devicePixelRatio: 2,
+      width: 600 * 2,
+      height: 600 * 2,
+      phi: 0,
+      theta: 0,
+      dark: 1,
+      diffuse: 1.2,
+      mapSamples: 16000,
+      mapBrightness: 6,
+      baseColor: [0.3, 0.3, 0.3],
+      markerColor: [0.545, 0.361, 0.965],
+      glowColor: [0.1, 0.1, 0.1],
+      markers: [
+        { location: [37.7595, -122.4367], size: 0.07 },
+        { location: [40.7128, -74.006], size: 0.07 },
+        { location: [52.7128, -242.831], size: 0.07 },
+      ],
+      onRender: (state) => {
+        state.phi = phi;
+        phi += 0.01;
+      },
+    });
+
+    return () => {
+      globe.destroy();
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{ width: 600, height: 600, maxWidth: "100%", aspectRatio: 1 }}
+      className={className}
+    />
+  );
+};
 
 export const features = [
   {
@@ -10,7 +60,9 @@ export const features = [
       "Rehooks is an open-source repository, to expand OSS communities.",
     className:
       "lg:row-start-1 lg:row-end-1 lg:col-start-1 lg:col-end-2 rounded-t-2xl lg:rounded-tl-2xl lg:rounded-tr-none border-b-[0.5px] border-r-[1px] lg:border-r-[0.5px] border-t-[1px] border-l-[1px]",
-    background: <div className="absolute inset-0" />,
+    background: (
+      <Globe className="absolute -bottom-80 -right-10 [mask-image:linear-gradient(to_top,transparent_60%,#000_100%)] md:-bottom-72 md:-right-10" />
+    ),
   },
   {
     Icon: Braces,

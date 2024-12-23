@@ -48,7 +48,7 @@ export default function Footer() {
           </div> */}
 
           <div className="border-fd-border flex flex-col items-center justify-between border-t pt-8 sm:flex-row">
-            <div className="flex flex-row gap-4 text-gray-400">
+            <div className="text-fd-muted-foreground flex flex-row gap-4">
               <Link href={GITHUB_LINK} className={TEXT_STYLE}>
                 <GithubIcon className="size-5" />
                 <span className="sr-only">Github</span>
