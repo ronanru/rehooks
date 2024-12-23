@@ -76,9 +76,9 @@ export function Text({
         </mask>
       </defs>
       <text
-        className="fill-transparent stroke-neutral-400 text-7xl font-black dark:stroke-neutral-800"
+        className="fill-transparent stroke-neutral-400 font-mono text-7xl font-black dark:stroke-neutral-800"
         dominantBaseline="middle"
-        strokeWidth="0.3"
+        strokeWidth="1"
         style={{ opacity: hovered ? 0.7 : 0 }}
         textAnchor="middle"
         x="50%"
@@ -91,10 +91,10 @@ export function Text({
           strokeDashoffset: 0,
           strokeDasharray: 1000,
         }}
-        className="fill-transparent stroke-neutral-400 text-7xl font-black dark:stroke-neutral-800"
+        className="fill-transparent stroke-neutral-400 font-mono text-7xl font-black dark:stroke-neutral-800"
         dominantBaseline="middle"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
-        strokeWidth="0.3"
+        strokeWidth="1"
         textAnchor="middle"
         transition={{
           duration: 4,
@@ -106,11 +106,11 @@ export function Text({
         {text}
       </motion.text>
       <text
-        className="fill-transparent text-7xl font-black"
+        className="fill-transparent font-mono text-7xl font-black"
         dominantBaseline="middle"
         mask="url(#textMask)"
         stroke="url(#textGradient)"
-        strokeWidth="0.3"
+        strokeWidth="1"
         textAnchor="middle"
         x="50%"
         y="50%"
