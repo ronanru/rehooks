@@ -57,7 +57,7 @@ export const features = [
     Icon: GlobeIcon,
     name: "Open-Source Codebase",
     description:
-      "Rehooks is an open-source repository, to expand OSS communities.",
+      "Rehooks is an open-source project, to expand OSS communities.",
     className:
       "lg:row-start-1 lg:row-end-1 lg:col-start-1 lg:col-end-2 rounded-t-2xl lg:rounded-tl-2xl lg:rounded-tr-none border-b-[0.5px] border-r-[1px] lg:border-r-[0.5px] border-t-[1px] border-l-[1px]",
     background: (

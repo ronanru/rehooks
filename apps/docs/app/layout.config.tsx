@@ -1,5 +1,4 @@
 import type { HomeLayoutProps } from "fumadocs-ui/home-layout";
-import { GithubIcon } from "@rehooks/ui/icons";
 import { GITHUB_LINK, REHOOKS_NPM } from "@rehooks/utils";
 
 export const baseOptions: HomeLayoutProps = {
@@ -10,7 +9,7 @@ export const baseOptions: HomeLayoutProps = {
 
   links: [
     {
-      text: "Docs",
+      text: "Documentation",
       url: "/docs",
       active: "nested-url",
     },
