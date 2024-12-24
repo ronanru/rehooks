@@ -1,11 +1,18 @@
-import { green, red, cyan, bold } from "colorette";
+import {
+  confirm,
+  intro,
+  log,
+  multiselect,
+  spinner,
+  outro,
+} from "@clack/prompts";
+import { API_ENDPOINT } from "~/utils/constants";
+import { cyan, green, red } from "colorette";
+import type { Hook } from "@rehooks/utils";
 import { getConfig } from "~/utils/config";
-import { logger } from "~/utils/logger";
 import { Command } from "commander";
-import inquirer from "inquirer";
 import axios from "axios";
 import path from "path";
-import ora from "ora";
 import fs from "fs";
 
 export const add = new Command()
@@ -14,113 +21,110 @@ export const add = new Command()
   .argument("[hooks...]", "Specify one or more hook names to add")
   .option("-f, --force", "Force overwrite existing hook files without prompt")
   .action(async (hooks, options) => {
+    intro("Adding hooks...");
+
     const config = await getConfig(process.cwd());
 
     if (!config) {
-      logger.error(red("rehooks.json not found or invalid configuration."));
+      outro(red("Rehooks configuration not found or invalid."));
       return;
     }
 
     const { directory, forceOverwrite } = config;
     const shouldForceOverwrite = options.force || forceOverwrite;
 
+    const addedHooks: string[] = [];
     try {
       if (hooks.length > 0) {
         for (const hook of hooks) {
           const hookFilePath = path.join(directory, `${hook}.ts`);
 
           if (fs.existsSync(hookFilePath) && !shouldForceOverwrite) {
-            const { overwrite } = await inquirer.prompt([
-              {
-                type: "confirm",
-                name: "overwrite",
-                message: bold(
-                  red(
-                    `${hook}.ts already exists. Do you want to overwrite it?`,
-                  ),
-                ),
-                default: false,
-              },
-            ]);
+            const overwrite = await confirm({
+              message: `${hook}.ts already exists. Do you want to overwrite it?`,
+              initialValue: false,
+            });
 
             if (!overwrite) {
-              logger.info(cyan(`Skipping ${hook}.ts.`));
+              log.info(`Skipping ${cyan(hook)}.`);
               continue;
             }
           }
 
-          const spinner = ora(cyan(`Adding ${hook}...`)).start();
-          const selectedHookResponse = await axios.get(
-            `https://rehooks.pyr33x.ir/api/hooks/${hook}`,
+          const selectedHookResponse = await axios.get<Hook>(
+            `${API_ENDPOINT}/${hook}`,
           );
+
           let { content } = selectedHookResponse.data;
           fs.writeFileSync(hookFilePath, content);
-          spinner.succeed(
-            green(`Created ${bold(hook)} hook at ${bold(hookFilePath)}.`),
-          );
+          addedHooks.push(hook);
+          // log.info(cyan(`Successfully added ${green(hook)}.`));
         }
+
+        outro(
+          green(
+            `Successfully added ${cyan(addedHooks.map((h) => h.toString()).join(", "))}.`,
+          ),
+        );
+
         return;
       }
 
-      const fetchSpinner = ora(cyan("Fetching hooks...")).start();
-      const response = await axios.get("https://rehooks.pyr33x.ir/api/hooks");
-      const hooksData = response.data;
-      fetchSpinner.succeed(green("Done."));
+      const fetchSpinner = spinner();
+      fetchSpinner.start("Fetching hooks...");
+      const res = await axios.get<Hook[]>(API_ENDPOINT);
+      const hooksData = res.data;
+      fetchSpinner.stop("Done.");
 
-      const { selectedHooks } = await inquirer.prompt([
-        {
-          type: "checkbox",
-          name: "selectedHooks",
-          message: bold("Pick hooks to add:"),
-          choices: hooksData.map((h: { title: string }) => h.title),
-          required: true,
-          theme: {
-            icon: {
-              checked: green("✔"),
-              cursor: "",
-            },
-          },
-        },
-      ]);
+      const selectedHooks = await multiselect({
+        message: "Pick hooks to add:",
+        options: hooksData.map((h: { title: string }) => ({
+          value: h.title,
+          label: h.title,
+        })),
+        required: true,
+      });
 
-      const spinner = ora(cyan("Checking configuration...")).start();
-      spinner.succeed(green("Checked configuration."));
+      const selectedHookArray = selectedHooks as string[];
 
-      spinner.succeed(
-        green(
-          `Created ${bold(selectedHooks.length.toString())} ${selectedHooks.length > 1 ? "files" : "file"}.`,
-        ),
+      log.success(
+        `Selected ${selectedHookArray.length.toString()} ${selectedHookArray.length > 1 ? "files" : "file"}.`,
       );
 
-      for (const hook of selectedHooks) {
+      log.info(`Hooks Directory: ${directory}`);
+
+      for (const hook of selectedHookArray) {
         const hookFilePath = path.join(directory, `${hook}.ts`);
 
         if (fs.existsSync(hookFilePath) && !shouldForceOverwrite) {
-          const { overwrite } = await inquirer.prompt([
-            {
-              type: "confirm",
-              name: "overwrite",
-              message: bold(
-                red(`${hook}.ts already exists. Do you want to overwrite it?`),
-              ),
-              default: false,
-            },
-          ]);
+          const overwrite = await confirm({
+            message: `${hook}.ts already exists. Do you want to overwrite it?`,
+            initialValue: false,
+          });
 
           if (!overwrite) {
-            logger.info(cyan(`Skipping ${hook}.ts.`));
+            log.info(`Skipping ${cyan(hook)}.`);
             continue;
           }
         }
 
-        const selectedHookResponse = await axios.get(
-          `https://rehooks.pyr33x.ir/api/hooks/${hook}`,
-        );
+        const selectedHookResponse = await axios.get(`${API_ENDPOINT}/${hook}`);
         let { content } = selectedHookResponse.data;
         fs.writeFileSync(hookFilePath, content);
-        logger.info(green(` - ${hookFilePath}.`));
+
+        addedHooks.push(hook);
+      }
+
+      if (addedHooks.length > 0) {
+        outro(
+          green(
+            `Successfully added ${cyan(addedHooks.map((h) => h.toString()).join(", "))}.`,
+          ),
+        );
+      } else {
+        outro(red("No hooks were added."));
       }
     } catch (error) {
-      logger.error(red(`Error adding hooks: ${error}`));
+      log.error(`Error adding hooks: ${error}`);
     }
   });

@@ -1,20 +1,17 @@
+import { SRC_HOOKS_DIR, HOOKS_DIR } from "~/utils/constants";
+import { intro, log, outro, confirm } from "@clack/prompts";
 import { green, red, cyan, bold, yellow } from "colorette";
 import { getConfig } from "~/utils/config";
-import { logger } from "~/utils/logger";
 import { Command } from "commander";
-import inquirer from "inquirer";
 import semver from "semver";
 import path from "path";
-import ora from "ora";
 import fs from "fs";
 
 async function checkReactVersion() {
   const packageJsonPath = path.resolve(process.cwd(), "package.json");
 
   if (!fs.existsSync(packageJsonPath)) {
-    logger.error(
-      red("Error: package.json not found in the project directory."),
-    );
+    log.error(red("Error: package.json not found in the project directory."));
     return false;
   }
 
@@ -23,9 +20,9 @@ async function checkReactVersion() {
     packageJson.dependencies?.react || packageJson.peerDependencies?.react;
 
   if (!reactVersion) {
-    logger.error(
+    log.error(
       red(
-        "Error: React is not listed as a dependency or peer dependency in package.json.",
+        "React is not listed as a dependency or peer dependency in package.json.",
       ),
     );
     return false;
@@ -33,9 +30,9 @@ async function checkReactVersion() {
 
   const cleanedVersion = semver.minVersion(reactVersion);
   if (!cleanedVersion || semver.lt(cleanedVersion, "18.0.0")) {
-    logger.error(
+    log.error(
       red(
-        `Error: React version (${cleanedVersion || reactVersion}) is lower than 18. Please upgrade.`,
+        `React version (${cleanedVersion || reactVersion}) is lower than 18. Please upgrade.`,
       ),
     );
     return false;
@@ -50,35 +47,33 @@ export const init = new Command()
   .option("-f, --force", "Force overwrite existing files without prompts")
   .option("-c, --config <path>", "Specify a custom path for rehooks.json")
   .action(async (customPath, options) => {
+    intro("Initializing Rehooks...");
+
     const isReactCompatible = await checkReactVersion();
     if (!isReactCompatible) {
-      logger.error(
-        red("Initialization aborted due to React compatibility issues."),
-      );
+      outro(red("Initialization aborted due to React compatibility issues."));
       return;
     }
+
     const configPath = options.config
       ? path.resolve(process.cwd(), options.config)
       : path.resolve(process.cwd(), "rehooks.json");
 
     if (fs.existsSync(configPath) && fs.statSync(configPath).isDirectory()) {
-      logger.error(red(`Error: ${configPath} is a directory, not a file.`));
+      log.error(red(`Error: ${configPath} is a directory, not a file.`));
       return;
     }
 
-    const spinner = ora(cyan("Initializing Rehooks configuration...")).start();
     let hooksDirExists = false;
     let currentDirectory: string | undefined;
 
     if (fs.existsSync(configPath)) {
-      spinner.info(yellow("rehooks.json already exists."));
-      spinner.stop();
-
+      log.warn(yellow("Rehooks configuration already exists."));
       const currentConfig = JSON.parse(fs.readFileSync(configPath, "utf-8"));
       currentDirectory = currentConfig.directory;
 
       if (currentDirectory && currentDirectory === customPath) {
-        logger.warn(
+        log.warn(
           yellow(
             `The hooks directory is already configured as ${bold(currentDirectory)}.`,
           ),
@@ -87,21 +82,16 @@ export const init = new Command()
       }
 
       if (options.force) {
-        logger.info(cyan("Forcing overwrite of rehooks.json..."));
+        log.info(cyan("Forcing overwrite of rehooks.json..."));
       } else {
-        const { overwriteConfig } = await inquirer.prompt([
-          {
-            type: "confirm",
-            name: "overwriteConfig",
-            message: bold(
-              red("rehooks.json already exists. Do you want to overwrite it?"),
-            ),
-            default: false,
-          },
-        ]);
+        const overwriteConfig = await confirm({
+          message: bold(
+            "Rehooks configuration already exists. Do you want to overwrite it?",
+          ),
+          initialValue: true,
+        });
         if (!overwriteConfig) {
-          spinner.fail(red("Initialization aborted."));
-          logger.warn(yellow("Initialization aborted."));
+          outro(red("Initialization aborted."));
           return;
         }
       }
@@ -109,7 +99,7 @@ export const init = new Command()
       if (currentDirectory && fs.existsSync(currentDirectory)) {
         hooksDirExists = true;
         fs.rmSync(currentDirectory, { recursive: true, force: true });
-        spinner.succeed(
+        log.info(
           green(
             `Previous hooks directory at ${bold(currentDirectory)} has been removed.`,
           ),
@@ -117,30 +107,22 @@ export const init = new Command()
       }
     }
 
-    spinner.stop();
+    let directory = customPath || HOOKS_DIR;
 
-    let directory = customPath || "./hooks";
     if (!customPath) {
-      const { srcFolderChoice } = await inquirer.prompt([
-        {
-          type: "list",
-          name: "srcFolderChoice",
-          message: bold("Does your project have a 'src' folder?"),
-          choices: [
-            { name: "Yes", value: true },
-            { name: "No", value: false },
-          ],
-        },
-      ]);
-      directory = srcFolderChoice ? "./src/hooks" : "./hooks";
+      const choice = await confirm({
+        message: `Does your project have a ${bold(cyan("src"))} folder?`,
+        initialValue: true,
+      });
+      directory = choice ? SRC_HOOKS_DIR : HOOKS_DIR;
     }
 
-    spinner.start(cyan("Creating rehooks.json configuration file..."));
+    log.info(cyan("Creating rehooks.json configuration file..."));
     const defaultConfig = { directory, forceOverwrite: false };
 
     try {
       fs.writeFileSync(configPath, JSON.stringify(defaultConfig, null, 2));
-      spinner.succeed(
+      log.success(
         green(`Rehooks configuration file created at ${bold(configPath)}.`),
       );
 
@@ -150,30 +132,28 @@ export const init = new Command()
           customPath !== currentDirectory &&
           directory !== currentDirectory)
       ) {
-        spinner.start(cyan("Creating hooks directory..."));
+        log.info(cyan("Creating hooks directory..."));
         fs.mkdirSync(directory, { recursive: true });
-        spinner.succeed(
-          green(`Hooks directory created at ${bold(directory)}.`),
-        );
+        log.success(green(`Hooks directory created at ${bold(directory)}.`));
       }
     } catch (error) {
-      spinner.fail(red("Error creating rehooks.json or hooks directory."));
-      logger.error(
+      log.error("Error creating rehooks.json or hooks directory.");
+      log.error(
         red(`Error creating rehooks.json or hooks directory: ${error}`),
       );
       return;
     }
 
     try {
-      spinner.start(cyan("Loading configuration..."));
       const config = await getConfig(process.cwd());
-      spinner.succeed(green("Configuration loaded successfully."));
+      log.success(green("Configuration loaded successfully."));
 
       if (!config) {
-        logger.warn(yellow("Configuration loaded, but may be incomplete."));
+        log.warn(yellow("Configuration loaded, but may be incomplete."));
       }
     } catch (error) {
-      spinner.fail(red("Failed to load configuration."));
-      logger.error(red("Failed to load configuration."));
+      log.error(red("Failed to load configuration."));
     }
+
+    outro("Initialization complete!");
   });
