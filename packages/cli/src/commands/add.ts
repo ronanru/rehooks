@@ -8,6 +8,7 @@ import {
 } from "@clack/prompts";
 import { API_ENDPOINT } from "~/utils/constants";
 import { cyan, green, red } from "colorette";
+import type { Hook } from "@rehooks/utils";
 import { getConfig } from "~/utils/config";
 import { Command } from "commander";
 import axios from "axios";
@@ -21,10 +22,11 @@ export const add = new Command()
   .option("-f, --force", "Force overwrite existing hook files without prompt")
   .action(async (hooks, options) => {
     intro("Adding hooks...");
+
     const config = await getConfig(process.cwd());
 
     if (!config) {
-      outro("Rehooks configuration not found or invalid.");
+      outro(red("Rehooks configuration not found or invalid."));
       return;
     }
 
@@ -32,7 +34,6 @@ export const add = new Command()
     const shouldForceOverwrite = options.force || forceOverwrite;
 
     const addedHooks: string[] = [];
-
     try {
       if (hooks.length > 0) {
         for (const hook of hooks) {
@@ -50,22 +51,29 @@ export const add = new Command()
             }
           }
 
-          log.info(`Adding ${hook}...`);
-          const selectedHookResponse = await axios.get(
+          const selectedHookResponse = await axios.get<Hook>(
             `${API_ENDPOINT}/${hook}`,
           );
+
           let { content } = selectedHookResponse.data;
           fs.writeFileSync(hookFilePath, content);
-
           addedHooks.push(hook);
+          // log.info(cyan(`Successfully added ${green(hook)}.`));
         }
+
+        outro(
+          green(
+            `Successfully added ${cyan(addedHooks.map((h) => h.toString()).join(", "))}.`,
+          ),
+        );
+
         return;
       }
 
       const fetchSpinner = spinner();
       fetchSpinner.start("Fetching hooks...");
-      const response = await axios.get(API_ENDPOINT);
-      const hooksData = response.data;
+      const res = await axios.get<Hook[]>(API_ENDPOINT);
+      const hooksData = res.data;
       fetchSpinner.stop("Done.");
 
       const selectedHooks = await multiselect({
@@ -100,7 +108,6 @@ export const add = new Command()
           }
         }
 
-        log.info(`Adding ${hook}...`);
         const selectedHookResponse = await axios.get(`${API_ENDPOINT}/${hook}`);
         let { content } = selectedHookResponse.data;
         fs.writeFileSync(hookFilePath, content);

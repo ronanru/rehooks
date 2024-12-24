@@ -22,7 +22,7 @@ async function checkReactVersion() {
   if (!reactVersion) {
     log.error(
       red(
-        "Error: React is not listed as a dependency or peer dependency in package.json.",
+        "React is not listed as a dependency or peer dependency in package.json.",
       ),
     );
     return false;
@@ -32,7 +32,7 @@ async function checkReactVersion() {
   if (!cleanedVersion || semver.lt(cleanedVersion, "18.0.0")) {
     log.error(
       red(
-        `Error: React version (${cleanedVersion || reactVersion}) is lower than 18. Please upgrade.`,
+        `React version (${cleanedVersion || reactVersion}) is lower than 18. Please upgrade.`,
       ),
     );
     return false;
@@ -48,11 +48,13 @@ export const init = new Command()
   .option("-c, --config <path>", "Specify a custom path for rehooks.json")
   .action(async (customPath, options) => {
     intro("Initializing Rehooks...");
+
     const isReactCompatible = await checkReactVersion();
     if (!isReactCompatible) {
       outro(red("Initialization aborted due to React compatibility issues."));
       return;
     }
+
     const configPath = options.config
       ? path.resolve(process.cwd(), options.config)
       : path.resolve(process.cwd(), "rehooks.json");
@@ -106,6 +108,7 @@ export const init = new Command()
     }
 
     let directory = customPath || HOOKS_DIR;
+
     if (!customPath) {
       const choice = await confirm({
         message: `Does your project have a ${bold(cyan("src"))} folder?`,
