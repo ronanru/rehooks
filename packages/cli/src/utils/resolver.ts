@@ -1,4 +1,4 @@
-import { logger } from "./logger";
+import { log } from "@clack/prompts";
 import path from "path";
 
 export async function resolveImport(
@@ -16,6 +16,6 @@ export async function resolveImport(
     }
   }
 
-  logger.warn(`Alias "${alias}" not found in tsconfig paths.`);
+  log.warn(`Alias "${alias}" not found in tsconfig paths.`);
   return alias;
 }

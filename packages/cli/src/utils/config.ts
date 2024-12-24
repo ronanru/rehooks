@@ -1,7 +1,7 @@
 import { resolveImport } from "./resolver";
 import { cosmiconfig } from "cosmiconfig";
 import { handleError } from "./error";
-import { logger } from "./logger";
+import { log } from "@clack/prompts";
 import path from "path";
 import { z } from "zod";
 import fs from "fs";
@@ -21,7 +21,7 @@ export async function getConfig(cwd: string): Promise<RehooksConfig | null> {
   const config = await getRawConfig(cwd);
 
   if (!config) {
-    logger.warn("Configuration not found.");
+    log.error("Configuration not found.");
     return null;
   }
 
@@ -39,7 +39,7 @@ export async function getRawConfig(cwd: string): Promise<unknown | null> {
     return configResult.config;
   } catch (error) {
     const errMsg = `Error loading configuration from ${cwd}/rehooks.json: ${error}`;
-    logger.error(errMsg);
+    log.error(errMsg);
     throw handleError(errMsg);
   }
 }
@@ -52,7 +52,7 @@ export async function resolveConfigPaths(cwd: string, config: RehooksConfig) {
   const tsConfig = await getTsConfig(cwd);
 
   if (!tsConfig) {
-    logger.warn("TypeScript configuration not found.");
+    log.warn("TypeScript configuration not found.");
     return config;
   }
 
@@ -71,7 +71,7 @@ async function getTsConfig(cwd: string): Promise<any | null> {
     const tsConfigContent = await fs.promises.readFile(tsConfigPath, "utf-8");
     return JSON.parse(tsConfigContent);
   } catch (error) {
-    logger.error(`Error reading tsconfig.json: ${error}`);
+    log.error(`Error reading tsconfig.json: ${error}`);
     return null;
   }
 }
