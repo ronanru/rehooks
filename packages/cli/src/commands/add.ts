@@ -8,8 +8,8 @@ import {
 } from "@clack/prompts";
 import { API_ENDPOINT } from "~/utils/constants";
 import { cyan, green, red } from "colorette";
-import type { Hook } from "@rehooks/utils";
 import { getConfig } from "~/utils/config";
+import type { Hook } from "~/types/hook";
 import { Command } from "commander";
 import axios from "axios";
 import path from "path";

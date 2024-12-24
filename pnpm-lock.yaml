@@ -121,9 +121,6 @@ importers:
       '@clack/prompts':
         specifier: ^0.9.0
         version: 0.9.0
-      '@rehooks/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@types/node':
         specifier: 22.5.4
         version: 22.5.4
@@ -8025,7 +8022,7 @@ snapshots:
   postcss@8.4.47:
     dependencies:
       nanoid: 3.3.7
-      picocolors: 1.1.0
+      picocolors: 1.1.1
       source-map-js: 1.2.1
 
   prelude-ls@1.2.1: {}
