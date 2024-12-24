@@ -1,25 +1,25 @@
-import { logger } from "~/utils/logger";
+import { log } from "@clack/prompts";
 import { z } from "zod";
 
 export function handleError(error: unknown) {
   if (error instanceof z.ZodError) {
     error.issues.forEach((issue) => {
-      logger.error(issue.message);
+      log.error(issue.message);
     });
 
     process.exit(1);
   }
 
   if (typeof error === "string") {
-    logger.error(error);
+    log.error(error);
     process.exit(1);
   }
 
   if (error instanceof Error) {
-    logger.error(error.message);
+    log.error(error.message);
     process.exit(1);
   }
 
-  logger.error("Something went wrong. Please try again.");
+  log.error("Something went wrong. Please try again.");
   process.exit(1);
 }

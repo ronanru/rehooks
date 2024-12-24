@@ -89,7 +89,7 @@ export const init = new Command()
           initialValue: true,
         });
         if (!overwriteConfig) {
-          log.warn(yellow("Initialization aborted."));
+          outro(red("Initialization aborted."));
           return;
         }
       }
@@ -108,7 +108,7 @@ export const init = new Command()
     let directory = customPath || HOOKS_DIR;
     if (!customPath) {
       const choice = await confirm({
-        message: bold("Does your project have a 'src' folder?"),
+        message: `Does your project have a ${bold(cyan("src"))} folder?`,
         initialValue: true,
       });
       directory = choice ? SRC_HOOKS_DIR : HOOKS_DIR;
@@ -119,7 +119,9 @@ export const init = new Command()
 
     try {
       fs.writeFileSync(configPath, JSON.stringify(defaultConfig, null, 2));
-      log.success(`Rehooks configuration file created at ${bold(configPath)}.`);
+      log.success(
+        green(`Rehooks configuration file created at ${bold(configPath)}.`),
+      );
 
       if (
         !hooksDirExists ||
@@ -129,7 +131,7 @@ export const init = new Command()
       ) {
         log.info(cyan("Creating hooks directory..."));
         fs.mkdirSync(directory, { recursive: true });
-        log.success(`Hooks directory created at ${bold(directory)}.`);
+        log.success(green(`Hooks directory created at ${bold(directory)}.`));
       }
     } catch (error) {
       log.error("Error creating rehooks.json or hooks directory.");
@@ -141,7 +143,7 @@ export const init = new Command()
 
     try {
       const config = await getConfig(process.cwd());
-      log.success("Configuration loaded successfully.");
+      log.success(green("Configuration loaded successfully."));
 
       if (!config) {
         log.warn(yellow("Configuration loaded, but may be incomplete."));
