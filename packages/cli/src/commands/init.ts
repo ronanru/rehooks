@@ -1,6 +1,6 @@
 import { SRC_HOOKS_DIR, HOOKS_DIR } from "~/utils/constants";
+import { intro, log, outro, confirm } from "@clack/prompts";
 import { green, red, cyan, bold, yellow } from "colorette";
-import { intro, select, log, outro } from "@clack/prompts";
 import { getConfig } from "~/utils/config";
 import { Command } from "commander";
 import semver from "semver";
@@ -48,11 +48,11 @@ export const init = new Command()
   .option("-c, --config <path>", "Specify a custom path for rehooks.json")
   .action(async (customPath, options) => {
     intro("Initializing Rehooks...");
-    // const isReactCompatible = await checkReactVersion();
-    // if (!isReactCompatible) {
-    //   outro(red("Initialization aborted due to React compatibility issues."));
-    //   return;
-    // }
+    const isReactCompatible = await checkReactVersion();
+    if (!isReactCompatible) {
+      outro(red("Initialization aborted due to React compatibility issues."));
+      return;
+    }
     const configPath = options.config
       ? path.resolve(process.cwd(), options.config)
       : path.resolve(process.cwd(), "rehooks.json");
@@ -82,16 +82,10 @@ export const init = new Command()
       if (options.force) {
         log.info(cyan("Forcing overwrite of rehooks.json..."));
       } else {
-        const overwriteConfig = await select({
+        const overwriteConfig = await confirm({
           message: bold(
-            red(
-              "Rehooks configuration already exists. Do you want to overwrite it?",
-            ),
+            "Rehooks configuration already exists. Do you want to overwrite it?",
           ),
-          options: [
-            { label: "Yes", value: true },
-            { label: "No", value: false },
-          ],
           initialValue: true,
         });
         if (!overwriteConfig) {
@@ -113,12 +107,9 @@ export const init = new Command()
 
     let directory = customPath || HOOKS_DIR;
     if (!customPath) {
-      const choice = await select({
+      const choice = await confirm({
         message: bold("Does your project have a 'src' folder?"),
-        options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
-        ],
+        initialValue: true,
       });
       directory = choice ? SRC_HOOKS_DIR : HOOKS_DIR;
     }
