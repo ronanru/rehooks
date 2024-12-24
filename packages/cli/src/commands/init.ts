@@ -1,3 +1,4 @@
+import { SRC_HOOKS_DIR, HOOKS_DIR } from "~/utils/constants";
 import { green, red, cyan, bold, yellow } from "colorette";
 import { intro, select, log, outro } from "@clack/prompts";
 import { getConfig } from "~/utils/config";
@@ -47,11 +48,11 @@ export const init = new Command()
   .option("-c, --config <path>", "Specify a custom path for rehooks.json")
   .action(async (customPath, options) => {
     intro("Initializing Rehooks...");
-    const isReactCompatible = await checkReactVersion();
-    if (!isReactCompatible) {
-      outro(red("Initialization aborted due to React compatibility issues."));
-      return;
-    }
+    // const isReactCompatible = await checkReactVersion();
+    // if (!isReactCompatible) {
+    //   outro(red("Initialization aborted due to React compatibility issues."));
+    //   return;
+    // }
     const configPath = options.config
       ? path.resolve(process.cwd(), options.config)
       : path.resolve(process.cwd(), "rehooks.json");
@@ -110,7 +111,7 @@ export const init = new Command()
       }
     }
 
-    let directory = customPath || "./hooks";
+    let directory = customPath || HOOKS_DIR;
     if (!customPath) {
       const choice = await select({
         message: bold("Does your project have a 'src' folder?"),
@@ -119,7 +120,7 @@ export const init = new Command()
           { label: "No", value: false },
         ],
       });
-      directory = choice ? "./src/hooks" : "./hooks";
+      directory = choice ? SRC_HOOKS_DIR : HOOKS_DIR;
     }
 
     log.info(cyan("Creating rehooks.json configuration file..."));
