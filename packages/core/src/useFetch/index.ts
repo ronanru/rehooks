@@ -1,13 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
 
-interface UseFetchResult<T, E> {
+type UseFetchResult<T, E> = {
   data: T | null;
   error: E | null;
   isPending: boolean;
   isSuccess: boolean;
   isError: boolean;
   refetch: () => void;
-}
+};
 
 const description = "Custom hook to fetch data from an API endpoint.";
 

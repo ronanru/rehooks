@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
-interface KeyConfig {
+type KeyConfig = {
   key: string;
   ctrl?: boolean;
   alt?: boolean;
   shift?: boolean;
   meta?: boolean;
-}
+};
 
 const description = "Custom hook to detect if a specified key is pressed.";
 

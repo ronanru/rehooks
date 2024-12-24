@@ -1,6 +1,7 @@
+import Footer from "@/app/(home)/_components/footer";
 import { HomeLayout } from "fumadocs-ui/home-layout";
-import { DotPattern } from "@/components/internal";
 import { baseOptions } from "@/app/layout.config";
+import { Grid } from "@rehooks/ui/components";
 import type { ReactNode } from "react";
 
 export default function Layout({
@@ -11,14 +12,15 @@ export default function Layout({
   return (
     <HomeLayout {...baseOptions}>
       {children}
-      <DotPattern
-        width={15}
-        height={15}
-        cx={1}
-        cy={1}
-        cr={1}
-        className="p-2 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]"
+      <Grid
+        width={46}
+        height={46}
+        x={-1}
+        y={-1}
+        strokeDasharray={"4 2"}
+        className="-z-50 [mask-image:radial-gradient(350px_circle_at_center,white,#ffffff50)] dark:[mask-image:radial-gradient(350px_circle_at_center,white,#ffffff01)]"
       />
+      <Footer />
     </HomeLayout>
   );
 }
